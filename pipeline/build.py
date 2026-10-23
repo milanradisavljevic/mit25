@@ -11,9 +11,13 @@ OUTPUT = ROOT / "site" / "data.json"
 
 
 def build_data():
+    indicators = []
+    for module in INDICATORS:
+        result = module.build()
+        indicators.extend(result if isinstance(result, list) else [result])
     return {
         "generated_at": date.today().isoformat(),
-        "indicators": [module.build() for module in INDICATORS],
+        "indicators": indicators,
     }
 
 

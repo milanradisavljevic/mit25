@@ -7,7 +7,7 @@ Abdeckung wurde direkt aus den heruntergeladenen Dateien ermittelt, nicht aus Se
 
 | ID | Quelle | Jahre | Lücken |
 |---|---|---|---|
-| life_expectancy_birth | Statistik Austria | 1961–2025 (gesamt), 1951–2025 (nach Geschlecht) | keine innerhalb der Spanne |
+| life_expectancy_birth_male, life_expectancy_birth_female | Statistik Austria | 1951–2025 | keine innerhalb der Spanne |
 | share_65plus | Statistik Austria | 1961–2025 | keine innerhalb der Spanne |
 | median_age | Statistik Austria | 1961–2025 | keine innerhalb der Spanne |
 | fertility_rate | Statistik Austria | 1961–2025 | keine innerhalb der Spanne |
@@ -28,7 +28,7 @@ Verwendete Zeilen:
 
 | ID | Blatt | Zeile |
 |---|---|---|
-| life_expectancy_birth | I | „Lebenserwartung bei der Geburt“ → „Männer und Frauen (Unisex-Werte)“ (auch „Männer“, „Frauen“) |
+| (nur Kontrolle) | I | „Lebenserwartung bei der Geburt“ → „Männer“, „Frauen“: Test gegen die lange Reihe ab 1961 |
 | fertility_rate | I | „Gesamtfertilitätsrate (Kinderzahl pro Frau)“ |
 | share_65plus | 18 | Block „Männer und Frauen“ → „65 Jahre und älter“ (Bevölkerung im Jahresdurchschnitt, %) |
 | median_age | 18 | Block „Männer und Frauen“ → „Medianalter“ (Bevölkerung im Jahresdurchschnitt) |
@@ -43,8 +43,10 @@ Methodische Hinweise aus der Datei:
 - **Datei:** `statistik_austria_Lebenserwartung_fuer_ausgewaehlte_Altersjahre_1868_71_bis_2020_22_sowie_1951_2025.ods`
 - **URL:** https://www.statistik.at/fileadmin/pages/413/Lebenserwartung_fuer_ausgewaehlte_Altersjahre_1868_71_bis_2020_22_sowie_1951_2025.ods
 - **Seite:** https://www.statistik.at/statistiken/bevoelkerung-und-soziales/bevoelkerung/demographische-indikatoren-und-tafeln/sterbetafeln
+- **Verwendet für:** `life_expectancy_birth_male`, `life_expectancy_birth_female` (Blatt t420, Spalten „Männer“/„Frauen“ → „0 (bei der Geburt)“, Zeilen mit Einzeljahr).
 - **Abdeckung:** jährlich 1951–2025, alle 75 Jahre vorhanden, **nur getrennt nach Männern und Frauen** (kein Gesamtwert). Davor nur Periodentafeln um Volkszählungen (1868/71, …, 1930/33, 1949/51), die keinem Einzeljahr zugeordnet werden dürfen.
-- **Abgleich:** 1961 Männer 66,47 (hier) vs. 66,474… (Zeitreihenindikatoren). Stimmt überein, hier gerundet.
+- **Rundung:** bis 2001 zwei Nachkommastellen, ab 2002 ungerundet.
+- **Abgleich:** 1961–2025 gegen Blatt I der Zeitreihenindikatoren, Abweichung höchstens 0,006 (Rundung). Wird getestet.
 
 ## BMI: Wahlbeteiligung Nationalratswahlen
 
@@ -53,6 +55,8 @@ Wahlbeteiligung = abgegebene Stimmen (inkl. ungültige) in % der Wahlberechtigte
 ### 1919–2008
 
 - **Datei:** `bmi_nrw_08_wbseit1919.pdf` (Tabelle „6.a. Wahlberechtigte seit 1919“, Seite 333)
+- **Abschrift:** `data/manual/bmi_wahlbeteiligung_1919_2008.csv`, am 2026-10-23 aus der Textebene des PDFs abgetippt. Enthält Wahlberechtigte, abgegeben (absolut und %), ungültig, gültig sowie die beiden Veränderungsspalten. Tests prüfen: ungültig + gültig = abgegeben; Prozent = abgegeben / wahlberechtigt (±0,05); Differenzen zur Vorwahl = Veränderungstabelle.
+- **Zweiter Quellfehler:** Die Veränderung der Wahlberechtigten 2008 beträgt laut Tabelle 225.217. Aus den Absolutwerten ergibt sich 6.333.109 − 6.107.686 = 225.423. Der Absolutwert 2008 ist konsistent (Männer + Frauen). Die Wahlbeteiligung ist nicht betroffen. Im Test als bekannte Ausnahme geführt.
 - **URL:** https://www.bmi.gv.at/412/Nationalratswahlen/Nationalratswahl_2008/files/history/nrw_08_wbseit1919.pdf
 - **Inhalt:** je Wahl Wahlberechtigte, abgegebene Stimmen absolut und in %.
 - **Wahlen ab 1945:** 1945, 1949, 1953, 1956, 1959, 1962, 1966, 1970, 1971, 1975, 1979, 1983, 1986, 1990, 1994, 1995, 1999, 2002, 2006, 2008.
@@ -68,7 +72,7 @@ Wahlbeteiligung = abgegebene Stimmen (inkl. ungültige) in % der Wahlberechtigte
 | 2019 | `bmi_nrw19_endgultiges_gesamtergebnis_16102019.xlsx` | https://www.bmi.gv.at/412/Nationalratswahlen/Nationalratswahl_2019/files/endgultiges_gesamtergebnis_nrw19_16102019.xlsx |
 | 2024 | `bmi_nrw24_endgueltiges_ergebnis_16102024.xlsx` | https://www.bmi.gv.at/412/Nationalratswahlen/Nationalratswahl_2024/files/endgueltiges_ergebnis_beschluss_bundeswahlbehoerde_16102024.xlsx |
 
-Jeweils Zeile `GKZ = G00000` („Österreich“). 2013 enthält eine fertige Spalte „Wahlbeteiligung in %“. 2017, 2019 und 2024 enthalten nur „Wahlberechtigte“ und „Abgegebene“ (siehe offene Frage 2).
+Jeweils Zeile `GKZ = G00000` („Österreich“). 2013 enthält eine fertige Spalte „Wahlbeteiligung in %“ (verwendet). 2017, 2019 und 2024 enthalten nur „Wahlberechtigte“ und „Abgegebene“. Dort rechnet die Pipeline abgegeben / wahlberechtigt × 100. Für 2013 liefert diese Rechnung exakt den veröffentlichten Wert (Test).
 
 ## Statistik Austria: Verbraucherpreisindex
 
@@ -97,6 +101,14 @@ Jeweils Zeile `GKZ = G00000` („Österreich“). 2013 enthält eine fertige Spa
 | Eurostat `demo_find`, `demo_pjanind` (AT) | Beginnt 1960, nur ein Jahr Gewinn. Werte gerundet, Medianalter 1960–1962 identisch 35,5. |
 | WKO/Landes-PDFs | Sekundärquellen, Original von Statistik Austria vorhanden. |
 
+## Entscheidungen (2026-10-23)
+
+- Wahlbeteiligung 2017, 2019 und 2024 wird aus den Absolutzahlen berechnet.
+- Lebenserwartung wird getrennt nach Männern und Frauen geführt, 1951–2025.
+- Wahlen 1919–1930 werden aufgenommen.
+- Fertilität 1951–1960 (Human Fertility Database) ist zurückgestellt.
+- Die BMI-Tabelle 1919–2008 wird als CSV in `data/manual/` geführt. Keine PDF-Abhängigkeit.
+
 ## Offene Probleme und Fragen
 
 1. **Großeltern-Spalte reicht weiter zurück als die Daten.** Bei Standardabstand 60 Jahre gilt für Geburtsjahre 1960–2005 bei den Großeltern das Stichjahr 1925–1970. Bei den Eltern ist es 1955–2000. Datenlage vor 1961:
@@ -105,15 +117,6 @@ Jeweils Zeile `GKZ = G00000` („Österreich“). 2013 enthält eine fertige Spa
    - VPI: ab 1946.
    - Wahlen: ab 1945. 1919–1930 ebenfalls in der Datei (siehe Punkt 4).
    - Die Annahme „Daten ab etwa 1950“ im Plan reicht also nicht für Geburtsjahre vor ~1985.
-2. **Wahlbeteiligung 2017/2019/2024 berechnen?** Die BMI-Dateien enthalten keine Prozentzahl, nur Wahlberechtigte und abgegebene Stimmen. Vorschlag: in der Pipeline `abgegeben / wahlberechtigt × 100` rechnen. Das ist eine Division von Quellwerten, keine Schätzung. Test gegen 2008 (PDF: 78,8 %) und 2013 (Excel: 74,9 %).
-3. **Lebenserwartung 1951–1960 nur nach Geschlecht.** Möglichkeiten:
-   - (a) Frontend zeigt Männer/Frauen getrennt, für alle Jahre. Dann lückenlos 1951–2025.
-   - (b) Nur Gesamtwert ab 1961.
-   Einen Gesamtwert selbst zu berechnen ist nicht zulässig, weil das kein einfacher Mittelwert ist.
-4. **Wahlen der Ersten Republik (1919–1930)** sind in derselben BMI-Datei. Sollen sie für Stichjahre 1925–1933 (±3 Jahre) verwendet werden? Datenlage 1931–1944 sonst leer.
-5. **Fertilität 1951–1960:** Kandidat ist die Human Fertility Database (humanfertility.org). Sie enthält laut Dokumentation Geburten nach Alter der Mutter ab 1951 für Österreich. Download erfordert eine kostenlose Registrierung, also manuellen Download. Noch nicht geprüft.
-6. **PDF-Auslesen:** Für die BMI-Tabelle 1919–2008 ist kein PDF-Werkzeug installiert (kein `pdftotext`). Optionen:
-   - (a) neue Abhängigkeit `pypdf`
-   - (b) die 24 Zeilen einmalig als `data/manual/bmi_wahlbeteiligung_1919_2008.csv` abtippen, mit Verweis auf PDF-Seite 333 und Test gegen die absoluten Zahlen (Prozent = abgegeben / wahlberechtigt).
-7. **Methodenbrüche** müssen im Frontend erwähnt werden: gerundete Werte vor 2004, Erweiterung der Sterbe- und Geburtenzählung 2009/2015, Basiswechsel im VPI (verkettet, unkritisch). Bei der Wahlbeteiligung sind Änderungen von Wahlalter und Wahlpflicht in einzelnen Ländern **zu prüfen**, nicht aus dem Gedächtnis eintragen.
-8. **VPI-Umrechnung in Euro** (Phase 5): Für Schilling-Preise ist zusätzlich der fixe Umrechnungskurs ATS/EUR nötig. Dafür braucht es eine Quelle in SOURCES.md.
+2. **Fertilität 1951–1960** (zurückgestellt): Kandidat ist die Human Fertility Database (humanfertility.org). Download nur nach kostenloser Registrierung, also manuell. Noch nicht geprüft.
+3. **Methodenbrüche** müssen im Frontend erwähnt werden: gerundete Werte vor 2004, Erweiterung der Sterbe- und Geburtenzählung 2009/2015, Basiswechsel im VPI (verkettet, unkritisch). Bei der Wahlbeteiligung sind Änderungen von Wahlalter und Wahlpflicht in einzelnen Ländern **zu prüfen**, nicht aus dem Gedächtnis eintragen.
+4. **VPI-Umrechnung in Euro** (Phase 5): Für Schilling-Preise ist zusätzlich der fixe Umrechnungskurs ATS/EUR nötig. Dafür braucht es eine Quelle in SOURCES.md.

@@ -75,6 +75,13 @@ Regeln:
 - Werte mit Nachkommastellen wie in der Quelle, Rundung erst im Frontend.
 - Indikatoren mit Ereignischarakter (Wahlen) bekommen `"type": "event"` und nur die Jahre mit Ereignis.
 
+Zusätzliche Felder (seit Phase 2):
+
+- `notes`: Liste methodischer Hinweise (Rundung, Methodenbrüche, Quellfehler), im Frontend anzeigen.
+- `source_urls`: alle URLs, wenn ein Indikator aus mehreren Dateien stammt (`source_url` ist die erste).
+- `group`: verbindet zusammengehörige Reihen (`life_expectancy_birth` für Männer und Frauen).
+- `display: false`: Hilfsreihe, nicht direkt anzeigen (VPI).
+
 ## 5. Indikatoren
 
 ### MVP

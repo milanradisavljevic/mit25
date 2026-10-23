@@ -13,10 +13,17 @@ Statische Webseite: Geburtsjahr eingeben, sehen wie Österreich aussah, als man 
 - Ein Git-Commit pro abgeschlossenem Arbeitsschritt, aussagekräftige Commit-Nachricht auf Deutsch.
 - Keine Em-Dashes in Texten auf der Webseite.
 
+## Aufbau Pipeline
+
+- `pipeline/sources.py`: Register aller Rohdateien (URL, Abrufdatum). Muss zu data/SOURCES.md passen.
+- `pipeline/readers.py`: ODS-, XLSX- und OGD-CSV-Leser, nur Standardbibliothek.
+- `pipeline/indicators/<id>.py`: je Indikator `build()`. Registrierung in `indicators/__init__.py`.
+
 ## Befehle
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+.venv/bin/python pipeline/fetch.py     # lädt fehlende Rohdaten (--force: alle neu)
 .venv/bin/python pipeline/build.py     # erzeugt site/data.json
 .venv/bin/pytest                       # Tests
 python3 -m http.server -d site 8000    # Seite lokal ansehen
