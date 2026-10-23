@@ -80,7 +80,9 @@ export function drawChart(plot, row, generations, width) {
     const left = Math.max(x(from) - halfYear, MARGIN.left);
     const right = Math.min(x(to) + halfYear, MARGIN.left + plotWidth);
     root.append(svg("rect", { class: "empty", x: left, y: plotTop, width: right - left, height: PLOT_HEIGHT }));
-    const text = from > currentYear ? "Zukunft" : from > dataYears.at(-1) ? "noch keine Daten" : "keine Daten";
+    const after = from > dataYears.at(-1);
+    const ended = members.every((m) => m.ended);
+    const text = after && ended ? "Reihe endet" : from > currentYear ? "Zukunft" : after ? "noch keine Daten" : "keine Daten";
     if (right - left >= text.length * 6.5 + 8) {
       root.append(svg("text", { class: "empty-label", x: (left + right) / 2, y: plotTop + 16, "text-anchor": "middle" }, text));
     }
@@ -90,6 +92,13 @@ export function drawChart(plot, row, generations, width) {
   root.append(svg("line", { class: "axis", x1: MARGIN.left, x2: MARGIN.left + plotWidth, y1: plotBottom, y2: plotBottom }));
   for (const tick of yearTicks([x0, x1], Math.max(2, Math.floor(plotWidth / 70)))) {
     root.append(svg("text", { class: "tick", x: x(tick), y: plotBottom + 18, "text-anchor": "middle" }, String(tick)));
+  }
+
+  // Methodenbrüche: feine Linie zwischen den Jahren, Beschriftung unten im Diagramm
+  for (const year of [...new Set(members.flatMap((m) => (m.breaks ?? []).map((b) => b.year)))]) {
+    const bx = x(year) - halfYear;
+    root.append(svg("line", { class: "break", x1: bx, x2: bx, y1: plotTop, y2: plotBottom }));
+    root.append(svg("text", { class: "break-label", x: bx + 4, y: plotBottom - 6 }, `Methodenwechsel ${year}`));
   }
 
   // Stichjahre: Beschriftung oben, Linie durch das Diagramm
@@ -114,7 +123,7 @@ export function drawChart(plot, row, generations, width) {
       }
       return;
     }
-    for (const part of segments(m.series)) {
+    for (const part of segments(m.series, (m.breaks ?? []).map((b) => b.year))) {
       if (part.length === 1) {
         root.append(svg("circle", { class: `${cls} point`, cx: x(part[0][0]), cy: y(part[0][1]), r: 2 }));
       } else {

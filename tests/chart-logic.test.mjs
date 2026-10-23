@@ -42,6 +42,11 @@ test("Linien werden an null und an fehlenden Jahren getrennt, nie verbunden", ()
   assert.deepEqual(knownYears(series), [2000, 2001, 2003, 2005]);
 });
 
+test("Linien werden an Methodenbrüchen getrennt", () => {
+  const series = { 1985: 1, 1986: 2, 1987: 3, 1988: 4 };
+  assert.deepEqual(segments(series, [1987]), [[[1985, 1], [1986, 2]], [[1987, 3], [1988, 4]]]);
+});
+
 test("Bereiche ohne Daten vor und nach der Reihe", () => {
   assert.deepEqual(emptyRanges([1925, 2030], [1961, 2025]), [[1925, 1960], [2026, 2030]]);
   assert.deepEqual(emptyRanges([1961, 2025], [1961, 2025]), []);

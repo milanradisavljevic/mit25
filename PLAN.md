@@ -81,6 +81,9 @@ Zusätzliche Felder (seit Phase 2):
 - `sources`: Liste `{label, url}` je Quelldatei (`source` und `source_url` fassen sie zusammen bzw. nennen die erste).
 - `group`: verbindet zusammengehörige Reihen (`life_expectancy_birth` für Männer und Frauen).
 - `display: false`: Hilfsreihe, nicht direkt anzeigen (VPI).
+- `deflate: "cpi"`: Frontend ergänzt eine Reihe in Preisen des letzten VPI-Jahres (Phase 5).
+- `breaks: [{year, before}]`: Methodenbruch; Linie wird getrennt, Werte davor gekennzeichnet (Phase 5).
+- `ended: true`: Reihe eingestellt; nach dem letzten Jahr keine Fortschreibung (Phase 5).
 
 ## 5. Indikatoren
 

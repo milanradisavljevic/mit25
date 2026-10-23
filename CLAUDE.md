@@ -28,6 +28,7 @@ Statische Webseite: Geburtsjahr eingeben, sehen wie Österreich aussah, als man 
 - Farbänderungen an Generationstoken mit dem dataviz-Validator prüfen (hell gegen `#f4f6f7`, dunkel gegen `#141a21`).
 - Wahl: nächste innerhalb ±3 Jahre, bei Gleichstand die frühere.
 - Kaufkraft: Indikatoren mit `deflate: "cpi"` bekommen im Frontend (`withPriceAdjusted`) eine zweite Reihe in Preisen des letzten VPI-Jahres. data.json bleibt nominal.
+- Methodenbruch: Feld `breaks: [{year, before}]` trennt die Linie im Diagramm und kennzeichnet Werte davor in der Tabelle. Feld `ended: true`: eingestellte Reihe, nach dem letzten Jahr Lücke statt "aktuellster Wert".
 - Zahlenformat `de-DE` (Punkt als Tausendertrenner), weil `de-AT` in CLDR Leerzeichen nutzt.
 - Zustände je Zelle: ok, future (noch nicht erreicht), pending (Jahr erreicht, Daten noch nicht veröffentlicht), missing.
 

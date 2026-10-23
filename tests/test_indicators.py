@@ -1,6 +1,7 @@
 import pytest
 
 import build
+from indicators.ak_monthly_income import manual_rows as ak_rows
 from indicators.common import to_series
 from indicators.turnout_nrw import XLSX, manual_rows, xlsx_result
 from readers import read_ods
@@ -15,6 +16,8 @@ MVP_IDS = {
     "turnout_nrw",
     "cpi",
     "income_median_gross",  # Phase 5
+    "income_monthly_arbeiter",
+    "income_monthly_angestellte",
 }
 
 # Plausibilitätsgrenzen je Indikator (min, max)
@@ -27,6 +30,8 @@ BOUNDS = {
     "turnout_nrw": (50, 100),
     "cpi": (50, 100_000),
     "income_median_gross": (10_000, 80_000),
+    "income_monthly_arbeiter": (30, 5_000),
+    "income_monthly_angestellte": (30, 5_000),
 }
 
 # Erwartete Abdeckung (erstes, letztes Jahr) laut data/SOURCES.md
@@ -39,6 +44,8 @@ COVERAGE = {
     "turnout_nrw": ("1919", "2024"),
     "cpi": ("1946", "2025"),
     "income_median_gross": ("1997", "2024"),
+    "income_monthly_arbeiter": ("1953", "2009"),
+    "income_monthly_angestellte": ("1953", "2009"),
 }
 
 
@@ -133,6 +140,44 @@ def test_income_is_nominal_and_marked_for_cpi_conversion(indicators):
     assert ind["deflate"] == "cpi"
     # Umrechnung braucht für jedes Einkommensjahr einen VPI-Wert
     assert set(ind["series"]) <= set(indicators["cpi"]["series"])
+
+
+@pytest.mark.parametrize("group", ["arbeiter", "angestellte"])
+def test_ak_income_break_1987(indicators, group):
+    ind = indicators[f"income_monthly_{group}"]
+    assert ind["breaks"] == [{"year": 1987, "before": "Juli-Wert, mit Lehrlingen"}]
+    assert ind["deflate"] == "cpi"
+    # 1987 = Jahresdurchschnitt (nach dem Bruch), nicht der Juli-Wert
+    expected_1987 = {"arbeiter": 923, "angestellte": 1132}[group]
+    assert ind["series"]["1987"] == expected_1987
+
+
+def test_ak_csv_quartiles_ordered_and_years_unique_per_basis():
+    rows = ak_rows()
+    for r in rows:
+        for g in ("arbeiter", "angestellte"):
+            assert int(r[f"q1_{g}"]) <= int(r[f"median_{g}"]) <= int(r[f"q3_{g}"]), (r["jahr"], g)
+    keys = [(r["jahr"], r["basis"]) for r in rows]
+    assert len(keys) == len(set(keys))
+    assert [r["jahr"] for r in rows].count("1987") == 2
+
+
+# Unabhängige Tabellen im selben PDF: S. 16 „Medianeinkommen nach Bundesländer“, Zeile
+# Österreich, und S. 4 „Verteilung der beitragspflichtigen Einkommen 2009“.
+AK_CROSS_CHECK = {
+    "arbeiter": {"1995": 1301, "2000": 1422, "2006": 1605, "2007": 1646, "2008": 1673, "2009": 1692},
+    "angestellte": {"1995": 1600, "2000": 1751, "2006": 1995, "2007": 2048, "2008": 2094, "2009": 2148},
+}
+AK_2009_QUARTILES = {"arbeiter": (1194, 2169), "angestellte": (1377, 3169)}
+
+
+@pytest.mark.parametrize("group", ["arbeiter", "angestellte"])
+def test_ak_transcription_matches_other_tables(indicators, group):
+    series = indicators[f"income_monthly_{group}"]["series"]
+    for year, value in AK_CROSS_CHECK[group].items():
+        assert series[year] == value, year
+    row_2009 = next(r for r in ak_rows() if r["jahr"] == "2009")
+    assert (int(row_2009[f"q1_{group}"]), int(row_2009[f"q3_{group}"])) == AK_2009_QUARTILES[group]
 
 
 def test_turnout_is_event_series(indicators):

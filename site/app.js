@@ -1,6 +1,7 @@
 import {
   GENERATIONS,
   displayRows,
+  breakNote,
   formatNumber,
   memberLabel,
   referenceYear,
@@ -52,6 +53,8 @@ function cell(indicator, refYear) {
   if (result.status === "ok") {
     td.append(valueNode(indicator, result));
     if (isEvent) td.append(el("span", { class: "note" }, `Wahl ${result.year}`));
+    const before = breakNote(indicator, result.year);
+    if (before) td.append(el("span", { class: "note" }, before));
   } else if (result.status === "future") {
     td.append(
       el("span", { class: "gap" }, "noch nicht erreicht"),
@@ -72,6 +75,7 @@ function cell(indicator, refYear) {
   } else {
     td.append(el("span", { class: "gap" }, `keine Daten für ${refYear}`));
     if (refYear < result.firstYear) td.append(el("span", { class: "note" }, `Reihe beginnt ${result.firstYear}`));
+    if (refYear > result.lastYear) td.append(el("span", { class: "note" }, `Reihe endet ${result.lastYear}`));
   }
   return td;
 }

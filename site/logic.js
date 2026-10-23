@@ -21,9 +21,19 @@ const DECIMALS = {
   turnout_nrw: 1,
   income_median_gross: 0,
   income_median_gross_real: 0,
+  income_monthly_arbeiter: 0,
+  income_monthly_arbeiter_real: 0,
+  income_monthly_angestellte: 0,
+  income_monthly_angestellte_real: 0,
 };
 
-const UNIT_SUFFIX = { Jahre: "Jahre", "%": "%", Euro: "€" };
+const UNIT_SUFFIX = { Jahre: "Jahre", "%": "%", Euro: "€", "Euro pro Monat": "€" };
+
+/** Hinweis für einen Wert, der vor einem Methodenbruch liegt (Feld `breaks`), sonst null. */
+export function breakNote(indicator, year) {
+  const brk = (indicator.breaks ?? []).find((b) => year < b.year);
+  return brk ? brk.before : null;
+}
 
 /**
  * Prüft die Eingaben. Liefert { errors: {feld: Text}, years: {grandparents, parents, you} }.
@@ -83,6 +93,7 @@ function knownYears(indicator) {
  *  - "future":  Stichjahr liegt in der Zukunft; value/year = aktuellster Wert
  *  - "pending": Stichjahr erreicht, aber noch nicht veröffentlicht; value/year = aktuellster Wert
  *  - "missing": keine Daten für das Stichjahr; firstYear/lastYear zur Einordnung
+ *               (auch nach dem Ende einer eingestellten Reihe, Feld `ended`)
  */
 export function valueFor(indicator, refYear, currentYear) {
   const years = knownYears(indicator);
@@ -90,6 +101,8 @@ export function valueFor(indicator, refYear, currentYear) {
   const lastYear = years[years.length - 1];
   const latest = { value: indicator.series[String(lastYear)], year: lastYear };
 
+  // Eingestellte Reihe (`ended`): danach gibt es keinen "aktuellsten Wert", nur eine Lücke.
+  if (indicator.ended && refYear > lastYear) return { status: "missing", year: refYear, firstYear, lastYear };
   if (refYear > currentYear) return { status: "future", ...latest };
 
   if (indicator.type === "event") {

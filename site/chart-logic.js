@@ -48,16 +48,17 @@ export function yearTicks([start, end], maxTicks) {
 }
 
 /**
- * Linienabschnitte: [[[Jahr, Wert], ...], ...]. Ein null-Wert oder ein fehlendes Jahr
- * beendet den Abschnitt; über Lücken wird nie hinweg verbunden.
+ * Linienabschnitte: [[[Jahr, Wert], ...], ...]. Ein null-Wert, ein fehlendes Jahr oder ein
+ * Methodenbruch (`breakYears`: erstes Jahr nach dem Bruch) beendet den Abschnitt; über
+ * Lücken und Brüche wird nie hinweg verbunden.
  */
-export function segments(series) {
+export function segments(series, breakYears = []) {
   const result = [];
   let current = [];
   let previous = null;
   for (const year of Object.keys(series).map(Number).sort((a, b) => a - b)) {
     const value = series[year];
-    const contiguous = previous !== null && year === previous + 1;
+    const contiguous = previous !== null && year === previous + 1 && !breakYears.includes(year);
     if (value === null || (!contiguous && current.length)) {
       if (current.length) result.push(current);
       current = [];

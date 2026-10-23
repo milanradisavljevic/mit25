@@ -6,6 +6,7 @@ INDICATORS eintragen.
 """
 
 from . import (
+    ak_monthly_income,
     cpi,
     fertility_rate,
     income_median,
@@ -15,4 +16,13 @@ from . import (
     turnout_nrw,
 )
 
-INDICATORS = [life_expectancy_birth, share_65plus, median_age, fertility_rate, income_median, turnout_nrw, cpi]
+INDICATORS = [
+    life_expectancy_birth,
+    share_65plus,
+    median_age,
+    fertility_rate,
+    income_median,
+    ak_monthly_income,
+    turnout_nrw,
+    cpi,
+]

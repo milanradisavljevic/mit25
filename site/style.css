@@ -255,6 +255,7 @@ h2 { margin: 0; font: 600 1.75rem/1.2 var(--serif); }
 .hit { stroke: var(--paper); stroke-width: 2; }
 
 .crosshair { stroke: var(--muted); stroke-width: 1; }
+.break { stroke: var(--muted); stroke-width: 1; }
 .overlay { fill: transparent; cursor: crosshair; }
 
 .tooltip {

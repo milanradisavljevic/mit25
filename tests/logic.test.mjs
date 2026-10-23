@@ -4,6 +4,7 @@ import { test } from "node:test";
 
 import {
   GENERATIONS,
+  breakNote,
   displayRows,
   formatNumber,
   formatWithUnit,
@@ -126,6 +127,24 @@ test("Kaufkraft mit echten Daten: 2025 bleibt gleich, 1997 steigt", () => {
 test("Einheiten: Euro ohne Nachkommastellen", () => {
   assert.equal(formatWithUnit(38043, { id: "income_median_gross", unit: "Euro" }), "38.043 €");
   assert.equal(formatWithUnit(1.296, { id: "fertility_rate", unit: "Kinder je Frau" }), "1,30");
+});
+
+test("Methodenbruch: Hinweis nur für Werte davor, auch in der umgerechneten Reihe", () => {
+  const adjusted = Object.fromEntries(withPriceAdjusted(data.indicators).map((i) => [i.id, i]));
+  for (const id of ["income_monthly_arbeiter", "income_monthly_arbeiter_real"]) {
+    assert.equal(breakNote(adjusted[id], 1986), "Juli-Wert, mit Lehrlingen");
+    assert.equal(breakNote(adjusted[id], 1987), null);
+  }
+  assert.equal(breakNote(byId.median_age, 1970), null);
+  assert.equal(formatWithUnit(1692, adjusted.income_monthly_arbeiter), "1.692 €");
+});
+
+test("Eingestellte Reihe: nach dem Ende Lücke statt aktuellstem Wert", () => {
+  const ended = { id: "e", ended: true, series: { 2008: 1, 2009: 2 } };
+  assert.equal(valueFor(ended, 2009, NOW).status, "ok");
+  assert.deepEqual(valueFor(ended, 2010, NOW), { status: "missing", year: 2010, firstYear: 2008, lastYear: 2009 });
+  assert.equal(valueFor(ended, 2030, NOW).status, "missing");
+  assert.equal(valueFor(byId.income_monthly_arbeiter, 2010, NOW).status, "missing");
 });
 
 test("Stichproben gegen data.json", () => {

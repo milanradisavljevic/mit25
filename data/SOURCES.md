@@ -14,6 +14,7 @@ Abdeckung wurde direkt aus den heruntergeladenen Dateien ermittelt, nicht aus Se
 | turnout_nrw | BMI | 1945–2024 (24 Wahlen), zusätzlich 1919–1930 | Ereignisreihe |
 | cpi | Statistik Austria (OGD) | 1946–2025 (Jahresdurchschnitt) | 1946 nur April bis Dezember |
 | income_median_gross (Phase 5) | Statistik Austria | 1997–2024 | keine innerhalb der Spanne |
+| income_monthly_arbeiter, income_monthly_angestellte (Phase 5) | AK Wien / Hauptverband | 1953–2009 | Methodenbruch 1987, Reihe eingestellt |
 
 ---
 
@@ -106,9 +107,20 @@ Jeweils Zeile `GKZ = G00000` („Österreich“). 2013 enthält eine fertige Spa
 - **Stichprobe:** 2013 = 25.767 €. Derselbe Wert steht im Einkommensbericht 2016 des Rechnungshofs, laut Websuche, nicht als Datei geprüft.
 - **Nicht verwendet:** Tabelle 2 (ganzjährig Vollzeitbeschäftigte, 2004–2024) wurde geprüft und wieder entfernt, weil sie erst 2004 beginnt.
 
-### Kandidat vor 1997 (nicht übernommen, Entscheidung offen)
+### AK Wien: Monatseinkommen 1953–2009 (Phase 5)
 
-AK Wien, „Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009“ (Statistische Informationen, September 2010), https://www.arbeiterkammer.at/infopool/akportal/Studie_Einkommen_2009.pdf, S. 28:
+- **Datei:** `ak_wien_bruttoeinkommen_arbeiter_angestellte_2009.pdf`
+- **URL:** https://www.arbeiterkammer.at/infopool/akportal/Studie_Einkommen_2009.pdf
+- **Titel:** AK Wien, „Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009“ (Statistische Informationen, September 2010)
+- **Abschrift:** `data/manual/ak_bruttomonatseinkommen_1953_2009.csv`. Stammt aus der Tabelle „Bruttoeinkommen der unselbständig Beschäftigten“, gedruckte Seite 28 (PDF-Seite 31), mit 1. Quartil, Median und 3. Quartil für Arbeiter und Angestellte. 1987 steht zweimal drin, Spalte `basis` unterscheidet die beiden Erhebungsarten.
+- **Prüfung der Abschrift (Tests):**
+  - In jeder Zeile gilt Q1 ≤ Median ≤ Q3.
+  - Die Mediane für 1995, 2000 und 2006–2009 stimmen mit S. 16 überein (Bundesländer, Zeile Österreich).
+  - Die Quartile 2009 stimmen mit S. 4 überein (Verteilung 2009).
+- **Indikatoren:** `income_monthly_arbeiter` und `income_monthly_angestellte`, jeweils 1953–2009. Bis 1986 gilt der Juli-Wert, ab 1987 der Jahresdurchschnitt. Der Bruch steht im Feld `breaks`, dort wird die Linie getrennt. Die Reihe endet 2009 (Feld `ended`); spätere Stichjahre zeigen „Reihe endet 2009“.
+- **Kaufkraft:** Wie beim Jahreseinkommen rechnet das Frontend in Preise von 2025 um.
+
+Eigenschaften der Quelle:
 - **Inhalt:** Median der Bruttomonatseinkommen 1953–2009 nach Daten des Hauptverbands der Sozialversicherungsträger.
 - **Kein Gesamtwert:** nur getrennt nach Arbeitern und Angestellten. Ein Gesamt-Median lässt sich daraus nicht bilden.
 - **Methodenbruch 1987:** bis 1987 jeweils Juli, einschließlich Lehrlinge; ab 1987 Jahresdurchschnitt ohne Lehrlinge. 1987 ist in beiden Varianten angegeben.
@@ -133,6 +145,7 @@ AK Wien, „Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009“ (
 - Wahlen 1919–1930 werden aufgenommen.
 - Fertilität 1951–1960 (Human Fertility Database) ist zurückgestellt.
 - Die BMI-Tabelle 1919–2008 wird als CSV in `data/manual/` geführt. Keine PDF-Abhängigkeit.
+- Die AK-Reihe (Monatseinkommen 1953–2009) wird als eigener Indikator aufgenommen, Arbeiter und Angestellte getrennt, mit markiertem Bruch 1987.
 
 ## Offene Probleme und Fragen
 
@@ -145,4 +158,4 @@ AK Wien, „Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009“ (
 2. **Fertilität 1951–1960** (zurückgestellt): Kandidat ist die Human Fertility Database (humanfertility.org). Download nur nach kostenloser Registrierung, also manuell. Noch nicht geprüft.
 3. **Methodenbrüche** müssen im Frontend erwähnt werden: gerundete Werte vor 2004, Erweiterung der Sterbe- und Geburtenzählung 2009/2015, Basiswechsel im VPI (verkettet, unkritisch). Bei der Wahlbeteiligung sind Änderungen von Wahlalter und Wahlpflicht in einzelnen Ländern **zu prüfen**, nicht aus dem Gedächtnis eintragen.
 4. **VPI-Umrechnung in Euro** (Phase 5): Für Schilling-Preise ist zusätzlich der fixe Umrechnungskurs ATS/EUR nötig. Dafür braucht es eine Quelle in SOURCES.md.
-5. **Einkommen vor 1997:** Soll die AK-Reihe (Hauptverband, Arbeiter und Angestellte getrennt, Monatswerte ab 1953) als eigener Indikator dazukommen? Siehe Abschnitt Einkommen.
+5. **AK-Reihe nach 2009:** Die AK hat das Heft auch für spätere Jahre herausgegeben. Ob es eine neuere Ausgabe mit derselben Tabelle gibt, ist nicht geprüft.

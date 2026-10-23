@@ -73,6 +73,12 @@ SOURCES = {
         "2026-10-23",
         "Statistik Austria, Lohnsteuerdaten: Brutto- und Nettojahreseinkommen der unselbständig Erwerbstätigen 1997 bis 2024",
     ),
+    "ak_einkommen_2009": Source(
+        "ak_wien_bruttoeinkommen_arbeiter_angestellte_2009.pdf",
+        "https://www.arbeiterkammer.at/infopool/akportal/Studie_Einkommen_2009.pdf",
+        "2026-10-23",
+        "AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
+    ),
     "nrw_1919_2008": Source(
         "bmi_nrw_08_wbseit1919.pdf",
         f"{_BMI}/Nationalratswahl_2008/files/history/nrw_08_wbseit1919.pdf",
