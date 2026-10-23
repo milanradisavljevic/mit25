@@ -8,8 +8,11 @@
       "description": "Durchschnittliche Lebenserwartung eines im jeweiligen Jahr neugeborenen Buben, berechnet aus der Sterblichkeit dieses Jahres",
       "source": "Statistik Austria, Sterbetafeln: Lebenserwartung für ausgewählte Altersjahre 1951 bis 2025",
       "source_url": "https://www.statistik.at/fileadmin/pages/413/Lebenserwartung_fuer_ausgewaehlte_Altersjahre_1868_71_bis_2020_22_sowie_1951_2025.ods",
-      "source_urls": [
-        "https://www.statistik.at/fileadmin/pages/413/Lebenserwartung_fuer_ausgewaehlte_Altersjahre_1868_71_bis_2020_22_sowie_1951_2025.ods"
+      "sources": [
+        {
+          "label": "Statistik Austria, Sterbetafeln: Lebenserwartung für ausgewählte Altersjahre 1951 bis 2025",
+          "url": "https://www.statistik.at/fileadmin/pages/413/Lebenserwartung_fuer_ausgewaehlte_Altersjahre_1868_71_bis_2020_22_sowie_1951_2025.ods"
+        }
       ],
       "retrieved": "2026-10-23",
       "notes": [
@@ -102,8 +105,11 @@
       "description": "Durchschnittliche Lebenserwartung eines im jeweiligen Jahr neugeborenen Mädchens, berechnet aus der Sterblichkeit dieses Jahres",
       "source": "Statistik Austria, Sterbetafeln: Lebenserwartung für ausgewählte Altersjahre 1951 bis 2025",
       "source_url": "https://www.statistik.at/fileadmin/pages/413/Lebenserwartung_fuer_ausgewaehlte_Altersjahre_1868_71_bis_2020_22_sowie_1951_2025.ods",
-      "source_urls": [
-        "https://www.statistik.at/fileadmin/pages/413/Lebenserwartung_fuer_ausgewaehlte_Altersjahre_1868_71_bis_2020_22_sowie_1951_2025.ods"
+      "sources": [
+        {
+          "label": "Statistik Austria, Sterbetafeln: Lebenserwartung für ausgewählte Altersjahre 1951 bis 2025",
+          "url": "https://www.statistik.at/fileadmin/pages/413/Lebenserwartung_fuer_ausgewaehlte_Altersjahre_1868_71_bis_2020_22_sowie_1951_2025.ods"
+        }
       ],
       "retrieved": "2026-10-23",
       "notes": [
@@ -196,8 +202,11 @@
       "description": "Anteil der Menschen ab 65 Jahren an der Bevölkerung im Jahresdurchschnitt",
       "source": "Statistik Austria, Demographische Indikatoren, Zeitreihen 1961 bis 2025 (Österreich)",
       "source_url": "https://www.statistik.at/fileadmin/pages/411/OEsterreich_Zeitreihenindikatoren_1961_2025.ods",
-      "source_urls": [
-        "https://www.statistik.at/fileadmin/pages/411/OEsterreich_Zeitreihenindikatoren_1961_2025.ods"
+      "sources": [
+        {
+          "label": "Statistik Austria, Demographische Indikatoren, Zeitreihen 1961 bis 2025 (Österreich)",
+          "url": "https://www.statistik.at/fileadmin/pages/411/OEsterreich_Zeitreihenindikatoren_1961_2025.ods"
+        }
       ],
       "retrieved": "2026-10-23",
       "notes": [],
@@ -276,8 +285,11 @@
       "description": "Alter, das die Bevölkerung in eine jüngere und eine ältere Hälfte teilt (Jahresdurchschnitt)",
       "source": "Statistik Austria, Demographische Indikatoren, Zeitreihen 1961 bis 2025 (Österreich)",
       "source_url": "https://www.statistik.at/fileadmin/pages/411/OEsterreich_Zeitreihenindikatoren_1961_2025.ods",
-      "source_urls": [
-        "https://www.statistik.at/fileadmin/pages/411/OEsterreich_Zeitreihenindikatoren_1961_2025.ods"
+      "sources": [
+        {
+          "label": "Statistik Austria, Demographische Indikatoren, Zeitreihen 1961 bis 2025 (Österreich)",
+          "url": "https://www.statistik.at/fileadmin/pages/411/OEsterreich_Zeitreihenindikatoren_1961_2025.ods"
+        }
       ],
       "retrieved": "2026-10-23",
       "notes": [],
@@ -356,8 +368,11 @@
       "description": "Gesamtfertilitätsrate: durchschnittliche Kinderzahl einer Frau, wenn die Geburtenhäufigkeit des jeweiligen Jahres ein Leben lang gälte",
       "source": "Statistik Austria, Demographische Indikatoren, Zeitreihen 1961 bis 2025 (Österreich)",
       "source_url": "https://www.statistik.at/fileadmin/pages/411/OEsterreich_Zeitreihenindikatoren_1961_2025.ods",
-      "source_urls": [
-        "https://www.statistik.at/fileadmin/pages/411/OEsterreich_Zeitreihenindikatoren_1961_2025.ods"
+      "sources": [
+        {
+          "label": "Statistik Austria, Demographische Indikatoren, Zeitreihen 1961 bis 2025 (Österreich)",
+          "url": "https://www.statistik.at/fileadmin/pages/411/OEsterreich_Zeitreihenindikatoren_1961_2025.ods"
+        }
       ],
       "retrieved": "2026-10-23",
       "notes": [
@@ -438,12 +453,27 @@
       "description": "Abgegebene Stimmen (einschließlich ungültiger) in Prozent der Wahlberechtigten",
       "source": "BMI, Nationalratswahl 2008, Tabelle 6.a. Wahlberechtigte seit 1919; BMI, Nationalratswahl 2013, endgültiges Gesamtergebnis; BMI, Nationalratswahl 2017, endgültiges Gesamtergebnis; BMI, Nationalratswahl 2019, endgültiges Gesamtergebnis; BMI, Nationalratswahl 2024, endgültiges Ergebnis",
       "source_url": "https://www.bmi.gv.at/412/Nationalratswahlen/Nationalratswahl_2008/files/history/nrw_08_wbseit1919.pdf",
-      "source_urls": [
-        "https://www.bmi.gv.at/412/Nationalratswahlen/Nationalratswahl_2008/files/history/nrw_08_wbseit1919.pdf",
-        "https://www.bmi.gv.at/412/Nationalratswahlen/Nationalratswahl_2013/files/nrw13_endgueltiges_gesamtergebnis.xlsx",
-        "https://www.bmi.gv.at/412/Nationalratswahlen/Nationalratswahl_2017/files/nrw17_endgueltiges_gesamtergebnis.xlsx",
-        "https://www.bmi.gv.at/412/Nationalratswahlen/Nationalratswahl_2019/files/endgultiges_gesamtergebnis_nrw19_16102019.xlsx",
-        "https://www.bmi.gv.at/412/Nationalratswahlen/Nationalratswahl_2024/files/endgueltiges_ergebnis_beschluss_bundeswahlbehoerde_16102024.xlsx"
+      "sources": [
+        {
+          "label": "BMI, Nationalratswahl 2008, Tabelle 6.a. Wahlberechtigte seit 1919",
+          "url": "https://www.bmi.gv.at/412/Nationalratswahlen/Nationalratswahl_2008/files/history/nrw_08_wbseit1919.pdf"
+        },
+        {
+          "label": "BMI, Nationalratswahl 2013, endgültiges Gesamtergebnis",
+          "url": "https://www.bmi.gv.at/412/Nationalratswahlen/Nationalratswahl_2013/files/nrw13_endgueltiges_gesamtergebnis.xlsx"
+        },
+        {
+          "label": "BMI, Nationalratswahl 2017, endgültiges Gesamtergebnis",
+          "url": "https://www.bmi.gv.at/412/Nationalratswahlen/Nationalratswahl_2017/files/nrw17_endgueltiges_gesamtergebnis.xlsx"
+        },
+        {
+          "label": "BMI, Nationalratswahl 2019, endgültiges Gesamtergebnis",
+          "url": "https://www.bmi.gv.at/412/Nationalratswahlen/Nationalratswahl_2019/files/endgultiges_gesamtergebnis_nrw19_16102019.xlsx"
+        },
+        {
+          "label": "BMI, Nationalratswahl 2024, endgültiges Ergebnis",
+          "url": "https://www.bmi.gv.at/412/Nationalratswahlen/Nationalratswahl_2024/files/endgueltiges_ergebnis_beschluss_bundeswahlbehoerde_16102024.xlsx"
+        }
       ],
       "retrieved": "2026-10-23",
       "notes": [
@@ -493,8 +523,11 @@
       "description": "Lebenshaltungskostenindex 1938, über alle späteren Verbraucherpreisindizes verkettet, Jahresdurchschnitt",
       "source": "Statistik Austria, Open Data: Lebenshaltungskostenindex 1938 (verkettet), OGD_vpilhki38_VPI_LHKI38_1",
       "source_url": "https://data.statistik.gv.at/data/OGD_vpilhki38_VPI_LHKI38_1.csv",
-      "source_urls": [
-        "https://data.statistik.gv.at/data/OGD_vpilhki38_VPI_LHKI38_1.csv"
+      "sources": [
+        {
+          "label": "Statistik Austria, Open Data: Lebenshaltungskostenindex 1938 (verkettet), OGD_vpilhki38_VPI_LHKI38_1",
+          "url": "https://data.statistik.gv.at/data/OGD_vpilhki38_VPI_LHKI38_1.csv"
+        }
       ],
       "retrieved": "2026-10-23",
       "notes": [

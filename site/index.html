@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="de-AT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>mit25</title>
+  <meta name="description" content="Wie sah Österreich aus, als du, deine Eltern und deine Großeltern 25 wart? Amtliche Zahlen im Vergleich.">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header class="intro">
+    <p class="brand">mit25</p>
+    <h1>Wie sah Österreich aus, als deine Familie 25 war?</h1>
+    <p class="lede">Gib dein Geburtsjahr ein. Du siehst amtliche Zahlen für die Jahre, in denen du, deine Eltern und deine Großeltern 25 wurden.</p>
+
+    <form id="form" novalidate>
+      <div class="field field-main">
+        <label for="you">Dein Geburtsjahr</label>
+        <input id="you" name="jahr" inputmode="numeric" autocomplete="bday-year" maxlength="4" required aria-describedby="you-error">
+        <p class="error" id="you-error" aria-live="polite"></p>
+      </div>
+      <fieldset class="family">
+        <legend>Geburtsjahre deiner Familie, falls bekannt</legend>
+        <div class="family-fields">
+        <div class="field">
+          <label for="parents">Mutter oder Vater</label>
+          <input id="parents" name="eltern" inputmode="numeric" maxlength="4" aria-describedby="parents-hint parents-error">
+          <p class="hint" id="parents-hint">Leer: 30 Jahre vor dir</p>
+          <p class="error" id="parents-error" aria-live="polite"></p>
+        </div>
+        <div class="field">
+          <label for="grandparents">Großmutter oder Großvater</label>
+          <input id="grandparents" name="grosseltern" inputmode="numeric" maxlength="4" aria-describedby="grandparents-hint grandparents-error">
+          <p class="hint" id="grandparents-hint">Leer: 60 Jahre vor dir</p>
+          <p class="error" id="grandparents-error" aria-live="polite"></p>
+        </div>
+        </div>
+      </fieldset>
+      <button type="submit">Vergleichen</button>
+    </form>
+  </header>
+
+  <main id="result" hidden>
+    <table class="compare">
+      <caption class="visually-hidden">Österreich im Jahr, in dem jede Generation 25 wurde</caption>
+      <thead>
+        <tr id="generations"><td></td></tr>
+      </thead>
+    </table>
+  </main>
+
+  <p class="load-error" id="load-error" hidden>Die Daten konnten nicht geladen werden. Die Seite muss über einen Webserver geöffnet werden, zum Beispiel mit <code>python3 -m http.server -d site</code>.</p>
+
+  <footer>
+    <p>Jede Zahl stammt aus einer amtlichen Quelle: Statistik Austria und Bundesministerium für Inneres. Fehlt ein Wert, bleibt die Lücke sichtbar. Es wird nichts geschätzt oder aufgefüllt.</p>
+    <p id="data-date"></p>
+  </footer>
+</body>
+</html>

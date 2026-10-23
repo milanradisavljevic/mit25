@@ -31,7 +31,7 @@ def indicator(id, label, unit, description, sources, series, notes=(), **extra):
         "description": description,
         "source": "; ".join(s.label for s in used),
         "source_url": used[0].url,
-        "source_urls": [s.url for s in used],
+        "sources": [{"label": s.label, "url": s.url} for s in used],
         "retrieved": max(s.retrieved for s in used),
         "notes": list(notes),
         **extra,

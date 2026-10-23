@@ -51,8 +51,9 @@ def test_all_mvp_indicators_present(indicators):
 @pytest.mark.parametrize("id", sorted(MVP_IDS))
 def test_required_fields(indicators, id):
     ind = indicators[id]
-    for field in ("label", "unit", "description", "source", "source_url", "retrieved", "series"):
+    for field in ("label", "unit", "description", "source", "source_url", "sources", "retrieved", "series"):
         assert ind[field], field
+    assert all(s["label"] and s["url"].startswith("https://") for s in ind["sources"])
     assert "—" not in ind["label"] + ind["description"] + " ".join(ind["notes"])
 
 

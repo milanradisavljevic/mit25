@@ -19,12 +19,20 @@ Statische Webseite: Geburtsjahr eingeben, sehen wie Österreich aussah, als man 
 - `pipeline/readers.py`: ODS-, XLSX- und OGD-CSV-Leser, nur Standardbibliothek.
 - `pipeline/indicators/<id>.py`: je Indikator `build()`. Registrierung in `indicators/__init__.py`.
 
+## Aufbau Frontend
+
+- `site/logic.js`: reine Logik ohne DOM (Stichjahre, Wertauswahl, Lücken, Format). Getestet.
+- `site/app.js`: DOM-Aufbau; `site/style.css`: Farbtoken je Generation (`--grandparents`, `--parents`, `--you`), Hell/Dunkel.
+- Wahl: nächste innerhalb ±3 Jahre, bei Gleichstand die frühere.
+- Zustände je Zelle: ok, future (noch nicht erreicht), pending (Jahr erreicht, Daten noch nicht veröffentlicht), missing.
+
 ## Befehle
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python pipeline/fetch.py     # lädt fehlende Rohdaten (--force: alle neu)
 .venv/bin/python pipeline/build.py     # erzeugt site/data.json
-.venv/bin/pytest                       # Tests
+.venv/bin/pytest                       # Tests Pipeline
+node --test tests/*.test.mjs           # Tests Frontend-Logik (site/logic.js), nur Node eingebaut
 python3 -m http.server -d site 8000    # Seite lokal ansehen
 ```

@@ -1,0 +1,235 @@
+:root {
+  --paper: #f4f6f7;
+  --ink: #1c2633;
+  --muted: #5b6672;
+  --rule: #d5dbe0;
+  --field: #ffffff;
+  --error: #b3261e;
+  /* Farbe je Generation, auch für spätere Diagramme */
+  --grandparents: #8b5e34;
+  --parents: #2e7d6b;
+  --you: #3b4cc0;
+
+  --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+  --gutter: 16px;
+  --measure: 62rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #141a21;
+    --ink: #e6ebef;
+    --muted: #9aa6b2;
+    --rule: #2c3641;
+    --field: #1c242d;
+    --error: #ff8a80;
+    --grandparents: #d9a066;
+    --parents: #5cc2a8;
+    --you: #8c9bff;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 1rem/1.5 var(--sans);
+  -webkit-text-size-adjust: 100%;
+}
+
+.intro, main, footer, .load-error {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* Einstieg */
+.intro { padding-top: 2.5rem; padding-bottom: 2rem; }
+
+.brand {
+  margin: 0 0 1.5rem;
+  font: 700 1.125rem/1 var(--serif);
+  letter-spacing: 0.01em;
+}
+
+h1 {
+  margin: 0;
+  max-width: 18ch;
+  font: 600 clamp(2rem, 6vw, 3.25rem)/1.1 var(--serif);
+  letter-spacing: -0.01em;
+}
+
+.lede {
+  max-width: 34rem;
+  margin: 1rem 0 2rem;
+  color: var(--muted);
+  font-size: 1.125rem;
+}
+
+/* Formular */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2.5rem;
+  align-items: flex-end;
+}
+
+.field-main { width: 11rem; }
+
+.family { margin: 0; padding: 0; border: 0; min-width: 0; }
+
+.family legend {
+  padding: 0;
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.family-fields {
+  display: grid;
+  grid-template-columns: repeat(2, 12rem);
+  gap: 1rem 1.5rem;
+}
+
+/* Hinweis- und Fehlerzeilen nicht mit unten bündig ausrichten */
+.field { align-self: flex-start; }
+
+.field label { display: block; margin-bottom: 0.25rem; font-weight: 600; font-size: 0.9375rem; }
+
+.field-main label { font-size: 1rem; }
+
+input {
+  width: 100%;
+  padding: 0.5rem 0.625rem;
+  border: 1px solid var(--muted);
+  border-radius: 4px;
+  background: var(--field);
+  color: var(--ink);
+  font: 600 1.25rem/1.2 var(--serif);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.field-main input { font-size: 1.75rem; }
+
+input[aria-invalid="true"] { border-color: var(--error); }
+
+.hint, .error { margin: 0.25rem 0 0; font-size: 0.8125rem; }
+.hint { color: var(--muted); }
+.error { color: var(--error); }
+.error:empty { display: none; }
+
+button {
+  margin-bottom: 1.375rem;
+  padding: 0.625rem 1.25rem;
+  border: 0;
+  border-radius: 4px;
+  background: var(--ink);
+  color: var(--paper);
+  font: 600 1rem/1.2 var(--sans);
+  cursor: pointer;
+}
+
+:focus-visible { outline: 3px solid var(--you); outline-offset: 2px; }
+
+/* Vergleich */
+main { padding-bottom: 3rem; }
+
+.compare {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.compare thead td:first-child { width: 30%; }
+
+.gen {
+  padding: 0 0.75rem 1rem;
+  text-align: left;
+  vertical-align: bottom;
+  font-weight: 400;
+  border-top: 6px solid var(--gen);
+}
+
+.gen-grandparents { --gen: var(--grandparents); }
+.gen-parents { --gen: var(--parents); }
+.gen-you { --gen: var(--you); }
+
+.gen-name { display: block; padding-top: 0.75rem; font-weight: 600; }
+
+/* Das Stichjahr ist das eine große Element der Seite */
+.gen-year {
+  display: block;
+  color: var(--gen);
+  font: 600 clamp(2.25rem, 7vw, 4.5rem)/1 var(--serif);
+  letter-spacing: -0.02em;
+}
+
+.gen-born { display: block; color: var(--muted); font-size: 0.8125rem; }
+
+.indicator th, .indicator td {
+  padding: 0.875rem 0.75rem;
+  border-top: 1px solid var(--rule);
+  text-align: left;
+  vertical-align: top;
+}
+
+.indicator th { padding-left: 0; font-weight: 600; }
+
+.indicator .member th { padding-left: 1rem; font-weight: 400; color: var(--muted); }
+.indicator .group-head th { padding-bottom: 0; }
+.indicator .member th, .indicator .member td { border-top-style: dotted; }
+.indicator .group-head + .member th, .indicator .group-head + .member td { border-top: 0; }
+
+.value { font: 600 1.375rem/1.2 var(--serif); }
+.unit { color: var(--muted); font-size: 0.875rem; }
+.note { display: block; color: var(--muted); font-size: 0.8125rem; }
+.gap { display: block; color: var(--muted); font-style: italic; }
+
+details { margin-top: 0.25rem; font-weight: 400; }
+summary { color: var(--muted); font-size: 0.8125rem; cursor: pointer; }
+.source { max-width: 34rem; margin: 0.5rem 0 0.25rem; color: var(--muted); font-size: 0.8125rem; }
+.source p, .source ul { margin: 0 0 0.5rem; }
+.source ul { padding-left: 1.1rem; }
+.source a { color: inherit; overflow-wrap: anywhere; }
+
+.load-error { color: var(--error); }
+
+footer {
+  padding-bottom: 3rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+footer p { max-width: 40rem; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Schmale Bildschirme: Beschriftung über den drei Werten */
+@media (max-width: 40rem) {
+  form { flex-direction: column; align-items: stretch; }
+  .field-main { width: 100%; }
+  .family-fields { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  button { align-self: flex-start; margin-bottom: 0; }
+
+  .compare, .compare thead, .compare tbody { display: block; }
+  .compare tr { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .compare thead td:first-child { display: none; }
+  .gen { padding: 0 0.5rem 0.75rem; }
+  .indicator th { grid-column: 1 / -1; padding-bottom: 0.25rem; }
+  .indicator td { padding: 0.25rem 0.5rem 0.875rem; border-top: 0; }
+  .indicator .member th { padding-left: 0; }
+  .value { font-size: 1.125rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; }
+}
