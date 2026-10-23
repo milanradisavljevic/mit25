@@ -25,9 +25,17 @@ const DECIMALS = {
   income_monthly_arbeiter_real: 0,
   income_monthly_angestellte: 0,
   income_monthly_angestellte_real: 0,
+  price_semmel: 2,
+  price_semmel_real: 2,
+  price_vollmilch: 2,
+  price_vollmilch_real: 2,
+  price_kinokarte: 2,
+  price_kinokarte_real: 2,
+  price_benzin: 2,
+  price_benzin_real: 2,
 };
 
-const UNIT_SUFFIX = { Jahre: "Jahre", "%": "%", Euro: "€", "Euro pro Monat": "€" };
+const UNIT_SUFFIX = { Jahre: "Jahre", "%": "%", Euro: "€", "Euro pro Monat": "€", Schilling: "S" };
 
 /** Hinweis für einen Wert, der vor einem Methodenbruch liegt (Feld `breaks`), sonst null. */
 export function breakNote(indicator, year) {
@@ -152,7 +160,9 @@ export function memberLabel(indicator) {
 
 /**
  * Ergänzt Indikatoren mit `deflate: "cpi"` um eine Reihe in Preisen des letzten VPI-Jahres:
- * Wert × VPI(Bezugsjahr) / VPI(Jahr). Fehlt einer der Werte, bleibt das Jahr null.
+ * Wert × eur_factor × VPI(Bezugsjahr) / VPI(Jahr). Fehlt einer der Werte, bleibt das Jahr null.
+ * `eur_factor` (Schilling-Reihen) rechnet zusätzlich in Euro um; dann zeigt das Diagramm
+ * nur die Euro-Reihe, weil Schilling und Euro nicht auf eine Achse gehören.
  * Original und umgerechnete Reihe werden als Gruppe angezeigt.
  */
 export function withPriceAdjusted(indicators) {
@@ -166,25 +176,35 @@ export function withPriceAdjusted(indicators) {
       result.push(indicator);
       continue;
     }
+    const factor = indicator.eur_factor ?? 1;
+    const toEuro = indicator.eur_factor != null;
     const series = Object.fromEntries(
       Object.entries(indicator.series).map(([year, value]) => {
         const index = cpi.series[year];
-        return [year, value === null || index == null ? null : (value * baseValue) / index];
+        return [year, value === null || index == null ? null : (value * factor * baseValue) / index];
       }),
     );
-    result.push({ ...indicator, group: indicator.id, sublabel: "nominal" });
+    result.push({
+      ...indicator,
+      group: indicator.id,
+      sublabel: toEuro ? `in ${indicator.unit}` : "nominal",
+      chart: !toEuro,
+    });
     result.push({
       ...indicator,
       id: `${indicator.id}_real`,
       group: indicator.id,
-      sublabel: `in Preisen von ${base}`,
+      unit: toEuro ? "Euro" : indicator.unit,
+      sublabel: toEuro ? `in Euro, Preise von ${base}` : `in Preisen von ${base}`,
       series,
       sources: [...indicator.sources, ...cpi.sources],
       notes: [
         ...indicator.notes,
-        `Umrechnung in Preise von ${base}: Wert × VPI ${base} / VPI des jeweiligen Jahres (Jahresdurchschnitte, ${cpi.label}).`,
+        `Umrechnung in Preise von ${base}: Wert${toEuro ? " in Euro" : ""} × VPI ${base} / VPI des jeweiligen Jahres (Jahresdurchschnitte, ${cpi.label}).`,
       ],
       deflate: undefined,
+      eur_factor: undefined,
+      chart: true,
       derived: true,
     });
   }

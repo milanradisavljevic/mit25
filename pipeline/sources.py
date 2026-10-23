@@ -79,6 +79,24 @@ SOURCES = {
         "2026-10-23",
         "AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
     ),
+    "wien_preise_1980_1984": Source(
+        "wienbibliothek_2266115_jahrbuch_wien_preise_1980_1984.pdf",
+        "https://www.digital.wienbibliothek.at/download/pdf/2266115.pdf",
+        "2026-10-23",
+        "Statistisches Jahrbuch der Stadt Wien, Tab. 19.02 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1980 bis 1984, Wiener Preise, ÖSTAT)",
+    ),
+    "wien_preise_1984_1988": Source(
+        "wienbibliothek_2276793_jahrbuch_wien_preise_1984_1988.pdf",
+        "https://www.digital.wienbibliothek.at/download/pdf/2276793.pdf",
+        "2026-10-23",
+        "Statistisches Jahrbuch der Stadt Wien, Tab. 19.05 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1984 bis 1988, Wiener Preise, ÖSTAT)",
+    ),
+    "wien_preise_1988_1992": Source(
+        "wienbibliothek_2277171_jahrbuch_wien_preise_1988_1992.pdf",
+        "https://www.digital.wienbibliothek.at/download/pdf/2277171.pdf",
+        "2026-10-23",
+        "Statistisches Jahrbuch der Stadt Wien, Tab. 18.03 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1988 bis 1992, Wiener Preise, ÖSTAT)",
+    ),
     "nrw_1919_2008": Source(
         "bmi_nrw_08_wbseit1919.pdf",
         f"{_BMI}/Nationalratswahl_2008/files/history/nrw_08_wbseit1919.pdf",

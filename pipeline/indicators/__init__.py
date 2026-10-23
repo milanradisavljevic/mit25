@@ -12,6 +12,7 @@ from . import (
     income_median,
     life_expectancy_birth,
     median_age,
+    prices_vienna,
     share_65plus,
     turnout_nrw,
 )
@@ -23,6 +24,7 @@ INDICATORS = [
     fertility_rate,
     income_median,
     ak_monthly_income,
+    prices_vienna,
     turnout_nrw,
     cpi,
 ]

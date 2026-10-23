@@ -83,7 +83,8 @@ Zusätzliche Felder (seit Phase 2):
 - `display: false`: Hilfsreihe, nicht direkt anzeigen (VPI).
 - `deflate: "cpi"`: Frontend ergänzt eine Reihe in Preisen des letzten VPI-Jahres (Phase 5).
 - `breaks: [{year, before}]`: Methodenbruch; Linie wird getrennt, Werte davor gekennzeichnet (Phase 5).
-- `ended: true`: Reihe eingestellt; nach dem letzten Jahr keine Fortschreibung (Phase 5).
+- `ended: true`: Reihe eingestellt; nach dem letzten Jahr keine Fortschreibung (Phase 5). `ended_note`: eigener Hinweistext dazu.
+- `eur_factor`: Umrechnung Schilling in Euro für die Kaufkraftreihe (Phase 5).
 
 ## 5. Indikatoren
 

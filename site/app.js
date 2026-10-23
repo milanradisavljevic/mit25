@@ -75,7 +75,9 @@ function cell(indicator, refYear) {
   } else {
     td.append(el("span", { class: "gap" }, `keine Daten für ${refYear}`));
     if (refYear < result.firstYear) td.append(el("span", { class: "note" }, `Reihe beginnt ${result.firstYear}`));
-    if (refYear > result.lastYear) td.append(el("span", { class: "note" }, `Reihe endet ${result.lastYear}`));
+    if (refYear > result.lastYear) {
+      td.append(el("span", { class: "note" }, indicator.ended_note ?? `Reihe endet ${result.lastYear}`));
+    }
   }
   return td;
 }

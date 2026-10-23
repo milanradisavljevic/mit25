@@ -82,7 +82,8 @@ export function drawChart(plot, row, generations, width) {
     root.append(svg("rect", { class: "empty", x: left, y: plotTop, width: right - left, height: PLOT_HEIGHT }));
     const after = from > dataYears.at(-1);
     const ended = members.every((m) => m.ended);
-    const text = after && ended ? "Reihe endet" : from > currentYear ? "Zukunft" : after ? "noch keine Daten" : "keine Daten";
+    const endedText = members.some((m) => m.ended_note) ? "nicht erfasst" : "Reihe endet";
+    const text = after && ended ? endedText : from > currentYear ? "Zukunft" : after ? "noch keine Daten" : "keine Daten";
     if (right - left >= text.length * 6.5 + 8) {
       root.append(svg("text", { class: "empty-label", x: (left + right) / 2, y: plotTop + 16, "text-anchor": "middle" }, text));
     }
@@ -265,9 +266,12 @@ const observers = new WeakMap();
 /** Baut für jede Anzeigezeile ein Diagramm in `container` und zeichnet bei Größenänderung neu. */
 export function renderCharts(container, rows, generations) {
   container.querySelectorAll(".chart-plot").forEach((plot) => observers.get(plot)?.disconnect());
-  const articles = rows.map((row) => {
+  const articles = rows.map((fullRow) => {
+    // Reihen mit `chart: false` (z. B. Schilling neben Euro) nur in der Tabelle zeigen
+    const row = { ...fullRow, members: fullRow.members.filter((m) => m.chart !== false) };
     const plot = html("div", { class: "chart-plot" });
-    const unit = row.members[0].unit;
+    const only = row.members.length === 1 ? row.members[0] : null;
+    const unit = only?.derived ? only.sublabel : row.members[0].unit;
     const article = html(
       "article",
       { class: "chart", id: `chart-${row.id}` },
@@ -275,7 +279,7 @@ export function renderCharts(container, rows, generations) {
       html("p", { class: "chart-unit" }, unit),
       legend(row),
       plot,
-      valueTable(row),
+      valueTable(fullRow),
     );
     const observer = new ResizeObserver(([entry]) => {
       const width = Math.floor(entry.contentRect.width);

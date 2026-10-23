@@ -157,30 +157,41 @@ Eigenschaften der Quelle:
    - Die Annahme „Daten ab etwa 1950“ im Plan reicht also nicht für Geburtsjahre vor ~1985.
 2. **Fertilität 1951–1960** (zurückgestellt): Kandidat ist die Human Fertility Database (humanfertility.org). Download nur nach kostenloser Registrierung, also manuell. Noch nicht geprüft.
 3. **Methodenbrüche** müssen im Frontend erwähnt werden: gerundete Werte vor 2004, Erweiterung der Sterbe- und Geburtenzählung 2009/2015, Basiswechsel im VPI (verkettet, unkritisch). Bei der Wahlbeteiligung sind Änderungen von Wahlalter und Wahlpflicht in einzelnen Ländern **zu prüfen**, nicht aus dem Gedächtnis eintragen.
-4. **VPI-Umrechnung in Euro** (Phase 5): Für Schilling-Preise ist zusätzlich der fixe Umrechnungskurs ATS/EUR nötig. Dafür braucht es eine Quelle in SOURCES.md.
+4. **Umrechnung Schilling in Euro:** erledigt. Kurs 13,7603 laut AK-Heft (siehe Alltagspreise). Eine amtliche Primärquelle, etwa die EU-Verordnung zum Umrechnungskurs, ist nicht als Datei abgelegt.
 5. **AK-Reihe nach 2009:** Die AK hat das Heft auch für spätere Jahre herausgegeben. Ob es eine neuere Ausgabe mit derselben Tabelle gibt, ist nicht geprüft.
 
-## Alltagspreise (Phase 5, Recherche 2026-10-23, noch keine Daten übernommen)
+## Alltagspreise Wien 1980–1992 (Phase 5, Pilot)
 
-Bei Statistik Austria gibt es keine aktuelle Tabelle mit Durchschnittspreisen einzelner Produkte, nur Indizes.
+Bei Statistik Austria gibt es keine aktuelle Tabelle mit Durchschnittspreisen einzelner Produkte, nur Indizes. Für den Pilot verwendet: Statistisches Jahrbuch der Stadt Wien, Tabelle „Durchschnittspreise ausgewählter Waren und Dienstleistungen“. Werte sind Jahresdurchschnitte in Schilling. Laut Fußnote: „Angaben des Österreichischen Statistischen Zentralamtes aufgrund der Meldungen für die Preisstatistik (Wiener Preise)“.
 
-**Kandidat 1: Statistisches Jahrbuch der Stadt Wien, Kapitel „Preise, Lebenshaltung und Löhne“**
-- **Tabelle:** „Durchschnittspreise ausgewählter Waren und Dienstleistungen“, Jahresdurchschnitte in Schilling. Laut Fußnote „Angaben des Österreichischen Statistischen Zentralamtes aufgrund der Meldungen für die Preisstatistik (Wiener Preise)“.
-- **Digitalisate (Wienbibliothek, Scans mit OCR):**
-  - https://www.digital.wienbibliothek.at/download/pdf/2277171.pdf: Jahrbuch-Auszug, Tab. 18.03, Jahresdurchschnitte 1988–1991 und Monatswerte 1992, gedruckte Seiten 328–329. Visuell geprüft.
-  - https://www.digital.wienbibliothek.at/download/pdf/2266115.pdf: laut Websuche Tab. 19.02, etwa 1980–1983. Nicht geprüft.
-  - https://www.digital.wienbibliothek.at/download/pdf/2276793.pdf: laut Websuche Tab. 19.05, etwa 1984–1987. Nicht geprüft.
-  - https://www.digital.wienbibliothek.at/download/pdf/2283261.pdf: laut Websuche Tab. 18.03, etwa 1989–1992. Nicht geprüft.
-- **Enthaltene Positionen:** Semmel (Stück, maschingeformt), Vollmilch (1 l, abgepackt), Kinokarte (Stück), Benzin (normal, bleifrei, Liter), Extrawurst (fein, 100 g) und weitere.
-- **Keine Wurstsemmel.** Eine Wurstsemmel aus Semmel und Extrawurst zusammenzurechnen wäre eine Konstruktion, also nicht zulässig.
-- **Einschränkungen:**
-  - Es sind nur Wiener Preise.
-  - Jede Ausgabe deckt nur wenige Jahre ab, also braucht es viele Ausgaben.
-  - Die Texterkennung der Scans ist fehlerhaft. Jede Zahl muss am Bild geprüft werden.
-  - Die Produktdefinitionen ändern sich über die Zeit, etwa Benzin verbleit gegenüber bleifrei.
-- **Offen:** Wie weit die Reihe zurückreicht und ob es sie nach den 1990ern noch gibt.
+| Quelle (sources.py) | Datei in data/raw/ | Tabelle, gedruckte Seiten | Jahre |
+|---|---|---|---|
+| wien_preise_1980_1984 | `wienbibliothek_2266115_jahrbuch_wien_preise_1980_1984.pdf` (https://www.digital.wienbibliothek.at/download/pdf/2266115.pdf) | Tab. 19.02, S. 360–363 | 1980–1984, Monate 1984 |
+| wien_preise_1984_1988 | `wienbibliothek_2276793_jahrbuch_wien_preise_1984_1988.pdf` (https://www.digital.wienbibliothek.at/download/pdf/2276793.pdf) | Tab. 19.05, S. 370–373 | 1984–1988, Monate 1988 |
+| wien_preise_1988_1992 | `wienbibliothek_2277171_jahrbuch_wien_preise_1988_1992.pdf` (https://www.digital.wienbibliothek.at/download/pdf/2277171.pdf) | Tab. 18.03, S. 328–329 | 1988–1992, Monate 1992 |
 
-**Kandidat 2: Benzin österreichweit, EU Weekly Oil Bulletin (Europäische Kommission)**
-- **Datei:** historische Datei `Weekly_Oil_Bulletin_Prices_History_maticni_4web.xlsx`, laut Newsletter ab 2005.
-- **Link:** https://energy.ec.europa.eu/document/download/906e60ca-8b6a-44e7-8589-652854d2fd3f_en?filename=Weekly_Oil_Bulletin_Prices_History_maticni_4web.xlsx
-- **Nicht geprüft:** Inhalt und ob es eine Spalte für Österreich mit Euro-Super 95 gibt.
+Die Ausgabejahre der Jahrbücher stehen nicht in den Auszügen. Sie sind deshalb über die Datenjahre benannt.
+
+- **Abschrift:** `data/manual/wien_durchschnittspreise_1980_1992.csv`. Jede Zahl ist am Scanbild abgelesen, die Texterkennung diente nur als Hilfe. Enthalten sind Jahresdurchschnitte und die Monatswerte des jeweils letzten Jahres einer Ausgabe.
+- **Positionen:**
+  - Semmel (Stück, maschingeformt)
+  - Vollmilch (1 l, abgepackt)
+  - Kinokarte (Stück)
+  - Benzin (normal, Liter)
+- **Prüfung (Tests):**
+  - Das Mittel der 12 Monatswerte ergibt den Jahresdurchschnitt (±0,006 S), für alle 12 Fälle.
+  - Die Überlappungsjahre 1984 und 1988 sind in beiden Ausgaben identisch.
+- **Benzin:** 1980–1986 „Benzin, normal, inländ.“. Fußnote der Ausgabe 1984–1988: „Ab 1987 bleifrei“. Ausgabe 1988–1992: „Benzin, normal, bleifrei“. Als Bruch 1987 markiert.
+- **Allgemeiner Hinweis der Quelle:** „Aufgrund von Änderungen der Warenbeschreibungen ab 1987 mit den Vorjahrespreisen nicht streng vergleichbar.“ Semmel, Vollmilch und Kinokarte haben keine eigene Fußnote zu einer Änderung.
+- **Keine Wurstsemmel:** Die Quelle führt Semmel und Extrawurst nur einzeln. Zusammenrechnen wäre eine Konstruktion.
+- **Euro-Umrechnung:** fixer Kurs 13,7603 Schilling je Euro, belegt in `ak_wien_bruttoeinkommen_arbeiter_angestellte_2009.pdf`, S. 2 („1 EURO = ÖS 13,7603“). Das Frontend zeigt den Schillingpreis und den Wert in Euro, Preise von 2025. Das Diagramm zeigt nur die Euro-Reihe, weil Schilling und Euro nicht auf eine Achse gehören.
+- **Grenzen des Pilots:**
+  - nur Wien
+  - nur 1980–1992 erfasst (Feld `ended_note`)
+  - für die Großeltern-Spalte meist ohne Daten
+
+### Noch nicht verwendet
+
+- https://www.digital.wienbibliothek.at/download/pdf/2283261.pdf: laut Websuche Tab. 18.03 mit Daten bis 1993. Würde ein Jahr ergänzen. Nicht geprüft.
+- **Ältere und neuere Ausgaben:** Nicht recherchiert, wie weit die Tabelle zurückreicht und ob sie nach den 1990ern weitergeführt wurde.
+- **EU Weekly Oil Bulletin (Benzin österreichweit ab 2005):** https://energy.ec.europa.eu/document/download/906e60ca-8b6a-44e7-8589-652854d2fd3f_en?filename=Weekly_Oil_Bulletin_Prices_History_maticni_4web.xlsx. Nicht geprüft.
