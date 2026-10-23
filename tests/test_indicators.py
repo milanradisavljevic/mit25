@@ -14,6 +14,7 @@ MVP_IDS = {
     "fertility_rate",
     "turnout_nrw",
     "cpi",
+    "income_median_gross",  # Phase 5
 }
 
 # Plausibilitätsgrenzen je Indikator (min, max)
@@ -25,6 +26,7 @@ BOUNDS = {
     "fertility_rate": (0.8, 4),
     "turnout_nrw": (50, 100),
     "cpi": (50, 100_000),
+    "income_median_gross": (10_000, 80_000),
 }
 
 # Erwartete Abdeckung (erstes, letztes Jahr) laut data/SOURCES.md
@@ -36,6 +38,7 @@ COVERAGE = {
     "fertility_rate": ("1961", "2025"),
     "turnout_nrw": ("1919", "2024"),
     "cpi": ("1946", "2025"),
+    "income_median_gross": ("1997", "2024"),
 }
 
 
@@ -115,10 +118,21 @@ def test_to_series_fills_gaps_with_null():
         ("cpi", "1946", 106.8),
         ("cpi", "1990", 2839.9),
         ("cpi", "2025", 6633.4),
+        # Einkommens-ODS, Tabelle1, Block Insgesamt, Bruttojahreseinkommen Median
+        ("income_median_gross", "1997", 19808),
+        ("income_median_gross", "2013", 25767),
+        ("income_median_gross", "2024", 38043),
     ],
 )
 def test_sample_values_match_source(indicators, id, year, expected):
     assert indicators[id]["series"][year] == pytest.approx(expected, abs=1e-5)
+
+
+def test_income_is_nominal_and_marked_for_cpi_conversion(indicators):
+    ind = indicators["income_median_gross"]
+    assert ind["deflate"] == "cpi"
+    # Umrechnung braucht für jedes Einkommensjahr einen VPI-Wert
+    assert set(ind["series"]) <= set(indicators["cpi"]["series"])
 
 
 def test_turnout_is_event_series(indicators):

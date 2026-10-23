@@ -67,6 +67,12 @@ SOURCES = {
         "2026-10-23",
         "Statistik Austria, Verbraucherpreisindizes ab 1990 (Kontrollreihe)",
     ),
+    "einkommen": Source(
+        "statistik_austria_1_brutto-_und_nettojahreseinkommen_der_unselbstaendig_erwerbstaetigen_1997_bis_2024_020054.ods",
+        f"{_STAT}/333/1_brutto-_und_nettojahreseinkommen_der_unselbstaendig_erwerbstaetigen_1997_bis_2024_020054.ods",
+        "2026-10-23",
+        "Statistik Austria, Lohnsteuerdaten: Brutto- und Nettojahreseinkommen der unselbständig Erwerbstätigen 1997 bis 2024",
+    ),
     "nrw_1919_2008": Source(
         "bmi_nrw_08_wbseit1919.pdf",
         f"{_BMI}/Nationalratswahl_2008/files/history/nrw_08_wbseit1919.pdf",

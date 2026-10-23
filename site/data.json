@@ -447,6 +447,58 @@
       }
     },
     {
+      "id": "income_median_gross",
+      "label": "Bruttojahreseinkommen (Median)",
+      "unit": "Euro",
+      "description": "Die Hälfte der unselbständig Erwerbstätigen verdiente im Jahr weniger als diesen Betrag, die andere Hälfte mehr (brutto, inklusive Teilzeit und unterjährig Beschäftigter, ohne Lehrlinge)",
+      "source": "Statistik Austria, Lohnsteuerdaten: Brutto- und Nettojahreseinkommen der unselbständig Erwerbstätigen 1997 bis 2024",
+      "source_url": "https://www.statistik.at/fileadmin/pages/333/1_brutto-_und_nettojahreseinkommen_der_unselbstaendig_erwerbstaetigen_1997_bis_2024_020054.ods",
+      "sources": [
+        {
+          "label": "Statistik Austria, Lohnsteuerdaten: Brutto- und Nettojahreseinkommen der unselbständig Erwerbstätigen 1997 bis 2024",
+          "url": "https://www.statistik.at/fileadmin/pages/333/1_brutto-_und_nettojahreseinkommen_der_unselbstaendig_erwerbstaetigen_1997_bis_2024_020054.ods"
+        }
+      ],
+      "retrieved": "2026-10-23",
+      "notes": [
+        "Bruttojahresbezüge gemäß § 25 EStG laut Lohnsteuerdaten.",
+        "Enthält Teilzeit und nicht ganzjährig Beschäftigte; ein Anstieg kann auch an längerer Arbeitszeit liegen.",
+        "1997 bis 2001 in der Quelle aus Schilling in Euro umgerechnet (Spaltenkopf: EUR-ATS bzw. Euro).",
+        "Nominalwerte. Der Wert in heutigen Preisen ist mit dem Verbraucherpreisindex umgerechnet."
+      ],
+      "deflate": "cpi",
+      "series": {
+        "1997": 19808.0,
+        "1998": 20040.0,
+        "1999": 20436.0,
+        "2000": 20757.0,
+        "2001": 21120.0,
+        "2002": 21424.0,
+        "2003": 21709.0,
+        "2004": 21977.0,
+        "2005": 22328.0,
+        "2006": 22834.0,
+        "2007": 23613.0,
+        "2008": 24253.0,
+        "2009": 24449.0,
+        "2010": 24516.0,
+        "2011": 24843.0,
+        "2012": 25373.0,
+        "2013": 25767.0,
+        "2014": 26273.0,
+        "2015": 26678.0,
+        "2016": 27051.0,
+        "2017": 27545.0,
+        "2018": 28459.0,
+        "2019": 29458.0,
+        "2020": 30257.0,
+        "2021": 31407.0,
+        "2022": 32834.0,
+        "2023": 35314.0,
+        "2024": 38043.0
+      }
+    },
+    {
       "id": "turnout_nrw",
       "label": "Wahlbeteiligung Nationalratswahl",
       "unit": "%",

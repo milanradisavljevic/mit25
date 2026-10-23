@@ -2,13 +2,13 @@
 // Lücken bleiben Lücken: Linien enden an fehlenden Jahren, Bereiche ohne Daten sind markiert.
 
 import { emptyRanges, knownYears, nearestYear, segments, xDomain, yScale, yearTicks } from "./chart-logic.js";
-import { formatNumber } from "./logic.js";
+import { NUMBER_LOCALE, formatWithUnit, memberLabel } from "./logic.js";
 
 const NS = "http://www.w3.org/2000/svg";
 const PLOT_HEIGHT = 190;
 const LABEL_ROW = 18;
 const MARGIN = { top: 3 * LABEL_ROW + 8, right: 58, bottom: 26, left: 44 };
-const TICK_FORMAT = new Intl.NumberFormat("de-AT", { maximumFractionDigits: 2 });
+const TICK_FORMAT = new Intl.NumberFormat(NUMBER_LOCALE, { maximumFractionDigits: 2 });
 
 function svg(tag, attrs = {}, text) {
   const node = document.createElementNS(NS, tag);
@@ -28,12 +28,11 @@ function html(tag, attrs = {}, ...children) {
 }
 
 function memberName(indicator, members) {
-  return members.length > 1 ? indicator.label.split(", ").at(-1) : indicator.label;
+  return members.length > 1 ? memberLabel(indicator) : indicator.label;
 }
 
 function formatValue(indicator, value) {
-  const unit = { Jahre: " Jahre", "%": " %" }[indicator.unit] ?? "";
-  return formatNumber(value, indicator.id) + unit;
+  return formatWithUnit(value, indicator);
 }
 
 /**
@@ -123,13 +122,23 @@ export function drawChart(plot, row, generations, width) {
         root.append(svg("path", { class: `${cls} line`, d }));
       }
     }
-    if (members.length > 1) {
-      const last = knownYears(m.series).at(-1);
-      root.append(
-        svg("text", { class: "end-label", x: x(last) + 6, y: y(m.series[last]), "dominant-baseline": "middle" }, memberName(m, members)),
-      );
-    }
   });
+
+  // Beschriftung am Linienende nur, wenn alle Labels passen und sich nicht berühren;
+  // sonst trägt die Legende die Zuordnung (Labels werden nie gestapelt oder abgeschnitten).
+  if (members.length > 1 && !isEvent) {
+    const labels = members.map((m) => {
+      const last = knownYears(m.series).at(-1);
+      return { text: memberName(m, members), x: x(last) + 6, y: y(m.series[last]) };
+    });
+    const fits = labels.every((l) => l.x + l.text.length * 6.5 <= width);
+    const apart = labels.every((a, i) => labels.every((b, j) => i === j || Math.abs(a.y - b.y) >= 14));
+    if (fits && apart) {
+      for (const l of labels) {
+        root.append(svg("text", { class: "end-label", x: l.x, y: l.y, "dominant-baseline": "middle" }, l.text));
+      }
+    }
+  }
 
   // Werte der Stichjahre (bei Wahlen: die gewählte Wahl) in Generationsfarbe
   for (const g of generations) {

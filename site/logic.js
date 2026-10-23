@@ -19,7 +19,11 @@ const DECIMALS = {
   median_age: 1,
   fertility_rate: 2,
   turnout_nrw: 1,
+  income_median_gross: 0,
+  income_median_gross_real: 0,
 };
+
+const UNIT_SUFFIX = { Jahre: "Jahre", "%": "%", Euro: "€" };
 
 /**
  * Prüft die Eingaben. Liefert { errors: {feld: Text}, years: {grandparents, parents, you} }.
@@ -106,12 +110,72 @@ export function valueFor(indicator, refYear, currentYear) {
   return { status: "missing", year: refYear, firstYear, lastYear };
 }
 
+// "de-DE" statt "de-AT": CLDR trennt Tausender in de-AT mit Leerzeichen, in Österreich
+// (und in den Quelltabellen) ist der Punkt üblich. Dezimalkomma ist in beiden gleich.
+export const NUMBER_LOCALE = "de-DE";
+
 export function formatNumber(value, indicatorId) {
   const digits = DECIMALS[indicatorId] ?? 1;
-  return new Intl.NumberFormat("de-AT", {
+  return new Intl.NumberFormat(NUMBER_LOCALE, {
     minimumFractionDigits: digits,
     maximumFractionDigits: digits,
   }).format(value);
+}
+
+/** Einheit, die direkt hinter dem Zahlenwert steht ("Jahre", "%", "€"), sonst null. */
+export function unitSuffix(indicator) {
+  return UNIT_SUFFIX[indicator.unit] ?? null;
+}
+
+export function formatWithUnit(value, indicator) {
+  const suffix = unitSuffix(indicator);
+  return formatNumber(value, indicator.id) + (suffix ? ` ${suffix}` : "");
+}
+
+/** Beschriftung einer Reihe innerhalb ihrer Gruppe ("Männer", "nominal", ...). */
+export function memberLabel(indicator) {
+  return indicator.sublabel ?? indicator.label.split(", ").at(-1);
+}
+
+/**
+ * Ergänzt Indikatoren mit `deflate: "cpi"` um eine Reihe in Preisen des letzten VPI-Jahres:
+ * Wert × VPI(Bezugsjahr) / VPI(Jahr). Fehlt einer der Werte, bleibt das Jahr null.
+ * Original und umgerechnete Reihe werden als Gruppe angezeigt.
+ */
+export function withPriceAdjusted(indicators) {
+  const cpi = indicators.find((i) => i.id === "cpi");
+  if (!cpi) return indicators;
+  const base = Math.max(...Object.keys(cpi.series).filter((y) => cpi.series[y] !== null).map(Number));
+  const baseValue = cpi.series[String(base)];
+  const result = [];
+  for (const indicator of indicators) {
+    if (indicator.deflate !== "cpi") {
+      result.push(indicator);
+      continue;
+    }
+    const series = Object.fromEntries(
+      Object.entries(indicator.series).map(([year, value]) => {
+        const index = cpi.series[year];
+        return [year, value === null || index == null ? null : (value * baseValue) / index];
+      }),
+    );
+    result.push({ ...indicator, group: indicator.id, sublabel: "nominal" });
+    result.push({
+      ...indicator,
+      id: `${indicator.id}_real`,
+      group: indicator.id,
+      sublabel: `in Preisen von ${base}`,
+      series,
+      sources: [...indicator.sources, ...cpi.sources],
+      notes: [
+        ...indicator.notes,
+        `Umrechnung in Preise von ${base}: Wert × VPI ${base} / VPI des jeweiligen Jahres (Jahresdurchschnitte, ${cpi.label}).`,
+      ],
+      deflate: undefined,
+      derived: true,
+    });
+  }
+  return result;
 }
 
 /**

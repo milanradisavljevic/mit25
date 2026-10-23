@@ -2,15 +2,17 @@ import {
   GENERATIONS,
   displayRows,
   formatNumber,
+  memberLabel,
   referenceYear,
   resolveBirthYears,
+  unitSuffix,
   valueFor,
+  withPriceAdjusted,
 } from "./logic.js";
 import { renderCharts } from "./chart.js";
 
 const CURRENT_YEAR = new Date().getFullYear();
 const GROUP_LABELS = { life_expectancy_birth: "Lebenserwartung bei Geburt" };
-const UNIT_SUFFIX = { Jahre: "Jahre", "%": "%" };
 const FIELDS = ["you", "parents", "grandparents"];
 const PARAMS = { you: "jahr", parents: "eltern", grandparents: "grosseltern" };
 
@@ -33,7 +35,7 @@ function formatDate(iso) {
 }
 
 function valueNode(indicator, result) {
-  const suffix = UNIT_SUFFIX[indicator.unit];
+  const suffix = unitSuffix(indicator);
   return el(
     "span",
     {},
@@ -128,7 +130,7 @@ function renderBody(rows, years) {
     } else {
       body.append(el("tr", { class: "group-head" }, el("th", { scope: "rowgroup", colspan: "4" }, heading, sourceDetails(row.members))));
       for (const indicator of row.members) {
-        const sublabel = indicator.label.split(", ").at(-1);
+        const sublabel = memberLabel(indicator);
         body.append(el("tr", { class: "member" }, el("th", { scope: "row" }, sublabel), ...refYears.map((y) => cell(indicator, y))));
       }
     }
@@ -190,6 +192,7 @@ async function main() {
     const response = await fetch("data.json");
     if (!response.ok) throw new Error(response.statusText);
     data = await response.json();
+    data.indicators = withPriceAdjusted(data.indicators);
   } catch {
     $("load-error").hidden = false;
     return;

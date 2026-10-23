@@ -13,6 +13,7 @@ Abdeckung wurde direkt aus den heruntergeladenen Dateien ermittelt, nicht aus Se
 | fertility_rate | Statistik Austria | 1961–2025 | keine innerhalb der Spanne |
 | turnout_nrw | BMI | 1945–2024 (24 Wahlen), zusätzlich 1919–1930 | Ereignisreihe |
 | cpi | Statistik Austria (OGD) | 1946–2025 (Jahresdurchschnitt) | 1946 nur April bis Dezember |
+| income_median_gross (Phase 5) | Statistik Austria | 1997–2024 | keine innerhalb der Spanne |
 
 ---
 
@@ -91,6 +92,30 @@ Jeweils Zeile `GKZ = G00000` („Österreich“). 2013 enthält eine fertige Spa
 - **URL:** https://www.statistik.at/fileadmin/pages/214/2_Verbraucherpreisindizes_ab_1990.ods
 - **Zweck:** Abgleich. Jahresdurchschnitte ab 1990 für alle Basen. Spalte „LHKI (38)“: 1990 = 2839,9, 2025 = 6633,4. Stimmt mit der OGD-Datei überein.
 
+## Statistik Austria: Einkommen (Phase 5)
+
+- **Datei:** `statistik_austria_1_brutto-_und_nettojahreseinkommen_der_unselbstaendig_erwerbstaetigen_1997_bis_2024_020054.ods`
+- **URL:** https://www.statistik.at/fileadmin/pages/333/1_brutto-_und_nettojahreseinkommen_der_unselbstaendig_erwerbstaetigen_1997_bis_2024_020054.ods
+- **Seite:** https://www.statistik.at/statistiken/bevoelkerung-und-soziales/einkommen-und-soziale-lage/jaehrliche-personeneinkommen
+- **Quellvermerk:** „Q: STATISTIK AUSTRIA, Lohnsteuerdaten - Sozialstatistische Auswertungen. Erstellt am 12.12.2025.“
+- **Verwendet:** Blatt Tabelle1, Block „Insgesamt“, Bruttojahreseinkommen → „Median“.
+- **Abdeckung:** 1997–2024, jährlich, ohne Lücken.
+- **Definition laut Fußnoten:** ohne Lehrlinge. Bruttojahresbezüge gemäß § 25 EStG. Enthält Teilzeit und nicht ganzjährig Beschäftigte.
+- **Währung:** Der Spaltenkopf lautet „EUR-ATS bzw. Euro“. 1997–2001 sind also Schilling-Werte, in der Quelle in Euro umgerechnet.
+- **Kaufkraft:** Das Frontend rechnet zusätzlich in Preise des letzten VPI-Jahres um: Wert × VPI(2025) / VPI(Jahr), mit den Jahresdurchschnitten aus `cpi`. data.json enthält nur die Nominalwerte.
+- **Stichprobe:** 2013 = 25.767 €. Derselbe Wert steht im Einkommensbericht 2016 des Rechnungshofs, laut Websuche, nicht als Datei geprüft.
+- **Nicht verwendet:** Tabelle 2 (ganzjährig Vollzeitbeschäftigte, 2004–2024) wurde geprüft und wieder entfernt, weil sie erst 2004 beginnt.
+
+### Kandidat vor 1997 (nicht übernommen, Entscheidung offen)
+
+AK Wien, „Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009“ (Statistische Informationen, September 2010), https://www.arbeiterkammer.at/infopool/akportal/Studie_Einkommen_2009.pdf, S. 28:
+- **Inhalt:** Median der Bruttomonatseinkommen 1953–2009 nach Daten des Hauptverbands der Sozialversicherungsträger.
+- **Kein Gesamtwert:** nur getrennt nach Arbeitern und Angestellten. Ein Gesamt-Median lässt sich daraus nicht bilden.
+- **Methodenbruch 1987:** bis 1987 jeweils Juli, einschließlich Lehrlinge; ab 1987 Jahresdurchschnitt ohne Lehrlinge. 1987 ist in beiden Varianten angegeben.
+- **Begrenzung:** Werte ohne Sonderzahlungen (1/14 des Jahreseinkommens). Einkommen über der Höchstbeitragsgrundlage nicht ausgewiesen. Alle Jahre mit 13,7603 ATS/EUR umgerechnet.
+- **Nicht mit den Lohnsteuerdaten vergleichbar:** Monats- statt Jahreseinkommen, Sozialversicherungs- statt Steuerdaten. Darf nicht zu einer Linie verbunden werden.
+- **Quelle selbst:** Sekundärquelle. Die AK veröffentlicht die Daten des Hauptverbands.
+
 ---
 
 ## Geprüft und verworfen
@@ -120,3 +145,4 @@ Jeweils Zeile `GKZ = G00000` („Österreich“). 2013 enthält eine fertige Spa
 2. **Fertilität 1951–1960** (zurückgestellt): Kandidat ist die Human Fertility Database (humanfertility.org). Download nur nach kostenloser Registrierung, also manuell. Noch nicht geprüft.
 3. **Methodenbrüche** müssen im Frontend erwähnt werden: gerundete Werte vor 2004, Erweiterung der Sterbe- und Geburtenzählung 2009/2015, Basiswechsel im VPI (verkettet, unkritisch). Bei der Wahlbeteiligung sind Änderungen von Wahlalter und Wahlpflicht in einzelnen Ländern **zu prüfen**, nicht aus dem Gedächtnis eintragen.
 4. **VPI-Umrechnung in Euro** (Phase 5): Für Schilling-Preise ist zusätzlich der fixe Umrechnungskurs ATS/EUR nötig. Dafür braucht es eine Quelle in SOURCES.md.
+5. **Einkommen vor 1997:** Soll die AK-Reihe (Hauptverband, Arbeiter und Angestellte getrennt, Monatswerte ab 1953) als eigener Indikator dazukommen? Siehe Abschnitt Einkommen.

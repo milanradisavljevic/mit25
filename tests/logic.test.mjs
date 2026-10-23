@@ -6,9 +6,12 @@ import {
   GENERATIONS,
   displayRows,
   formatNumber,
+  formatWithUnit,
+  memberLabel,
   referenceYear,
   resolveBirthYears,
   valueFor,
+  withPriceAdjusted,
 } from "../site/logic.js";
 
 const NOW = 2026;
@@ -93,6 +96,36 @@ test("Geburtsjahre 1960 bis 2005: jede Zelle hat einen gültigen Zustand", () =>
       }
     }
   }
+});
+
+test("Kaufkraft: Umrechnung mit VPI auf das letzte VPI-Jahr, Lücken bleiben null", () => {
+  const cpi = { id: "cpi", label: "VPI", sources: [{ label: "VPI", url: "u" }], series: { 2000: 100, 2001: 110, 2002: 200 } };
+  const income = {
+    id: "inc", label: "Einkommen", unit: "Euro", deflate: "cpi", notes: [], sources: [],
+    series: { 1999: 50, 2000: 100, 2001: null, 2002: 300 },
+  };
+  const [nominal, real] = withPriceAdjusted([income, cpi]);
+  assert.equal(nominal.group, "inc");
+  assert.equal(memberLabel(nominal), "nominal");
+  assert.equal(real.id, "inc_real");
+  assert.equal(memberLabel(real), "in Preisen von 2002");
+  assert.deepEqual(real.series, { 1999: null, 2000: 200, 2001: null, 2002: 300 });
+});
+
+test("Kaufkraft mit echten Daten: 2025 bleibt gleich, 1997 steigt", () => {
+  const adjusted = Object.fromEntries(withPriceAdjusted(data.indicators).map((i) => [i.id, i]));
+  const real = adjusted.income_median_gross_real.series;
+  const nominal = byId.income_median_gross.series;
+  assert.ok(real["1997"] > nominal["1997"] * 1.5);
+  const cpi = byId.cpi.series;
+  assert.equal(real["2024"], (nominal["2024"] * cpi["2025"]) / cpi["2024"]);
+  const rows = displayRows(Object.values(adjusted));
+  assert.equal(rows.find((r) => r.id === "income_median_gross").members.length, 2);
+});
+
+test("Einheiten: Euro ohne Nachkommastellen", () => {
+  assert.equal(formatWithUnit(38043, { id: "income_median_gross", unit: "Euro" }), "38.043 €");
+  assert.equal(formatWithUnit(1.296, { id: "fertility_rate", unit: "Kinder je Frau" }), "1,30");
 });
 
 test("Stichproben gegen data.json", () => {

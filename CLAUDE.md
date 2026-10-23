@@ -27,6 +27,8 @@ Statische Webseite: Geburtsjahr eingeben, sehen wie Österreich aussah, als man 
 - Diagrammregeln: Linien enden an Lücken (nie verbinden), X-Achse reicht bis zu allen Stichjahren, Bereiche ohne Daten grau. Generationsfarben nur für Stichjahre, Datenlinien neutral.
 - Farbänderungen an Generationstoken mit dem dataviz-Validator prüfen (hell gegen `#f4f6f7`, dunkel gegen `#141a21`).
 - Wahl: nächste innerhalb ±3 Jahre, bei Gleichstand die frühere.
+- Kaufkraft: Indikatoren mit `deflate: "cpi"` bekommen im Frontend (`withPriceAdjusted`) eine zweite Reihe in Preisen des letzten VPI-Jahres. data.json bleibt nominal.
+- Zahlenformat `de-DE` (Punkt als Tausendertrenner), weil `de-AT` in CLDR Leerzeichen nutzt.
 - Zustände je Zelle: ok, future (noch nicht erreicht), pending (Jahr erreicht, Daten noch nicht veröffentlicht), missing.
 
 ## Befehle
