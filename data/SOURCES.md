@@ -190,8 +190,31 @@ Die Ausgabejahre der Jahrbücher stehen nicht in den Auszügen. Sie sind deshalb
   - nur 1980–1992 erfasst (Feld `ended_note`)
   - für die Großeltern-Spalte meist ohne Daten
 
+### Reichweite der Tabelle (Recherche 2026-10-23)
+
+**Bestand der Wienbibliothek:**
+- Digitalisierte Jahrgänge 1883–1914, 1929–1951 und 1970–2003 (ohne 2000), Sammlung `wbrobv`. Volltext-OCR je Jahrgang unter `/wbrobv/download/ftpack/plain/<id>`.
+- Ab 2004 born-digital in der Sammlung `wbrup`, ohne Volltext.
+- Für 1952–1969 gibt es kein Jahrbuch im Bestand.
+- **Zugang:** Die Viewer-Seiten haben eine automatische Browserprüfung. Die PDF- und Volltext-Downloads sind direkt abrufbar.
+
+**„Durchschnittspreise ausgewählter Waren und Dienstleistungen“ (ÖSTAT/ST.AT, Wiener Preise):**
+- **Ab Jahrgang 1970:** Jahrgang N enthält die Jahresdurchschnitte N−4 bis N und die Monatswerte von N. Der früheste Wert stammt aus Jahrgang 1970 und ist 1966. Laut Volltext ist die Tabelle in jedem Jahrgang 1970–2003 enthalten.
+- **Jahrgang 2003:** Tab. 18.2, Daten 1998–2002, alle Werte in Euro. Die Werte 1998–2001 hat die Quelle aus Schilling umgerechnet. Visuell geprüft.
+- **Jahrgänge 2004–2006 (born-digital, Textsuche in den Content-Streams):**
+  - 2004: Tab. 17.2, Werte bis 2003
+  - 2005: Tab. 17.4, 2000–2004
+  - 2006: Tab. 17.3, 2001–2005, letzter Wert Semmel 2005: 0,28 €
+- **Jahrgänge 2007 und 2008:** Die Tabelle fehlt (Textsuche nach Durchschnittspreis, Semmel, Vollmilch: keine Treffer). Die Reihe endet also mit dem Datenjahr 2005.
+- **Positionen und Definitionswechsel:**
+  - Vollmilch heißt 1970 „1 l, offen“, später „1 l, abgepackt“.
+  - Benzin heißt bis 1986 „normal, inländ.“, ab 1987 „bleifrei“.
+  - Semmel heißt 1970 „Stück“, später „Stück, maschingeformt“.
+- **Damit erreichbar:** 1966–2005 lückenlos. Zum Pilot (1980–1992) kommen acht Ausgaben dazu: Jahrgänge 1970, 1974, 1978, 1980 und 1996, 1999, 2003, 2006.
+
+**Vor 1966 (Jahrgänge 1929–1951):** Dort gibt es nur „Kleinhandelspreise und Kleinhandelsindex“. Das sind Preise je Mengeneinheit für den Index, zum Beispiel 1949–1951 Milch und „Brot, weiß (Kleingebäck), Stk.“. Kinokarte und Benzin fehlen. Es ist ein anderes Konzept und eine andere Warenbeschreibung. Dazu kommen Währungswechsel: Reichsmark 1938–1945, Schilling ab Ende 1945. Nicht mit der Reihe ab 1966 verbinden.
+
 ### Noch nicht verwendet
 
-- https://www.digital.wienbibliothek.at/download/pdf/2283261.pdf: laut Websuche Tab. 18.03 mit Daten bis 1993. Würde ein Jahr ergänzen. Nicht geprüft.
-- **Ältere und neuere Ausgaben:** Nicht recherchiert, wie weit die Tabelle zurückreicht und ob sie nach den 1990ern weitergeführt wurde.
+- https://www.digital.wienbibliothek.at/download/pdf/2283261.pdf: Jahrgang 1993, Tab. 18.03 mit Daten bis 1993. Würde ein Jahr ergänzen.
 - **EU Weekly Oil Bulletin (Benzin österreichweit ab 2005):** https://energy.ec.europa.eu/document/download/906e60ca-8b6a-44e7-8589-652854d2fd3f_en?filename=Weekly_Oil_Bulletin_Prices_History_maticni_4web.xlsx. Nicht geprüft.
