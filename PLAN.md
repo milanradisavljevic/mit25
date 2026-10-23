@@ -20,7 +20,7 @@ Leitprinzip: Jede angezeigte Zahl ist belegt. Lieber eine sichtbare Lücke als e
 |---|---|
 | Datenaufbereitung | Python 3 (Skripte, reproduzierbar, lokal auf Fedora) |
 | Frontend | Eine statische Seite: HTML, CSS, Vanilla JavaScript (ohne Framework) |
-| Diagramme | Observable Plot oder Chart.js, per CDN eingebunden |
+| Diagramme | Eigenes SVG ohne Bibliothek (Entscheidung Phase 4, statt Observable Plot oder Chart.js): keine Abhängigkeit, Lücken exakt darstellbar |
 | Datenformat | Eine generierte Datei site/data.json |
 | Tests | pytest für die Datenpipeline |
 | Hosting | Beliebig statisch (z. B. GitHub Pages), später |
@@ -147,4 +147,4 @@ Siehe CLAUDE.md.
 - Fokus nur auf Österreich.
 - Stichalter 25 Jahre, Generationenabstand 30 Jahre als Standard.
 - Daten ab etwa 1950 werden für die Großeltern-Spalte benötigt; reicht eine Quelle nicht so weit zurück, wird das offen angezeigt.
-- Diagrammbibliothek wird in Phase 3 endgültig gewählt.
+- Diagrammbibliothek: entschieden in Phase 4, eigenes SVG (siehe Abschnitt 2).

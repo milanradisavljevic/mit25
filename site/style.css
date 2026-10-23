@@ -5,10 +5,16 @@
   --rule: #d5dbe0;
   --field: #ffffff;
   --error: #b3261e;
-  /* Farbe je Generation, auch für spätere Diagramme */
-  --grandparents: #8b5e34;
-  --parents: #2e7d6b;
-  --you: #3b4cc0;
+  /* Farbe je Generation, in Tabelle und Diagrammen. Mit dataviz-Validator geprüft
+     (Helligkeit, Chroma, Farbsehschwächen, Kontrast) gegen --paper. */
+  --grandparents: #b35a12;
+  --parents: #0b8a6f;
+  --you: #5148d4;
+  /* Datenlinien neutral, damit die Generationsfarben nur die Stichjahre tragen */
+  --line: #3d4955;
+  --line-2: #8a96a3;
+  --grid: #e1e6ea;
+  --empty: #e6eaed;
 
   --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
@@ -24,9 +30,13 @@
     --rule: #2c3641;
     --field: #1c242d;
     --error: #ff8a80;
-    --grandparents: #d9a066;
-    --parents: #5cc2a8;
-    --you: #8c9bff;
+    --grandparents: #d0782a;
+    --parents: #22a586;
+    --you: #7d78f5;
+    --line: #c3ccd5;
+    --line-2: #7b8794;
+    --grid: #232c36;
+    --empty: #1b232b;
   }
 }
 
@@ -197,6 +207,80 @@ summary { color: var(--muted); font-size: 0.8125rem; cursor: pointer; }
 .source a { color: inherit; overflow-wrap: anywhere; }
 
 .load-error { color: var(--error); }
+
+/* Diagramme */
+.charts-section { margin-top: 3.5rem; }
+
+h2 { margin: 0; font: 600 1.75rem/1.2 var(--serif); }
+
+.charts-intro { max-width: 40rem; margin: 0.5rem 0 1.5rem; color: var(--muted); }
+
+.charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 26rem), 1fr));
+  gap: 2.5rem 2rem;
+}
+
+.chart { min-width: 0; }
+.chart h3 { margin: 0; font-size: 1rem; }
+.chart-unit { margin: 0 0 0.25rem; color: var(--muted); font-size: 0.8125rem; }
+.chart-legend { display: flex; gap: 1rem; margin: 0 0 0.25rem; color: var(--muted); font-size: 0.8125rem; }
+.chart-legend > span { display: inline-flex; align-items: center; gap: 0.375rem; }
+
+.chart-plot { position: relative; }
+.chart-svg { display: block; overflow: visible; }
+.chart-svg:focus-visible { outline-offset: 4px; }
+
+.chart-svg text { font: 11px/1 var(--sans); fill: var(--muted); }
+.chart-svg .ref-label { font-size: 12px; fill: var(--ink); }
+.chart-svg .end-label { font-size: 12px; fill: var(--ink); }
+.chart-svg .empty-label { font-style: italic; }
+
+.grid { stroke: var(--grid); stroke-width: 1; }
+.axis { stroke: var(--muted); stroke-width: 1; }
+.empty { fill: var(--empty); }
+
+.line { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.line.series-0 { stroke: var(--line); }
+.line.series-1 { stroke: var(--line-2); }
+.point { stroke: var(--paper); stroke-width: 2; }
+.point.series-0 { fill: var(--line); }
+.point.series-1 { fill: var(--line-2); }
+
+.ref { stroke-width: 1.5; }
+.ref-grandparents { stroke: var(--grandparents); fill: var(--grandparents); }
+.ref-parents { stroke: var(--parents); fill: var(--parents); }
+.ref-you { stroke: var(--you); fill: var(--you); }
+.ref-dot { stroke: none; }
+.hit { stroke: var(--paper); stroke-width: 2; }
+
+.crosshair { stroke: var(--muted); stroke-width: 1; }
+.overlay { fill: transparent; cursor: crosshair; }
+
+.tooltip {
+  position: absolute;
+  z-index: 1;
+  min-width: 7rem;
+  padding: 0.5rem 0.625rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--field);
+  font-size: 0.8125rem;
+  pointer-events: none;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.tooltip-year { color: var(--muted); margin-bottom: 0.125rem; }
+.tooltip-row { display: flex; align-items: center; gap: 0.375rem; }
+
+.key { display: inline-block; width: 14px; height: 2px; border-radius: 1px; }
+.key-0 { background: var(--line); }
+.key-1 { background: var(--line-2); }
+
+.chart-table { margin-top: 0.5rem; }
+.chart-table table { margin-top: 0.5rem; border-collapse: collapse; font-size: 0.8125rem; font-variant-numeric: lining-nums tabular-nums; }
+.chart-table th, .chart-table td { padding: 0.125rem 1rem 0.125rem 0; text-align: left; }
+.chart-table thead th { color: var(--muted); font-weight: 600; }
+.chart-table tbody th { font-weight: 400; color: var(--muted); }
 
 footer {
   padding-bottom: 3rem;

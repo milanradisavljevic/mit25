@@ -23,6 +23,9 @@ Statische Webseite: Geburtsjahr eingeben, sehen wie Österreich aussah, als man 
 
 - `site/logic.js`: reine Logik ohne DOM (Stichjahre, Wertauswahl, Lücken, Format). Getestet.
 - `site/app.js`: DOM-Aufbau; `site/style.css`: Farbtoken je Generation (`--grandparents`, `--parents`, `--you`), Hell/Dunkel.
+- `site/chart.js`: SVG-Liniendiagramme ohne Bibliothek (Stichjahr-Markierungen, Tooltip, Tastatur, Wertetabelle); `site/chart-logic.js`: Achsen, Linienabschnitte, Leerbereiche. Getestet.
+- Diagrammregeln: Linien enden an Lücken (nie verbinden), X-Achse reicht bis zu allen Stichjahren, Bereiche ohne Daten grau. Generationsfarben nur für Stichjahre, Datenlinien neutral.
+- Farbänderungen an Generationstoken mit dem dataviz-Validator prüfen (hell gegen `#f4f6f7`, dunkel gegen `#141a21`).
 - Wahl: nächste innerhalb ±3 Jahre, bei Gleichstand die frühere.
 - Zustände je Zelle: ok, future (noch nicht erreicht), pending (Jahr erreicht, Daten noch nicht veröffentlicht), missing.
 

@@ -6,6 +6,7 @@ import {
   resolveBirthYears,
   valueFor,
 } from "./logic.js";
+import { renderCharts } from "./chart.js";
 
 const CURRENT_YEAR = new Date().getFullYear();
 const GROUP_LABELS = { life_expectancy_birth: "Lebenserwartung bei Geburt" };
@@ -167,9 +168,16 @@ function render(data, { quiet = false } = {}) {
   if (quiet && input.you.length < 4) return;
   showErrors(errors);
   if (!years) return;
+  const rows = displayRows(data.indicators, GROUP_LABELS);
   renderHead(years);
-  renderBody(displayRows(data.indicators, GROUP_LABELS), years);
+  renderBody(rows, years);
   $("result").hidden = false;
+  const generations = GENERATIONS.map((g) => {
+    const refYear = referenceYear(years[g.key].birthYear);
+    const results = Object.fromEntries(data.indicators.map((i) => [i.id, valueFor(i, refYear, CURRENT_YEAR)]));
+    return { key: g.key, label: g.label, refYear, results };
+  });
+  renderCharts($("charts"), rows, generations);
   updateUrl(input);
 }
 
