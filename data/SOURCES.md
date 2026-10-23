@@ -159,3 +159,28 @@ Eigenschaften der Quelle:
 3. **Methodenbrüche** müssen im Frontend erwähnt werden: gerundete Werte vor 2004, Erweiterung der Sterbe- und Geburtenzählung 2009/2015, Basiswechsel im VPI (verkettet, unkritisch). Bei der Wahlbeteiligung sind Änderungen von Wahlalter und Wahlpflicht in einzelnen Ländern **zu prüfen**, nicht aus dem Gedächtnis eintragen.
 4. **VPI-Umrechnung in Euro** (Phase 5): Für Schilling-Preise ist zusätzlich der fixe Umrechnungskurs ATS/EUR nötig. Dafür braucht es eine Quelle in SOURCES.md.
 5. **AK-Reihe nach 2009:** Die AK hat das Heft auch für spätere Jahre herausgegeben. Ob es eine neuere Ausgabe mit derselben Tabelle gibt, ist nicht geprüft.
+
+## Alltagspreise (Phase 5, Recherche 2026-10-23, noch keine Daten übernommen)
+
+Bei Statistik Austria gibt es keine aktuelle Tabelle mit Durchschnittspreisen einzelner Produkte, nur Indizes.
+
+**Kandidat 1: Statistisches Jahrbuch der Stadt Wien, Kapitel „Preise, Lebenshaltung und Löhne“**
+- **Tabelle:** „Durchschnittspreise ausgewählter Waren und Dienstleistungen“, Jahresdurchschnitte in Schilling. Laut Fußnote „Angaben des Österreichischen Statistischen Zentralamtes aufgrund der Meldungen für die Preisstatistik (Wiener Preise)“.
+- **Digitalisate (Wienbibliothek, Scans mit OCR):**
+  - https://www.digital.wienbibliothek.at/download/pdf/2277171.pdf: Jahrbuch-Auszug, Tab. 18.03, Jahresdurchschnitte 1988–1991 und Monatswerte 1992, gedruckte Seiten 328–329. Visuell geprüft.
+  - https://www.digital.wienbibliothek.at/download/pdf/2266115.pdf: laut Websuche Tab. 19.02, etwa 1980–1983. Nicht geprüft.
+  - https://www.digital.wienbibliothek.at/download/pdf/2276793.pdf: laut Websuche Tab. 19.05, etwa 1984–1987. Nicht geprüft.
+  - https://www.digital.wienbibliothek.at/download/pdf/2283261.pdf: laut Websuche Tab. 18.03, etwa 1989–1992. Nicht geprüft.
+- **Enthaltene Positionen:** Semmel (Stück, maschingeformt), Vollmilch (1 l, abgepackt), Kinokarte (Stück), Benzin (normal, bleifrei, Liter), Extrawurst (fein, 100 g) und weitere.
+- **Keine Wurstsemmel.** Eine Wurstsemmel aus Semmel und Extrawurst zusammenzurechnen wäre eine Konstruktion, also nicht zulässig.
+- **Einschränkungen:**
+  - Es sind nur Wiener Preise.
+  - Jede Ausgabe deckt nur wenige Jahre ab, also braucht es viele Ausgaben.
+  - Die Texterkennung der Scans ist fehlerhaft. Jede Zahl muss am Bild geprüft werden.
+  - Die Produktdefinitionen ändern sich über die Zeit, etwa Benzin verbleit gegenüber bleifrei.
+- **Offen:** Wie weit die Reihe zurückreicht und ob es sie nach den 1990ern noch gibt.
+
+**Kandidat 2: Benzin österreichweit, EU Weekly Oil Bulletin (Europäische Kommission)**
+- **Datei:** historische Datei `Weekly_Oil_Bulletin_Prices_History_maticni_4web.xlsx`, laut Newsletter ab 2005.
+- **Link:** https://energy.ec.europa.eu/document/download/906e60ca-8b6a-44e7-8589-652854d2fd3f_en?filename=Weekly_Oil_Bulletin_Prices_History_maticni_4web.xlsx
+- **Nicht geprüft:** Inhalt und ob es eine Spalte für Österreich mit Euro-Super 95 gibt.
