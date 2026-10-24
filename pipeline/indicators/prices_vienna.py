@@ -11,7 +11,7 @@ Regeln für die Reihe (Entscheidung 2026-10-24):
 - Stehen für ein Jahr mehrere Werte in derselben Währung, gilt der neueste Jahrgang
   (die Quelle revidiert Vorjahre). Abweichungen sind in KNOWN_REVISIONS aufgeführt;
   jede weitere Abweichung bricht den Build ab.
-- Umrechnungskurs belegt in data/raw/ak_wien_bruttoeinkommen_arbeiter_angestellte_2009.pdf, S. 2.
+- Umrechnungskurs belegt durch die EZB (data/raw/ezb_euro_umrechnungskurse.html).
 """
 
 import csv
@@ -116,7 +116,7 @@ def build():
                 label,
                 "Euro",
                 f"{description} in Wien, Jahresdurchschnitt",
-                keys + ["ak_einkommen_2009"],
+                keys + ["ezb_umrechnungskurse"],
                 to_series(eur.items()),
                 notes=notes + revision_notes + GENERAL_NOTES,
                 series_ats={str(y): v for y, v in ats.items()},

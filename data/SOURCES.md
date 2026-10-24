@@ -167,7 +167,7 @@ Eigenschaften der Quelle:
    - Die Annahme „Daten ab etwa 1950“ im Plan reicht also nicht für Geburtsjahre vor ~1985.
 2. **Fertilität 1951–1960** (zurückgestellt): Kandidat ist die Human Fertility Database (humanfertility.org). Download nur nach kostenloser Registrierung, also manuell. Noch nicht geprüft.
 3. **Methodenbrüche** müssen im Frontend erwähnt werden: gerundete Werte vor 2004, Erweiterung der Sterbe- und Geburtenzählung 2009/2015, Basiswechsel im VPI (verkettet, unkritisch). Wahlalter und Wahlpflicht: erledigt (2026-10-24), siehe Abschnitt BMI.
-4. **Umrechnung Schilling in Euro:** erledigt. Kurs 13,7603 laut AK-Heft (siehe Alltagspreise). Eine amtliche Primärquelle, etwa die EU-Verordnung zum Umrechnungskurs, ist nicht als Datei abgelegt.
+4. **Umrechnung Schilling in Euro:** erledigt. Kurs 13,7603, belegt durch die EZB (`ezb_euro_umrechnungskurse.html`, https://www.ecb.europa.eu/euro/intro/html/index.de.html, Abruf 2026-10-24). EUR-Lex (Verordnung 2866/98) liefert für automatisierte Abrufe keinen Inhalt (HTTP 202).
 5. **AK-Reihe nach 2009:** Die AK hat das Heft auch für spätere Jahre herausgegeben. Ob es eine neuere Ausgabe mit derselben Tabelle gibt, ist nicht geprüft.
 
 ## Alltagspreise Wien 1966–2005 (Phase 5)
@@ -209,7 +209,7 @@ URL jeweils `https://www.digital.wienbibliothek.at/download/pdf/<ID>.pdf`. Abruf
   - **Benzin 1987:** bleifrei laut Fußnote, markiert.
   - **Ohne Markierung, nur als Hinweis:** Die Bezeichnung der Semmel wechselt zwischen den Jahrgängen 1974 und 1979 von „Stück“ zu „Stück, maschingeformt“. Für 1979 kommen laut Jahrgang 1979 neue Geschäftstypen (Diskontläden) dazu, Vergleiche mit den Vorjahren sind nur eingeschränkt möglich. Ab 1987 laut Quelle wegen geänderter Warenbeschreibungen ebenso.
 - **Keine Wurstsemmel:** Die Quelle führt Semmel und Extrawurst nur einzeln. Zusammenrechnen wäre eine Konstruktion.
-- **Euro-Kurs:** 13,7603 Schilling je Euro, belegt in `ak_wien_bruttoeinkommen_arbeiter_angestellte_2009.pdf`, S. 2 („1 EURO = ÖS 13,7603“).
+- **Euro-Kurs:** 13,7603 Schilling je Euro. Primärquelle: EZB, `ezb_euro_umrechnungskurse.html`. Bestätigt durch das AK-Heft, S. 2 („1 EURO = ÖS 13,7603“).
 - **Kaufkraft:** Das Frontend rechnet in Preise von 2025 um (VPI), wie beim Einkommen.
 - **Grenzen:** nur Wien. Ende 2005 (Feld `ended`, Hinweis „Tabelle erscheint nach 2005 nicht mehr“). Vor 1966 keine vergleichbare Reihe (siehe unten).
 

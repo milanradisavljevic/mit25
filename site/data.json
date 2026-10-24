@@ -681,7 +681,7 @@
       "label": "Semmel (Wien)",
       "unit": "Euro",
       "description": "Preis einer Semmel (Stück) in Wien, Jahresdurchschnitt",
-      "source": "Statistisches Jahrbuch der Stadt Wien 1970, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1974, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1979, Tab. 18.07, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1984, Tab. 19.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1988, Tab. 19.05, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1992, Tab. 18.03, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1996, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1999, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2003, Tab. 18.2, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2006, Tab. 17.3, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
+      "source": "Statistisches Jahrbuch der Stadt Wien 1970, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1974, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1979, Tab. 18.07, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1984, Tab. 19.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1988, Tab. 19.05, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1992, Tab. 18.03, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1996, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1999, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2003, Tab. 18.2, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2006, Tab. 17.3, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Europäische Zentralbank, unwiderruflich festgelegte Euro-Umrechnungskurse (1 EUR = 13,7603 ATS)",
       "source_url": "https://www.digital.wienbibliothek.at/download/pdf/2263179.pdf",
       "sources": [
         {
@@ -725,8 +725,8 @@
           "url": "https://www.digital.wienbibliothek.at/download/pdf/2221944.pdf"
         },
         {
-          "label": "AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
-          "url": "https://www.arbeiterkammer.at/infopool/akportal/Studie_Einkommen_2009.pdf"
+          "label": "Europäische Zentralbank, unwiderruflich festgelegte Euro-Umrechnungskurse (1 EUR = 13,7603 ATS)",
+          "url": "https://www.ecb.europa.eu/euro/intro/html/index.de.html"
         }
       ],
       "retrieved": "2026-10-24",
@@ -825,7 +825,7 @@
       "label": "Vollmilch (Wien)",
       "unit": "Euro",
       "description": "Preis für 1 Liter Vollmilch in Wien, Jahresdurchschnitt",
-      "source": "Statistisches Jahrbuch der Stadt Wien 1970, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1974, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1979, Tab. 18.07, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1984, Tab. 19.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1988, Tab. 19.05, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1992, Tab. 18.03, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1996, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1999, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2003, Tab. 18.2, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2006, Tab. 17.3, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
+      "source": "Statistisches Jahrbuch der Stadt Wien 1970, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1974, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1979, Tab. 18.07, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1984, Tab. 19.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1988, Tab. 19.05, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1992, Tab. 18.03, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1996, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1999, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2003, Tab. 18.2, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2006, Tab. 17.3, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Europäische Zentralbank, unwiderruflich festgelegte Euro-Umrechnungskurse (1 EUR = 13,7603 ATS)",
       "source_url": "https://www.digital.wienbibliothek.at/download/pdf/2263179.pdf",
       "sources": [
         {
@@ -869,8 +869,8 @@
           "url": "https://www.digital.wienbibliothek.at/download/pdf/2221944.pdf"
         },
         {
-          "label": "AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
-          "url": "https://www.arbeiterkammer.at/infopool/akportal/Studie_Einkommen_2009.pdf"
+          "label": "Europäische Zentralbank, unwiderruflich festgelegte Euro-Umrechnungskurse (1 EUR = 13,7603 ATS)",
+          "url": "https://www.ecb.europa.eu/euro/intro/html/index.de.html"
         }
       ],
       "retrieved": "2026-10-24",
@@ -976,7 +976,7 @@
       "label": "Kinokarte (Wien)",
       "unit": "Euro",
       "description": "Preis einer Kinokarte in Wien, Jahresdurchschnitt",
-      "source": "Statistisches Jahrbuch der Stadt Wien 1970, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1974, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1979, Tab. 18.07, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1984, Tab. 19.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1988, Tab. 19.05, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1992, Tab. 18.03, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1996, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1999, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2003, Tab. 18.2, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2006, Tab. 17.3, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
+      "source": "Statistisches Jahrbuch der Stadt Wien 1970, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1974, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1979, Tab. 18.07, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1984, Tab. 19.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1988, Tab. 19.05, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1992, Tab. 18.03, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1996, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1999, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2003, Tab. 18.2, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2006, Tab. 17.3, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Europäische Zentralbank, unwiderruflich festgelegte Euro-Umrechnungskurse (1 EUR = 13,7603 ATS)",
       "source_url": "https://www.digital.wienbibliothek.at/download/pdf/2263179.pdf",
       "sources": [
         {
@@ -1020,8 +1020,8 @@
           "url": "https://www.digital.wienbibliothek.at/download/pdf/2221944.pdf"
         },
         {
-          "label": "AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
-          "url": "https://www.arbeiterkammer.at/infopool/akportal/Studie_Einkommen_2009.pdf"
+          "label": "Europäische Zentralbank, unwiderruflich festgelegte Euro-Umrechnungskurse (1 EUR = 13,7603 ATS)",
+          "url": "https://www.ecb.europa.eu/euro/intro/html/index.de.html"
         }
       ],
       "retrieved": "2026-10-24",
@@ -1119,7 +1119,7 @@
       "label": "Benzin Normal (Wien)",
       "unit": "Euro",
       "description": "Preis für 1 Liter Normalbenzin in Wien, Jahresdurchschnitt",
-      "source": "Statistisches Jahrbuch der Stadt Wien 1970, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1974, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1979, Tab. 18.07, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1984, Tab. 19.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1988, Tab. 19.05, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1992, Tab. 18.03, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1996, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1999, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2003, Tab. 18.2, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2006, Tab. 17.3, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
+      "source": "Statistisches Jahrbuch der Stadt Wien 1970, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1974, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1979, Tab. 18.07, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1984, Tab. 19.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1988, Tab. 19.05, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1992, Tab. 18.03, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1996, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1999, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2003, Tab. 18.2, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2006, Tab. 17.3, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Europäische Zentralbank, unwiderruflich festgelegte Euro-Umrechnungskurse (1 EUR = 13,7603 ATS)",
       "source_url": "https://www.digital.wienbibliothek.at/download/pdf/2263179.pdf",
       "sources": [
         {
@@ -1163,8 +1163,8 @@
           "url": "https://www.digital.wienbibliothek.at/download/pdf/2221944.pdf"
         },
         {
-          "label": "AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
-          "url": "https://www.arbeiterkammer.at/infopool/akportal/Studie_Einkommen_2009.pdf"
+          "label": "Europäische Zentralbank, unwiderruflich festgelegte Euro-Umrechnungskurse (1 EUR = 13,7603 ATS)",
+          "url": "https://www.ecb.europa.eu/euro/intro/html/index.de.html"
         }
       ],
       "retrieved": "2026-10-24",
@@ -1269,7 +1269,7 @@
       "label": "Stundenlohn Industriearbeiter (Wien)",
       "unit": "Euro pro Stunde",
       "description": "Durchschnittlicher Brutto-Stundenverdienst der Industriearbeiter in Wien, einschließlich Akkorde und Prämien",
-      "source": "Statistisches Jahrbuch der Stadt Wien 1992, Tab. 18.03, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1996, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1999, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2003, Tab. 18.2, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2006, Tab. 17.3, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
+      "source": "Statistisches Jahrbuch der Stadt Wien 1992, Tab. 18.03, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1996, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1999, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2003, Tab. 18.2, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2006, Tab. 17.3, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Europäische Zentralbank, unwiderruflich festgelegte Euro-Umrechnungskurse (1 EUR = 13,7603 ATS)",
       "source_url": "https://www.digital.wienbibliothek.at/download/pdf/2277171.pdf",
       "sources": [
         {
@@ -1293,8 +1293,8 @@
           "url": "https://www.digital.wienbibliothek.at/download/pdf/2221944.pdf"
         },
         {
-          "label": "AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
-          "url": "https://www.arbeiterkammer.at/infopool/akportal/Studie_Einkommen_2009.pdf"
+          "label": "Europäische Zentralbank, unwiderruflich festgelegte Euro-Umrechnungskurse (1 EUR = 13,7603 ATS)",
+          "url": "https://www.ecb.europa.eu/euro/intro/html/index.de.html"
         }
       ],
       "retrieved": "2026-10-24",

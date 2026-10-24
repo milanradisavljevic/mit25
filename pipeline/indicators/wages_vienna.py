@@ -24,7 +24,7 @@ SOURCES_USED = [
     "wien_preise_jb1999",
     "wien_preise_jb2003",
     "wien_preise_jb2006",
-    "ak_einkommen_2009",
+    "ezb_umrechnungskurse",
 ]
 
 

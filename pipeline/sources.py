@@ -115,6 +115,12 @@ SOURCES = {
         "2026-10-24",
         "Statistik Austria, Mikrozensus Wohnen: Durchschnittliche Miete inkl. Betriebskosten von Hauptmietwohnungen (Zeitreihe)",
     ),
+    "ezb_umrechnungskurse": Source(
+        "ezb_euro_umrechnungskurse.html",
+        "https://www.ecb.europa.eu/euro/intro/html/index.de.html",
+        "2026-10-24",
+        "Europäische Zentralbank, unwiderruflich festgelegte Euro-Umrechnungskurse (1 EUR = 13,7603 ATS)",
+    ),
     "parlament_wahlsystem": Source(
         "parlament_news_2024-09-12_wahlsystem_entwicklung.html",
         "https://www.parlament.gv.at/aktuelles/news/Wie-sich-das-oesterreichische-Wahlsystem-entwickelte/",
