@@ -776,6 +776,7 @@
       "deflate": "cpi",
       "ended": true,
       "ended_note": "Tabelle erscheint nach 2005 nicht mehr",
+      "work_minutes": "wage_industry_vienna",
       "series": {
         "1966": 0.04505715718407302,
         "1967": 0.04723734220910881,
@@ -920,6 +921,7 @@
       "deflate": "cpi",
       "ended": true,
       "ended_note": "Tabelle erscheint nach 2005 nicht mehr",
+      "work_minutes": "wage_industry_vienna",
       "breaks": [
         {
           "year": 1974,
@@ -1068,6 +1070,7 @@
       "deflate": "cpi",
       "ended": true,
       "ended_note": "Tabelle erscheint nach 2005 nicht mehr",
+      "work_minutes": "wage_industry_vienna",
       "series": {
         "1966": 0.8473652463972442,
         "1967": 0.9091371554399249,
@@ -1211,6 +1214,7 @@
       "deflate": "cpi",
       "ended": true,
       "ended_note": "Tabelle erscheint nach 2005 nicht mehr",
+      "work_minutes": "wage_industry_vienna",
       "breaks": [
         {
           "year": 1987,
@@ -1258,6 +1262,93 @@
         "2003": 0.87,
         "2004": 0.93,
         "2005": 1.02
+      }
+    },
+    {
+      "id": "wage_industry_vienna",
+      "label": "Stundenlohn Industriearbeiter (Wien)",
+      "unit": "Euro pro Stunde",
+      "description": "Durchschnittlicher Brutto-Stundenverdienst der Industriearbeiter in Wien, einschließlich Akkorde und Prämien",
+      "source": "Statistisches Jahrbuch der Stadt Wien 1992, Tab. 18.03, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1996, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1999, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2003, Tab. 18.2, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2006, Tab. 17.3, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
+      "source_url": "https://www.digital.wienbibliothek.at/download/pdf/2277171.pdf",
+      "sources": [
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1992, Tab. 18.03, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2277171.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1996, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2283729.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1999, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2283911.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 2003, Tab. 18.2, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2284088.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 2006, Tab. 17.3, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2221944.pdf"
+        },
+        {
+          "label": "AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
+          "url": "https://www.arbeiterkammer.at/infopool/akportal/Studie_Einkommen_2009.pdf"
+        }
+      ],
+      "retrieved": "2026-10-24",
+      "notes": [
+        "Erhebung der Bundes- bzw. Wirtschaftskammer, jeweils im September; veröffentlicht im Statistischen Jahrbuch der Stadt Wien.",
+        "Nur Industriearbeiter: nicht repräsentativ für alle Beschäftigten (Angestellte, Handel, Dienstleistungen fehlen).",
+        "Brutto, vor Steuern und Sozialversicherung.",
+        "Ab 2004 laut Quelle ohne Elektroindustrie.",
+        "Bis 1999 in Schilling erhoben und mit 13,7603 Schilling je Euro umgerechnet."
+      ],
+      "series_ats": {
+        "1987": 84.44,
+        "1988": 88.98,
+        "1989": 90.35,
+        "1990": 95.37,
+        "1991": 102.8,
+        "1992": 108.61,
+        "1993": 115.41,
+        "1994": 119.13,
+        "1995": 122.37,
+        "1996": 126.04,
+        "1997": 128.35,
+        "1998": 130.63,
+        "1999": 134.55
+      },
+      "breaks": [
+        {
+          "year": 2004,
+          "before": ""
+        }
+      ],
+      "deflate": "cpi",
+      "ended": true,
+      "ended_note": "nur 1987 bis 2005 erfasst",
+      "series": {
+        "1987": 6.136494117134074,
+        "1988": 6.466428784256157,
+        "1989": 6.565990567066124,
+        "1990": 6.9308081945887805,
+        "1991": 7.470767352455978,
+        "1992": 7.892996518971243,
+        "1993": 8.387171791312689,
+        "1994": 8.657514734417127,
+        "1995": 8.892974717120993,
+        "1996": 9.159684018517037,
+        "1997": 9.327558265444793,
+        "1998": 9.493252327347513,
+        "1999": 9.778129837285524,
+        "2000": 10.05,
+        "2001": 10.33,
+        "2002": 10.56,
+        "2003": 10.82,
+        "2004": 11.01,
+        "2005": 11.28
       }
     },
     {

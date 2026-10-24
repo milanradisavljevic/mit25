@@ -14,6 +14,7 @@ import {
   schillingNote,
   valueFor,
   withPriceAdjusted,
+  withWorkMinutes,
 } from "../site/logic.js";
 
 const NOW = 2026;
@@ -163,6 +164,24 @@ test("Alltagspreise: Euro-Reihe, Schillingwert als Hinweis nur in der nominalen 
   assert.equal(schillingNote(real, 1980), null);
   assert.equal(adjusted.price_benzin_real.breaks[0].year, 1987);
   assert.equal(adjusted.price_semmel_real.ended_note, "Tabelle erscheint nach 2005 nicht mehr");
+});
+
+test("Arbeitsminuten: Preis / (Stundenlohn / 60), nur Jahre mit beiden Werten, Zeile hinter der Preisgruppe", () => {
+  const all = withWorkMinutes(withPriceAdjusted(data.indicators));
+  const ids = all.map((i) => i.id);
+  const at = ids.indexOf("price_semmel_minutes");
+  assert.equal(ids[at - 1], "price_semmel_real");
+  const m = all[at];
+  // 1987: 1,90 S Semmel / (84,44 S Lohn / 60) – Umrechnungskurs kürzt sich weg
+  assert.ok(Math.abs(m.series["1987"] - (1.90 / 84.44) * 60) < 1e-9);
+  assert.equal(Object.keys(m.series)[0], "1987");
+  assert.equal(Object.keys(m.series).at(-1), "2005");
+  assert.deepEqual(m.breaks.map((b) => b.year), [2004]);
+  assert.deepEqual(all.find((i) => i.id === "price_benzin_minutes").breaks.map((b) => b.year), [2004]);
+  assert.deepEqual(all.find((i) => i.id === "price_vollmilch_minutes").breaks.map((b) => b.year), [2004]);
+  assert.equal(formatWithUnit(m.series["1987"], m), "1,4 Min.");
+  const rows = displayRows(all);
+  assert.equal(rows.find((r) => r.id === "price_semmel_minutes").members.length, 1);
 });
 
 test("Stichproben gegen data.json", () => {

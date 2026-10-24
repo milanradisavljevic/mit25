@@ -30,6 +30,7 @@ Statische Webseite: Geburtsjahr eingeben, sehen wie Österreich aussah, als man 
 - Kaufkraft: Indikatoren mit `deflate: "cpi"` bekommen im Frontend (`withPriceAdjusted`) eine zweite Reihe in Preisen des letzten VPI-Jahres. data.json bleibt nominal.
 - Methodenbruch: Feld `breaks: [{year, before}]` trennt die Linie im Diagramm und kennzeichnet Werte davor in der Tabelle. Feld `ended: true`: eingestellte Reihe, nach dem letzten Jahr Lücke statt "aktuellster Wert".
 - Alltagspreise: Reihe in Euro (Schilling ÷ 13,7603), Schillingwert in `series_ats`, im Frontend als "damals … S" (`schillingNote`). Bei abweichenden Jahrgängen gilt der neueste; bekannte Abweichungen in `KNOWN_REVISIONS` (pipeline/indicators/prices_vienna.py), jede neue bricht den Build ab. `ended_note` ersetzt den Text "Reihe endet".
+- Arbeitsminuten: Preise mit `work_minutes: <Lohn-ID>` bekommen im Frontend (`withWorkMinutes`) eine eigene Zeile Preis / (Stundenlohn / 60). Breaks mit leerem `before` werden nur im Diagramm markiert.
 - Zahlenformat `de-DE` (Punkt als Tausendertrenner), weil `de-AT` in CLDR Leerzeichen nutzt.
 - Zustände je Zelle: ok, future (noch nicht erreicht), pending (Jahr erreicht, Daten noch nicht veröffentlicht), missing.
 

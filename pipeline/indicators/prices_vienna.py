@@ -123,6 +123,7 @@ def build():
                 deflate="cpi",
                 ended=True,
                 ended_note="Tabelle erscheint nach 2005 nicht mehr",
+                work_minutes="wage_industry_vienna",
                 **extra,
             )
         )

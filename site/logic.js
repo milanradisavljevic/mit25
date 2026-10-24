@@ -25,6 +25,12 @@ const DECIMALS = {
   income_monthly_arbeiter_real: 0,
   income_monthly_angestellte: 0,
   income_monthly_angestellte_real: 0,
+  wage_industry_vienna: 2,
+  wage_industry_vienna_real: 2,
+  price_semmel_minutes: 1,
+  price_vollmilch_minutes: 1,
+  price_kinokarte_minutes: 0,
+  price_benzin_minutes: 1,
   rent_avg: 0,
   rent_avg_real: 0,
   price_semmel: 2,
@@ -37,12 +43,14 @@ const DECIMALS = {
   price_benzin_real: 2,
 };
 
-const UNIT_SUFFIX = { Jahre: "Jahre", "%": "%", Euro: "€", "Euro pro Monat": "€" };
+const UNIT_SUFFIX = { Jahre: "Jahre", "%": "%", Euro: "€", "Euro pro Monat": "€", "Euro pro Stunde": "€", Minuten: "Min." };
 
 /** Hinweis für einen Wert, der vor einem Methodenbruch liegt (Feld `breaks`), sonst null. */
 export function breakNote(indicator, year) {
   const brk = (indicator.breaks ?? []).find((b) => year < b.year);
-  return brk ? brk.before : null;
+  // Erster Bruch nach dem Jahr mit Hinweistext; leerer Text = nur im Diagramm markieren
+  const labelled = (indicator.breaks ?? []).find((b) => year < b.year && b.before);
+  return brk && labelled ? labelled.before : null;
 }
 
 /**
@@ -207,6 +215,61 @@ export function schillingNote(indicator, year) {
   const value = indicator.series_ats?.[String(year)];
   if (value == null) return null;
   return `${new Intl.NumberFormat(NUMBER_LOCALE, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value)} S`;
+}
+
+/**
+ * Ergänzt Preise mit `work_minutes: <Lohn-ID>` um eine Reihe „Arbeitszeit“ in Minuten:
+ * Preis / (Stundenlohn / 60), nur für Jahre mit beiden Werten (beide in Euro, nominal).
+ * Die neue Reihe steht direkt hinter der Gruppe ihres Preises, als eigene Zeile.
+ */
+export function withWorkMinutes(indicators) {
+  const byId = Object.fromEntries(indicators.map((i) => [i.id, i]));
+  const extra = new Map();
+  for (const price of indicators) {
+    const wage = byId[price.work_minutes];
+    if (!wage || price.derived) continue; // nur die nominale Reihe, nicht die Kaufkraftreihe
+    const series = {};
+    for (const year of Object.keys(price.series)) {
+      const p = price.series[year];
+      const w = wage.series[year];
+      if (p != null && w != null) series[year] = (p / w) * 60;
+    }
+    const years = Object.keys(series).map(Number);
+    const first = Math.min(...years);
+    const breaks = [...(price.breaks ?? []), ...(wage.breaks ?? [])]
+      .filter((b) => b.year > first) // Brüche vor Reihenbeginn betreffen diese Reihe nicht
+      .sort((a, b) => a.year - b.year);
+    extra.set(price.group ?? price.id, {
+      id: `${price.id}_minutes`,
+      label: `${price.label.replace(/ \(Wien\)$/, "")}: Arbeitszeit`,
+      unit: "Minuten",
+      description: `Wie lange ein Industriearbeiter in Wien brutto arbeiten musste, um sich das leisten zu können (Preis geteilt durch Stundenlohn)`,
+      source: `${price.source}; ${wage.source}`,
+      source_url: price.source_url,
+      sources: [...new Map([...price.sources, ...wage.sources].map((s) => [s.url, s])).values()],
+      retrieved: [price.retrieved, wage.retrieved].sort().at(-1),
+      notes: [
+        "Arbeitsminuten = Preis / (Stundenlohn / 60); beides Wiener Werte desselben Jahres.",
+        "Stundenlohn der Industriearbeiter (brutto, September): liegt eher über dem Durchschnitt aller Beschäftigten, die Minuten fallen also eher zu niedrig aus.",
+        "Preis im Jahresdurchschnitt, Lohn im September.",
+        ...wage.notes.filter((n) => n.startsWith("Ab 2004")),
+      ],
+      breaks,
+      ended: true,
+      ended_note: "nur 1987 bis 2005 erfasst",
+      derived: true,
+      series,
+    });
+  }
+  if (!extra.size) return indicators;
+  const result = [];
+  indicators.forEach((indicator, i) => {
+    result.push(indicator);
+    const key = indicator.group ?? indicator.id;
+    const next = indicators[i + 1];
+    if (extra.has(key) && (next?.group ?? next?.id) !== key) result.push(extra.get(key));
+  });
+  return result;
 }
 
 /**

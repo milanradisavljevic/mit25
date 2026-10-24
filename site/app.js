@@ -10,6 +10,7 @@ import {
   unitSuffix,
   valueFor,
   withPriceAdjusted,
+  withWorkMinutes,
 } from "./logic.js";
 import { renderCharts } from "./chart.js";
 
@@ -202,7 +203,7 @@ async function main() {
     const response = await fetch("data.json", { cache: "no-cache" });
     if (!response.ok) throw new Error(response.statusText);
     data = await response.json();
-    data.indicators = withPriceAdjusted(data.indicators);
+    data.indicators = withWorkMinutes(withPriceAdjusted(data.indicators));
   } catch {
     $("load-error").hidden = false;
     return;

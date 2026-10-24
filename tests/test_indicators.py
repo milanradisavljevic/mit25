@@ -28,6 +28,7 @@ MVP_IDS = {
     "price_benzin",
     "rent_share_income",
     "rent_avg",
+    "wage_industry_vienna",
 }
 
 # Plausibilitätsgrenzen je Indikator (min, max)
@@ -48,6 +49,7 @@ BOUNDS = {
     "price_benzin": (0.1, 3),
     "rent_share_income": (5, 50),
     "rent_avg": (100, 2000),
+    "wage_industry_vienna": (3, 30),
 }
 
 # Erwartete Abdeckung (erstes, letztes Jahr) laut data/SOURCES.md
@@ -68,6 +70,7 @@ COVERAGE = {
     "price_benzin": ("1966", "2005"),
     "rent_share_income": ("2003", "2025"),
     "rent_avg": ("2005", "2025"),
+    "wage_industry_vienna": ("1987", "2005"),
 }
 
 
@@ -407,3 +410,29 @@ def test_eurostat_flags_known():
 
     flags = {y: f for y, (_, f) in eurostat_share().items() if f}
     assert flags == {2008: "b"}
+
+
+def test_wage_editions_agree_and_euro_matches_schilling():
+    from indicators.wages_vienna import by_unit
+
+    values = by_unit()
+    # Überlappungen in derselben Währung: genau ein Wert je Jahr (sonst bricht series() ab)
+    assert all(len(v) == 1 for unit in values.values() for v in unit.values())
+    # 1998/1999 in Schilling (Jahrgang 1999) und Euro (Jahrgang 2003): Euro = Schilling / 13,7603, gerundet
+    for year in (1998, 1999):
+        ats = next(iter(values["ATS"][year]))
+        eur = next(iter(values["EUR"][year]))
+        assert round(ats / 13.7603, 2) == pytest.approx(eur), year
+
+
+@pytest.mark.parametrize(
+    "year, expected",
+    [("1987", 84.44 / 13.7603), ("1997", 128.35 / 13.7603), ("2000", 10.05), ("2005", 11.28)],
+)
+def test_wage_sample_values(indicators, year, expected):
+    assert indicators["wage_industry_vienna"]["series"][year] == pytest.approx(expected)
+
+
+def test_prices_point_to_wage_for_work_minutes(indicators):
+    for good in ("semmel", "vollmilch", "kinokarte", "benzin"):
+        assert indicators[f"price_{good}"]["work_minutes"] == "wage_industry_vienna"

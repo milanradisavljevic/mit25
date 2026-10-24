@@ -16,6 +16,7 @@ from . import (
     rents,
     share_65plus,
     turnout_nrw,
+    wages_vienna,
 )
 
 INDICATORS = [
@@ -26,6 +27,7 @@ INDICATORS = [
     income_median,
     ak_monthly_income,
     prices_vienna,
+    wages_vienna,
     rents,
     turnout_nrw,
     cpi,
