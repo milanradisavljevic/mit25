@@ -442,6 +442,6 @@ def test_ats_rate_matches_ecb_file():
     import re
 
     text = SOURCES["ezb_umrechnungskurse"].path.read_text(encoding="utf-8")
-    plain = re.sub(r"<[^>]+>", " ", text)
+    plain = re.sub(r"<[^>]+>", " ", text).replace("&nbsp;", " ")
     m = re.search(r"([\d,]+)\s+ATS", plain)
     assert m and float(m.group(1).replace(",", ".")) == ATS_PER_EUR
