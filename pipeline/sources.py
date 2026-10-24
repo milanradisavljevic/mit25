@@ -102,6 +102,19 @@ SOURCES = {
             (2006, 2221944, "17.3", "2026-10-24", None),
         ]
     },
+    "eurostat_mietanteil": Source(
+        "eurostat_ilc_mded02_AT.json",
+        "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_mded02"
+        "?geo=AT&hhcomp=TOTAL&rskpovth=TOTAL&format=JSON&lang=EN",
+        "2026-10-24",
+        "Eurostat, EU-SILC: Share of rent related to occupied dwelling in disposable household income (ilc_mded02), Österreich",
+    ),
+    "mikrozensus_wohnkosten": Source(
+        "statistik_austria_ergebnisse_im_ueberblick_wohnkosten_Mikrozensus.ods",
+        f"{_STAT}/351/ergebnisse_im_ueberblick_wohnkosten_Mikrozensus.ods",
+        "2026-10-24",
+        "Statistik Austria, Mikrozensus Wohnen: Durchschnittliche Miete inkl. Betriebskosten von Hauptmietwohnungen (Zeitreihe)",
+    ),
     "nrw_1919_2008": Source(
         "bmi_nrw_08_wbseit1919.pdf",
         f"{_BMI}/Nationalratswahl_2008/files/history/nrw_08_wbseit1919.pdf",

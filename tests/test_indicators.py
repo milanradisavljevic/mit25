@@ -26,6 +26,8 @@ MVP_IDS = {
     "price_vollmilch",
     "price_kinokarte",
     "price_benzin",
+    "rent_share_income",
+    "rent_avg",
 }
 
 # Plausibilitätsgrenzen je Indikator (min, max)
@@ -44,6 +46,8 @@ BOUNDS = {
     "price_vollmilch": (0.1, 2),
     "price_kinokarte": (0.5, 20),
     "price_benzin": (0.1, 3),
+    "rent_share_income": (5, 50),
+    "rent_avg": (100, 2000),
 }
 
 # Erwartete Abdeckung (erstes, letztes Jahr) laut data/SOURCES.md
@@ -62,6 +66,8 @@ COVERAGE = {
     "price_vollmilch": ("1966", "2005"),
     "price_kinokarte": ("1966", "2005"),
     "price_benzin": ("1966", "2005"),
+    "rent_share_income": ("2003", "2025"),
+    "rent_avg": ("2005", "2025"),
 }
 
 
@@ -365,3 +371,39 @@ def test_life_expectancy_matches_zeitreihen_from_1961(indicators):
         for year, value in ods_year_row(rows, label, after="Sterbefälle absolut"):
             # Lange Reihe bis 2001 auf zwei Nachkommastellen gerundet
             assert indicators[id]["series"][str(year)] == pytest.approx(value, abs=0.006), (id, year)
+
+
+@pytest.mark.parametrize(
+    "id, year, expected",
+    [
+        ("rent_share_income", "2003", 19.9),
+        ("rent_share_income", "2008", 20.0),
+        ("rent_share_income", "2025", 22.4),
+        ("rent_avg", "2005", 351.729),
+        ("rent_avg", "2021", 553.365),
+        ("rent_avg", "2024", 653.592),
+    ],
+)
+def test_rent_sample_values(indicators, id, year, expected):
+    assert indicators[id]["series"][year] == pytest.approx(expected)
+
+
+def test_rent_breaks_and_deflation(indicators):
+    assert [b["year"] for b in indicators["rent_share_income"]["breaks"]] == [2008]
+    assert [b["year"] for b in indicators["rent_avg"]["breaks"]] == [2021]
+    assert indicators["rent_avg"]["deflate"] == "cpi"
+    assert "deflate" not in indicators["rent_share_income"]
+
+
+def test_rent_avg_matches_table_4_of_same_file(indicators):
+    """Tabelle 4 (Mietvertragsdauer 2025), Zeile 'Insgesamt' = Durchschnitt 2025 aus Tabelle 2."""
+    rows = read_ods(SOURCES["mikrozensus_wohnkosten"].path)["Tabelle_4"]
+    total = next(r for r in rows if r and r[0] == "Insgesamt")
+    assert indicators["rent_avg"]["series"]["2025"] == pytest.approx(total[2])
+
+
+def test_eurostat_flags_known():
+    from indicators.rents import eurostat_share
+
+    flags = {y: f for y, (_, f) in eurostat_share().items() if f}
+    assert flags == {2008: "b"}

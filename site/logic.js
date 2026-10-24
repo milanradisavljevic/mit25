@@ -25,6 +25,8 @@ const DECIMALS = {
   income_monthly_arbeiter_real: 0,
   income_monthly_angestellte: 0,
   income_monthly_angestellte_real: 0,
+  rent_avg: 0,
+  rent_avg_real: 0,
   price_semmel: 2,
   price_semmel_real: 2,
   price_vollmilch: 2,

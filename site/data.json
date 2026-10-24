@@ -1261,6 +1261,107 @@
       }
     },
     {
+      "id": "rent_share_income",
+      "label": "Mietanteil am Haushaltseinkommen",
+      "unit": "%",
+      "description": "Durchschnittlicher Anteil der Miete am verfügbaren Haushaltseinkommen von Haushalten mit Mietzahlung (ohne Betriebs-, Strom- und Heizkosten)",
+      "source": "Eurostat, EU-SILC: Share of rent related to occupied dwelling in disposable household income (ilc_mded02), Österreich",
+      "source_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_mded02?geo=AT&hhcomp=TOTAL&rskpovth=TOTAL&format=JSON&lang=EN",
+      "sources": [
+        {
+          "label": "Eurostat, EU-SILC: Share of rent related to occupied dwelling in disposable household income (ilc_mded02), Österreich",
+          "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_mded02?geo=AT&hhcomp=TOTAL&rskpovth=TOTAL&format=JSON&lang=EN"
+        }
+      ],
+      "retrieved": "2026-10-24",
+      "notes": [
+        "EU-SILC: gewichteter Mittelwert von Monatsmiete × 12 / verfügbarem Haushaltseinkommen; Haushalte ohne Mietangabe sind ausgeschlossen.",
+        "Nebenkosten wie Strom, Heizung, Instandhaltung und Dienstleistungen sind nicht enthalten.",
+        "Zeitreihenbruch 2008 laut Eurostat (Umstellung von EU-SILC)."
+      ],
+      "breaks": [
+        {
+          "year": 2008,
+          "before": "vor Zeitreihenbruch"
+        }
+      ],
+      "series": {
+        "2003": 19.9,
+        "2004": 20.4,
+        "2005": 18.4,
+        "2006": 19.1,
+        "2007": 20.1,
+        "2008": 20.0,
+        "2009": 20.9,
+        "2010": 21.5,
+        "2011": 20.1,
+        "2012": 22.3,
+        "2013": 22.2,
+        "2014": 21.5,
+        "2015": 22.1,
+        "2016": 22.7,
+        "2017": 22.5,
+        "2018": 22.3,
+        "2019": 22.3,
+        "2020": 21.8,
+        "2021": 22.7,
+        "2022": 23.5,
+        "2023": 23.0,
+        "2024": 23.0,
+        "2025": 22.4
+      }
+    },
+    {
+      "id": "rent_avg",
+      "label": "Miete einer Hauptmietwohnung",
+      "unit": "Euro pro Monat",
+      "description": "Durchschnittliche Monatsmiete einschließlich Betriebskosten je Hauptmietwohnung",
+      "source": "Statistik Austria, Mikrozensus Wohnen: Durchschnittliche Miete inkl. Betriebskosten von Hauptmietwohnungen (Zeitreihe)",
+      "source_url": "https://www.statistik.at/fileadmin/pages/351/ergebnisse_im_ueberblick_wohnkosten_Mikrozensus.ods",
+      "sources": [
+        {
+          "label": "Statistik Austria, Mikrozensus Wohnen: Durchschnittliche Miete inkl. Betriebskosten von Hauptmietwohnungen (Zeitreihe)",
+          "url": "https://www.statistik.at/fileadmin/pages/351/ergebnisse_im_ueberblick_wohnkosten_Mikrozensus.ods"
+        }
+      ],
+      "retrieved": "2026-10-24",
+      "notes": [
+        "Mikrozensus Wohnen; nur Hauptmietwohnungen mit Nettomiete über 0 Euro.",
+        "Zeitreihenbruch 2021 laut Quelle wegen Erhebungsumstellung.",
+        "Durchschnitt (arithmetisches Mittel), nicht Median."
+      ],
+      "breaks": [
+        {
+          "year": 2021,
+          "before": "vor Erhebungsumstellung 2021"
+        }
+      ],
+      "deflate": "cpi",
+      "series": {
+        "2005": 351.729,
+        "2006": 359.267,
+        "2007": 367.041,
+        "2008": 378.39,
+        "2009": 393.257,
+        "2010": 405.069,
+        "2011": 419.479,
+        "2012": 435.364,
+        "2013": 449.31,
+        "2014": 465.268,
+        "2015": 474.581,
+        "2016": 488.45,
+        "2017": 505.888,
+        "2018": 517.601,
+        "2019": 534.588,
+        "2020": 551.592,
+        "2021": 553.365,
+        "2022": 582.006,
+        "2023": 625.279,
+        "2024": 653.592,
+        "2025": 674.568
+      }
+    },
+    {
       "id": "turnout_nrw",
       "label": "Wahlbeteiligung Nationalratswahl",
       "unit": "%",

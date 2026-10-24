@@ -198,7 +198,8 @@ async function main() {
 
   let data;
   try {
-    const response = await fetch("data.json");
+    // no-cache: Browser fragt nach, ob data.json neuer ist, statt eine veraltete Kopie zu nehmen
+    const response = await fetch("data.json", { cache: "no-cache" });
     if (!response.ok) throw new Error(response.statusText);
     data = await response.json();
     data.indicators = withPriceAdjusted(data.indicators);
