@@ -232,3 +232,30 @@ URL jeweils `https://www.digital.wienbibliothek.at/download/pdf/<ID>.pdf`. Abruf
 
 - https://www.digital.wienbibliothek.at/download/pdf/2283261.pdf: Jahrgang 1993, Tab. 18.03 mit Daten bis 1993. Würde ein Jahr ergänzen.
 - **EU Weekly Oil Bulletin (Benzin österreichweit ab 2005):** https://energy.ec.europa.eu/document/download/906e60ca-8b6a-44e7-8589-652854d2fd3f_en?filename=Weekly_Oil_Bulletin_Prices_History_maticni_4web.xlsx. Nicht geprüft.
+
+## Mieten im Verhältnis zum Einkommen (Phase 5, Recherche 2026-10-24, noch keine Daten übernommen)
+
+**Kandidat A: Eurostat EU-SILC `ilc_mded02`, „Share of rent related to occupied dwelling in disposable household income“**
+- **Abruf:** https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_mded02?geo=AT&hhcomp=TOTAL&rskpovth=TOTAL&format=JSON
+- **Inhalt:** Mietanteil am verfügbaren Haushaltseinkommen in %, Österreich, alle Haushaltstypen.
+- **Abdeckung:** 2003–2025, keine Lücken. Bruch 2008 (Flag `b`, Umstellung von EU-SILC).
+- **Werte:** 2003: 19,9 %. 2008: 20,0 %. 2025: 22,4 %.
+- **Fertiges Verhältnis:** Die Quelle liefert den Anteil direkt, es ist keine eigene Rechnung nötig.
+- **Offen:** Wie Eurostat den Wert bildet (Mittelwert oder Median) und welche Mieterhaushalte zählen (Marktmiete und reduzierte Miete). Das steht in den Metadaten und ist noch nicht gelesen.
+- **Verwandt:** `ilc_mded01` ist der Anteil aller Wohnkosten am Einkommen, über alle Haushalte einschließlich Eigentümer. Werte 2004–2025 (2004 mit Flag `u`, geringe Zuverlässigkeit), Bruch 2008.
+
+**Kandidat B: Statistik Austria, Mikrozensus Wohnen, `ergebnisse_im_ueberblick_wohnkosten_Mikrozensus.ods`**
+- **Abruf:** https://www.statistik.at/fileadmin/pages/351/ergebnisse_im_ueberblick_wohnkosten_Mikrozensus.ods (Seite: /statistiken/bevoelkerung-und-soziales/wohnen/wohnkosten)
+- **Inhalt:** Tabelle 2, durchschnittliche Miete inklusive Betriebskosten je Hauptmietwohnung in Euro sowie je m², nach Bundesland.
+- **Abdeckung:** 2005–2025. Laut Fußnote „Zeitreihenbruch aufgrund Erhebungsumstellung im Jahr 2021“.
+- **Werte:** 2005: 351,73 € je Wohnung. 2024: 653,59 €.
+- **Kein Verhältnis zum Einkommen:** Die Tabelle enthält nur absolute Mieten.
+
+**Kandidat C: Statistik Austria, EU-SILC, `ergebnisse_im_ueberblick_wohnkosten_SILC.ods`**
+- **Inhalt:** Median der Wohnkosten je Haushalt und je m², nach Rechtsverhältnis (darunter Gemeinde-, Genossenschafts- und andere Hauptmiete).
+- **Abdeckung:** 2008–2025.
+- **Kein Verhältnis zum Einkommen.**
+
+**Nicht empfohlen:** ein eigener Quotient aus der Mikrozensus-Miete (Mittelwert je Wohnung) und dem Lohnsteuer-Median (brutto, je Person). Die beiden Größen beziehen sich auf unterschiedliche Grundgesamtheiten und Begriffe, das Ergebnis wäre irreführend.
+
+**Vor 2003:** In keiner der geprüften Quellen gibt es Werte. Ob ältere Mikrozensus-Erhebungen zum Wohnungsaufwand veröffentlicht sind, etwa im Statistischen Jahrbuch für Österreich, ist nicht recherchiert. Für die Eltern- und Großeltern-Spalte bleibt das Feld vorerst leer.
