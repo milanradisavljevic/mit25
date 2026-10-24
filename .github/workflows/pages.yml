@@ -1,0 +1,59 @@
+# Testet Pipeline und Frontend-Logik und veröffentlicht site/ auf GitHub Pages.
+# site/data.json ist eingecheckt; die Pipeline wird hier nur geprüft, nicht neu gebaut.
+name: Tests und GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m venv .venv && .venv/bin/pip install -r requirements.txt
+      - name: Fehlende Rohdaten laden (nicht eingecheckte Dateien)
+        run: .venv/bin/python pipeline/fetch.py
+      - name: data.json neu bauen und mit eingecheckter Version vergleichen
+        run: |
+          cp site/data.json /tmp/data.committed.json
+          .venv/bin/python pipeline/build.py
+          python - <<'EOF'
+          import json
+          a = json.load(open("/tmp/data.committed.json")); b = json.load(open("site/data.json"))
+          a.pop("generated_at"); b.pop("generated_at")
+          assert a == b, "site/data.json ist veraltet: pipeline/build.py ausführen und committen"
+          EOF
+      - run: .venv/bin/pytest -q
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: node --test tests/*.test.mjs
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4
