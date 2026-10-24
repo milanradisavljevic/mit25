@@ -436,3 +436,12 @@ def test_wage_sample_values(indicators, year, expected):
 def test_prices_point_to_wage_for_work_minutes(indicators):
     for good in ("semmel", "vollmilch", "kinokarte", "benzin"):
         assert indicators[f"price_{good}"]["work_minutes"] == "wage_industry_vienna"
+
+
+def test_ats_rate_matches_ecb_file():
+    import re
+
+    text = SOURCES["ezb_umrechnungskurse"].path.read_text(encoding="utf-8")
+    plain = re.sub(r"<[^>]+>", " ", text)
+    m = re.search(r"([\d,]+)\s+ATS", plain)
+    assert m and float(m.group(1).replace(",", ".")) == ATS_PER_EUR
