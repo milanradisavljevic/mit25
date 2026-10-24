@@ -7,3 +7,7 @@ __pycache__/
 data/raw/wienbibliothek_2221944_jahrbuch_wien_2006_preise.pdf
 data/raw/ak_wien_bruttoeinkommen_arbeiter_angestellte_2009.pdf
 data/raw/parlament_*.html
+
+# HMD/HFD (Registrierung nötig, nur lokal, nicht weitergeben)
+data/raw/hfd_AUT.zip
+data/raw/hmd_AUT.zip
