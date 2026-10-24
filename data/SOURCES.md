@@ -168,7 +168,7 @@ Eigenschaften der Quelle:
 2. **Fertilität 1951–1960** (zurückgestellt): Kandidat ist die Human Fertility Database (humanfertility.org). Download nur nach kostenloser Registrierung, also manuell. Noch nicht geprüft.
 3. **Methodenbrüche** müssen im Frontend erwähnt werden: gerundete Werte vor 2004, Erweiterung der Sterbe- und Geburtenzählung 2009/2015, Basiswechsel im VPI (verkettet, unkritisch). Wahlalter und Wahlpflicht: erledigt (2026-10-24), siehe Abschnitt BMI.
 4. **Umrechnung Schilling in Euro:** erledigt. Kurs 13,7603, belegt durch die EZB (`ezb_euro_umrechnungskurse.html`, https://www.ecb.europa.eu/euro/intro/html/index.de.html, Abruf 2026-10-24). EUR-Lex (Verordnung 2866/98) liefert für automatisierte Abrufe keinen Inhalt (HTTP 202).
-5. **AK-Reihe nach 2009:** Die AK hat das Heft auch für spätere Jahre herausgegeben. Ob es eine neuere Ausgabe mit derselben Tabelle gibt, ist nicht geprüft.
+5. **AK-Reihe nach 2009:** Websuche am 2026-10-24 ohne Treffer für eine Nachfolge-Ausgabe des Hefts. Kandidat ist das „Statistische Handbuch der österreichischen Sozialversicherung“ (Dachverband) mit den Medianen der beitragspflichtigen Monatseinkommen nach Arbeitern und Angestellten. Dort ist noch zu prüfen, ob die Definition gleich ist (1/14, ohne Lehrlinge, Jahresdurchschnitt). Erst danach dürfte die Reihe ohne Bruch fortgesetzt werden.
 
 ## Alltagspreise Wien 1966–2005 (Phase 5)
 
