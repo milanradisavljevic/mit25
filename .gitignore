@@ -1,3 +1,9 @@
 .venv/
 __pycache__/
 .pytest_cache/
+
+# Quelldateien mit unklaren Weitergaberechten: nicht im öffentlichen Repository,
+# pipeline/fetch.py lädt sie bei Bedarf (siehe data/SOURCES.md)
+data/raw/wienbibliothek_2221944_jahrbuch_wien_2006_preise.pdf
+data/raw/ak_wien_bruttoeinkommen_arbeiter_angestellte_2009.pdf
+data/raw/parlament_*.html

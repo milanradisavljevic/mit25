@@ -1,6 +1,6 @@
 # Datenquellen
 
-Alle Dateien liegen unverändert in `data/raw/`. Abrufdatum aller Dateien: **2026-10-23**.
+Alle Dateien liegen unverändert in `data/raw/`. Ausnahme im öffentlichen Repository: Vier Dateien mit unklaren Weitergaberechten sind per `.gitignore` ausgeschlossen. Das sind das Wiener Jahrbuch 2006 (born-digital, „Urheberrechtsschutz (InC 1.0)“), das AK-Heft 2009 und die zwei Parlamentsseiten. `pipeline/fetch.py` lädt sie bei Bedarf nach. Die retrodigitalisierten Jahrbücher bis 2003 stehen laut Wienbibliothek unter „Public Domain Mark 1.0“. Abrufdatum aller Dateien: **2026-10-23**.
 Abdeckung wurde direkt aus den heruntergeladenen Dateien ermittelt, nicht aus Sekundärquellen.
 
 ## Übersicht
