@@ -115,6 +115,18 @@ SOURCES = {
         "2026-10-24",
         "Statistik Austria, Mikrozensus Wohnen: Durchschnittliche Miete inkl. Betriebskosten von Hauptmietwohnungen (Zeitreihe)",
     ),
+    "parlament_wahlsystem": Source(
+        "parlament_news_2024-09-12_wahlsystem_entwicklung.html",
+        "https://www.parlament.gv.at/aktuelles/news/Wie-sich-das-oesterreichische-Wahlsystem-entwickelte/",
+        "2026-10-24",
+        "Parlament Österreich, „Wie sich das österreichische Wahlsystem entwickelte“ (12.09.2024), Tabelle 1970/1992/2007",
+    ),
+    "parlament_pk0874": Source(
+        "parlament_pk_2024-0874_wahlrecht_ueberholte_regelungen.html",
+        "https://www.parlament.gv.at/aktuelles/pk/jahr_2024/pk0874",
+        "2026-10-24",
+        "Parlamentskorrespondenz Nr. 874 vom 19.08.2024, „Das Wahlrecht und seine überholten Regelungen“",
+    ),
     "nrw_1919_2008": Source(
         "bmi_nrw_08_wbseit1919.pdf",
         f"{_BMI}/Nationalratswahl_2008/files/history/nrw_08_wbseit1919.pdf",

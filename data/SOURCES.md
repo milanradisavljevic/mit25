@@ -69,6 +69,12 @@ Wahlbeteiligung = abgegebene Stimmen (inkl. ungültige) in % der Wahlberechtigte
 - **Quellfehler:** Die 1970er-Zeile ist als „1. März 1966“ beschriftet. Fußnote 3 („Wiederholungswahl vom 4. Oktober 1970“) und die Differenzzeile „1970“ zeigen, dass die Wahl 1970 gemeint ist. Ich behandle sie als 1970 und vermerke das im Indikator.
 - **Fußnoten:** 1970 inkl. Wiederholungswahl in Wiener Wahlkreisen. 1995 inkl. Wiederholungswahl vom 13.10.1996.
 
+### Wahlrecht: Hinweise zu Wahlalter und Wahlpflicht
+
+- `parlament_news_2024-09-12_wahlsystem_entwicklung.html` (https://www.parlament.gv.at/aktuelles/news/Wie-sich-das-oesterreichische-Wahlsystem-entwickelte/): Tabelle mit dem aktiven Wahlalter 1970: 19, 1992: 18, 2007: 16.
+- `parlament_pk_2024-0874_wahlrecht_ueberholte_regelungen.html` (Parlamentskorrespondenz Nr. 874/2024): Wahlpflicht in Tirol und Vorarlberg ab 1919, Steiermark ab 1949, Kärnten ab 1986; 1992 bei Nationalratswahlen für alle Bundesländer aufgehoben.
+- Erscheint als Hinweis im Quellen-Panel der Wahlbeteiligung. Ab wann genau welches Wahlalter galt (Gesetzesdatum), ist nicht belegt und deshalb nicht angegeben.
+
 ### 2013–2024
 
 | Wahl | Datei | URL |
@@ -160,7 +166,7 @@ Eigenschaften der Quelle:
    - Wahlen: ab 1945. 1919–1930 ebenfalls in der Datei (siehe Punkt 4).
    - Die Annahme „Daten ab etwa 1950“ im Plan reicht also nicht für Geburtsjahre vor ~1985.
 2. **Fertilität 1951–1960** (zurückgestellt): Kandidat ist die Human Fertility Database (humanfertility.org). Download nur nach kostenloser Registrierung, also manuell. Noch nicht geprüft.
-3. **Methodenbrüche** müssen im Frontend erwähnt werden: gerundete Werte vor 2004, Erweiterung der Sterbe- und Geburtenzählung 2009/2015, Basiswechsel im VPI (verkettet, unkritisch). Bei der Wahlbeteiligung sind Änderungen von Wahlalter und Wahlpflicht in einzelnen Ländern **zu prüfen**, nicht aus dem Gedächtnis eintragen.
+3. **Methodenbrüche** müssen im Frontend erwähnt werden: gerundete Werte vor 2004, Erweiterung der Sterbe- und Geburtenzählung 2009/2015, Basiswechsel im VPI (verkettet, unkritisch). Wahlalter und Wahlpflicht: erledigt (2026-10-24), siehe Abschnitt BMI.
 4. **Umrechnung Schilling in Euro:** erledigt. Kurs 13,7603 laut AK-Heft (siehe Alltagspreise). Eine amtliche Primärquelle, etwa die EU-Verordnung zum Umrechnungskurs, ist nicht als Datei abgelegt.
 5. **AK-Reihe nach 2009:** Die AK hat das Heft auch für spätere Jahre herausgegeben. Ob es eine neuere Ausgabe mit derselben Tabelle gibt, ist nicht geprüft.
 
