@@ -180,6 +180,12 @@ main { padding-bottom: 3rem; }
 
 .gen-born { display: block; color: var(--muted); font-size: 0.8125rem; }
 
+.section-head th {
+  padding: 2rem 0 0.5rem;
+  text-align: left;
+  font: 600 1.25rem/1.2 var(--serif);
+}
+
 .indicator th, .indicator td {
   padding: 0.875rem 0.75rem;
   border-top: 1px solid var(--rule);
@@ -196,8 +202,8 @@ main { padding-bottom: 3rem; }
 
 .value { font: 600 1.375rem/1.2 var(--serif); }
 .unit { color: var(--muted); font-size: 0.875rem; }
-.note { display: block; color: var(--muted); font-size: 0.8125rem; }
-.gap { display: block; color: var(--muted); font-style: italic; }
+.note { display: block; color: var(--muted); font-size: 0.8125rem; hyphens: auto; overflow-wrap: anywhere; }
+.gap { display: block; color: var(--muted); font-style: italic; hyphens: auto; overflow-wrap: anywhere; }
 
 details { margin-top: 0.25rem; font-weight: 400; }
 summary { color: var(--muted); font-size: 0.8125rem; cursor: pointer; }
@@ -222,7 +228,9 @@ h2 { margin: 0; font: 600 1.75rem/1.2 var(--serif); }
 }
 
 .chart { min-width: 0; }
-.chart h3 { margin: 0; font-size: 1rem; }
+.chart h4 { margin: 0; font-size: 1rem; }
+.charts-section-title { grid-column: 1 / -1; margin: 1rem 0 -1rem; font: 600 1.25rem/1.2 var(--serif); }
+.charts-section-title:first-child { margin-top: 0; }
 .chart-unit { margin: 0 0 0.25rem; color: var(--muted); font-size: 0.8125rem; }
 .chart-legend { display: flex; gap: 1rem; margin: 0 0 0.25rem; color: var(--muted); font-size: 0.8125rem; }
 .chart-legend > span { display: inline-flex; align-items: center; gap: 0.375rem; }
@@ -309,7 +317,7 @@ footer p { max-width: 40rem; }
   .compare tr { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .compare thead td:first-child { display: none; }
   .gen { padding: 0 0.5rem 0.75rem; }
-  .indicator th { grid-column: 1 / -1; padding-bottom: 0.25rem; }
+  .indicator th, .section-head th { grid-column: 1 / -1; padding-bottom: 0.25rem; }
   .indicator td { padding: 0.25rem 0.5rem 0.875rem; border-top: 0; }
   .indicator .member th { padding-left: 0; }
   .value { font-size: 1.125rem; }

@@ -272,6 +272,25 @@ export function withWorkMinutes(indicators) {
   return result;
 }
 
+export const SECTIONS = [
+  { title: "Leben und Bevölkerung", match: /^(life_expectancy|share_65plus|median_age|fertility_rate)/ },
+  { title: "Einkommen", match: /^(income_|wage_)/ },
+  { title: "Preise in Wien", match: /^price_/ },
+  { title: "Wohnen", match: /^rent_/ },
+  { title: "Politik", match: /^turnout_/ },
+];
+
+/** Anzeigezeilen nach Themen (SECTIONS) gegliedert; Reihenfolge innerhalb eines Themas bleibt. */
+export function groupIntoSections(rows) {
+  const sections = SECTIONS.map((s) => ({ title: s.title, rows: [] }));
+  const other = { title: "Weitere", rows: [] };
+  for (const row of rows) {
+    const index = SECTIONS.findIndex((s) => s.match.test(row.id));
+    (index >= 0 ? sections[index] : other).rows.push(row);
+  }
+  return [...sections, other].filter((s) => s.rows.length);
+}
+
 /**
  * Sichtbare Indikatoren in Anzeige-Reihenfolge, zusammengehörige Reihen (group) gebündelt.
  * Liefert [{ id, label, members: [indicator, ...] }].

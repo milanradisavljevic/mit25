@@ -3,6 +3,7 @@ import {
   displayRows,
   breakNote,
   formatNumber,
+  groupIntoSections,
   memberLabel,
   referenceYear,
   resolveBirthYears,
@@ -129,7 +130,14 @@ function renderBody(rows, years) {
   table.querySelectorAll("tbody").forEach((tb) => tb.remove());
   const refYears = GENERATIONS.map((g) => referenceYear(years[g.key].birthYear));
 
-  for (const row of rows) {
+  for (const section of groupIntoSections(rows)) {
+    table.append(el("tbody", { class: "section-head" }, el("tr", {}, el("th", { scope: "colgroup", colspan: "4" }, section.title))));
+    for (const row of section.rows) renderRow(table, row, refYears);
+  }
+}
+
+function renderRow(table, row, refYears) {
+  {
     const body = el("tbody", { class: "indicator", id: `row-${row.id}` });
     const heading = el("span", {}, row.label);
     if (row.members.length === 1) {

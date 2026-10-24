@@ -2,7 +2,7 @@
 // Lücken bleiben Lücken: Linien enden an fehlenden Jahren, Bereiche ohne Daten sind markiert.
 
 import { emptyRanges, knownYears, nearestYear, segments, xDomain, yScale, yearTicks } from "./chart-logic.js";
-import { NUMBER_LOCALE, formatWithUnit, memberLabel, schillingNote } from "./logic.js";
+import { NUMBER_LOCALE, formatWithUnit, groupIntoSections, memberLabel, schillingNote } from "./logic.js";
 
 const NS = "http://www.w3.org/2000/svg";
 const PLOT_HEIGHT = 190;
@@ -99,7 +99,12 @@ export function drawChart(plot, row, generations, width) {
   for (const year of [...new Set(members.flatMap((m) => (m.breaks ?? []).map((b) => b.year)))]) {
     const bx = x(year) - halfYear;
     root.append(svg("line", { class: "break", x1: bx, x2: bx, y1: plotTop, y2: plotBottom }));
-    root.append(svg("text", { class: "break-label", x: bx + 4, y: plotBottom - 6 }, `Methodenwechsel ${year}`));
+    const text = `Methodenwechsel ${year}`;
+    // Nach links umklappen, wenn die Beschriftung rechts nicht ins Diagramm passt (nie abschneiden)
+    const flip = bx + 4 + text.length * 6 > MARGIN.left + plotWidth;
+    root.append(
+      svg("text", { class: "break-label", x: flip ? bx - 4 : bx + 4, y: plotBottom - 6, "text-anchor": flip ? "end" : "start" }, text),
+    );
   }
 
   // Stichjahre: Beschriftung oben, Linie durch das Diagramm
@@ -270,13 +275,21 @@ const observers = new WeakMap();
 /** Baut für jede Anzeigezeile ein Diagramm in `container` und zeichnet bei Größenänderung neu. */
 export function renderCharts(container, rows, generations) {
   container.querySelectorAll(".chart-plot").forEach((plot) => observers.get(plot)?.disconnect());
-  const articles = rows.map((row) => {
+  const items = groupIntoSections(rows).flatMap((section) => [
+    html("h3", { class: "charts-section-title" }, section.title),
+    ...section.rows.map((row) => chartArticle(row, generations)),
+  ]);
+  container.replaceChildren(...items);
+}
+
+function chartArticle(row, generations) {
+  {
     const plot = html("div", { class: "chart-plot" });
     const unit = row.members[0].unit;
     const article = html(
       "article",
       { class: "chart", id: `chart-${row.id}` },
-      html("h3", {}, row.label),
+      html("h4", {}, row.label),
       html("p", { class: "chart-unit" }, unit),
       legend(row),
       plot,
@@ -292,6 +305,5 @@ export function renderCharts(container, rows, generations) {
     observer.observe(plot);
     observers.set(plot, observer);
     return article;
-  });
-  container.replaceChildren(...articles);
+  }
 }

@@ -15,6 +15,7 @@ import {
   valueFor,
   withPriceAdjusted,
   withWorkMinutes,
+  groupIntoSections,
 } from "../site/logic.js";
 
 const NOW = 2026;
@@ -194,4 +195,12 @@ test("Stichproben gegen data.json", () => {
   assert.equal(valueFor(byId.turnout_nrw, 2010, NOW).year, 2008);
   // Geburtsjahr 2001: Du 2026, Daten bis 2025
   assert.deepEqual(valueFor(byId.median_age, 2026, NOW).status, "pending");
+});
+
+test("Themenblöcke: jede Anzeigezeile genau einem Thema zugeordnet, keine Restgruppe", () => {
+  const rows = displayRows(withWorkMinutes(withPriceAdjusted(data.indicators)));
+  const sections = groupIntoSections(rows);
+  assert.deepEqual(sections.map((s) => s.title), ["Leben und Bevölkerung", "Einkommen", "Preise in Wien", "Wohnen", "Politik"]);
+  assert.equal(sections.flatMap((s) => s.rows).length, rows.length);
+  assert.ok(sections[1].rows.some((r) => r.id === "wage_industry_vienna"));
 });
