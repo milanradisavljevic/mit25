@@ -270,3 +270,44 @@ URL jeweils `https://www.digital.wienbibliothek.at/download/pdf/<ID>.pdf`. Abruf
 ### Offen
 
 - Vor 2003 gibt es keine Werte. Ob ältere Mikrozensus-Erhebungen zum Wohnungsaufwand veröffentlicht sind, etwa im Statistischen Jahrbuch für Österreich, ist nicht recherchiert.
+
+## Kaufkraft: Arbeitsminuten je Ware (Phase 5, Recherche 2026-10-24, noch nichts übernommen)
+
+Für Arbeitsminuten braucht es einen **Stundenlohn**: Minuten = Preis / (Stundenverdienst / 60). Eine angenommene Wochenarbeitszeit wäre eine Schätzung und ist ausgeschlossen.
+
+**Vorhandene Reihen, nicht geeignet:**
+- `income_median_gross` (Lohnsteuer, 1997–2024): Jahreseinkommen einschließlich Teilzeit, keine Arbeitszeit.
+- `income_monthly_*` (AK/Hauptverband, 1953–2009): Monatseinkommen einschließlich Teilzeit, keine Arbeitszeit.
+
+**Kandidat 1, empfohlen: Brutto-Stundenverdienste der Industriearbeiter in Wien**
+- **Herkunft:** Erhebung der Wirtschaftskammer bzw. Bundeskammer, veröffentlicht im Statistischen Jahrbuch der Stadt Wien.
+- **Definition:** einschließlich Akkorde und Prämien. Erhebungsmonat jeweils September. Spalten Wien und Österreich.
+- **Jahrgänge (Abdeckung laut Volltext bzw. Textebene):**
+  - 1992 (1987–1991, in Schilling)
+  - 1993 und 1994 (Folgejahre)
+  - 1996: Tab. 18.05b (1992–1996)
+  - 1999: Tab. 18.07a (1995–1999)
+  - 2003: Tab. 18.6.1 (1998–2002, in Euro)
+  - 2006: Tab. 17.5.2 (2001–2005, in Euro). Wien 2001: 10,33 €, 2005: 11,28 €.
+- **Ergebnis:** 1987–2005 ohne Lücken. Die Jahrgänge 1996, 1999, 2003 und 2006 liegen schon in `data/raw/`. Dazu käme das Preiskapitel des Jahrgangs 1992.
+- **Bruch 2004:** laut Fußnote „Ohne Elektroindustrie“ ab 2004.
+- **Vorteile:**
+  - Echter Stundenlohn, keine Annahme nötig.
+  - Gilt für Wien, wie die Preise.
+  - Überlappende Jahrgänge und Schilling/Euro-Doppeljahre erlauben dieselben Prüfungen wie bei den Preisen.
+- **Grenzen:**
+  - Nur Industriearbeiter. Diese verdienen eher mehr als der Durchschnitt aller Beschäftigten, die Minuten fallen also eher zu niedrig aus.
+  - Brutto. Vom Netto aus gerechnet wären es mehr Minuten.
+  - Lohn vom September, Preise im Jahresdurchschnitt.
+  - Arbeitsminuten gibt es damit nur für 1987–2005, also meist nur in der Spalte „Du“.
+
+**Kandidat 2, nicht empfohlen: AK Wien, Bruttowochenverdienst und Wochenarbeitszeit in Industrie- und Gewerbebetrieben**
+- **Herkunft:** Statistisches Jahrbuch der Stadt Wien, Jahrgänge 1970–1981, Tab. 18.08, 18.05, 18.06 bzw. 18.04. Quelle dort: „Jahrbuch der Arbeiterkammer in Wien“.
+- **Abdeckung:** etwa 1966–1979. Der Jahrgang 1981 vermerkt: „Bei Drucklegung lagen die Angaben für die Jahre 1980 und 1981 noch nicht vor.“
+- **Gliederung:** nur getrennt nach Männern und Frauen sowie Zeit- und Akkordlohn. Es gibt keinen Gesamtwert.
+- **Stichprobe:** Werte in Klammern beruhen auf weniger als 10 Fällen.
+- **Stundenlohn:** müsste als Wochenverdienst ÷ Wochenarbeitszeit gebildet werden.
+- **Lücke:** 1980–1986, in den Jahrgängen 1982–1991 keine allgemeine Verdiensttabelle (nur Bauindustrie).
+
+**Geprüft, nicht geeignet:**
+- Statistik Austria, Verdienststrukturerhebung: Bruttostundenverdienste nur für 2002, 2006, 2010 usw., also nur alle vier Jahre und erst ab 2002.
