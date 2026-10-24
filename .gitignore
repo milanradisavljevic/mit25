@@ -11,3 +11,6 @@ data/raw/parlament_*.html
 # HMD/HFD (Registrierung nötig, nur lokal, nicht weitergeben)
 data/raw/hfd_AUT.zip
 data/raw/hmd_AUT.zip
+data/raw/hfd_AUT/
+data/raw/hmd_AUT/
+*.zip
