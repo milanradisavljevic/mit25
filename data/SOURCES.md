@@ -317,3 +317,30 @@ Arbeitsminuten = Preis / (Stundenlohn / 60). Das Frontend rechnet sie aus (`with
   - Lücke 1980–1986
 - **Statistik Austria, Verdienststrukturerhebung:** nur alle vier Jahre, erst ab 2002.
 - **Vorhandene Einkommensreihen** (Lohnsteuer, AK-Monatseinkommen): keine Arbeitszeit.
+
+## Recherche Datenlücken (2026-10-25)
+
+**Abdeckung gemessen:** Anteil gefüllter Zellen über die Geburtsjahre 1960–2005.
+
+| Spalte | Abdeckung |
+|---|---|
+| Großeltern | 22 % |
+| Eltern | 69 % |
+| Du | 70 % |
+
+Eine Regel „Nachbarjahr verwenden“ brächte bei ±3 Jahren nur 3–5 Prozentpunkte, bei ±5 Jahren 5–8 Prozentpunkte. Die Lücken liegen an den Rändern der Quellen: vor 1961 (Bevölkerung) und nach 2005/2009 (Wiener Preise, Löhne, AK).
+
+**Geprüft und verworfen:**
+- **OeNB Kaufkraftrechner** (`https://www.eurologisch.at/docroot/kaufkraftrechner/static/xml/DQ04.xml`): Jahreswerte 1966–2025 für Semmel, Milch, Kinokarte und anderes, ohne Quellenangabe in der Datei. Nicht verwendbar:
+  - Teilweise per Preisindex fortgeschrieben: Bei der Semmel ist das Verhältnis Preis/Index 1967–1971 konstant, bei der Milch 2019–2021.
+  - Weicht von den Österreich-Durchschnittspreisen von Statistik Austria ab: Semmel 2007 OeNB 0,20 €, Statistik Austria 0,24 €.
+- **Statistik Austria, Bevölkerungs-Zeitreihen** `Bev_Zeitreihe_Jahresbeginn_Gebietseinheiten.ods` und `Bev_nach_Alter_Geschlecht_Staatsangeh_Bundesl_Zeitreihe.ods`: Beide beginnen erst 2002.
+
+**Kandidaten:**
+- **Statistik Austria, „10 Jahre Euro – Durchschnittspreise vor und nach der Euro-Einführung“:** https://www.statistik.at/fileadmin/pages/214/10_jahre_euro_-_durchschnittspreise_vor_und_nach_der_euro-einfuehrung.pdf
+  - Österreich-Durchschnitt, nicht Wien.
+  - Nur die Jahre 1990, 1995, 2001, 2002, 2007, 2008, 2010 und 2011.
+  - Enthält Semmel und Vollmilch, keine Kinokarte und kein Benzin.
+- **Human Mortality Database / Human Fertility Database:** Österreich ab 1947 bzw. 1951 (Bevölkerung nach Alter, Sterbetafeln, Fertilität). Download nur nach kostenloser Registrierung. Eigene Methodik, daher als eigene Quelle mit Bruch markieren.
+- **Benzin nach 2005:** EU Weekly Oil Bulletin (Österreich, ab 2005, wöchentlich) oder der Treibstoffpreismonitor des Ministeriums. Für einen Jahreswert müsste man selbst mitteln, das ist noch zu entscheiden.
+- **Kinokarte nach 2005:** Filmwirtschaftsbericht des Österreichischen Filminstituts. Durchschnittlicher Eintrittspreis noch nicht gefunden.
