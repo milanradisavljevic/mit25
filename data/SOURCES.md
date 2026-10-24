@@ -15,6 +15,7 @@ Abdeckung wurde direkt aus den heruntergeladenen Dateien ermittelt, nicht aus Se
 | cpi | Statistik Austria (OGD) | 1946–2025 (Jahresdurchschnitt) | 1946 nur April bis Dezember |
 | income_median_gross (Phase 5) | Statistik Austria | 1997–2024 | keine innerhalb der Spanne |
 | income_monthly_arbeiter, income_monthly_angestellte (Phase 5) | AK Wien / Hauptverband | 1953–2009 | Methodenbruch 1987, Reihe eingestellt |
+| price_semmel, price_vollmilch, price_kinokarte, price_benzin (Phase 5) | Statistisches Jahrbuch der Stadt Wien (ÖSTAT, Wiener Preise) | 1966–2005 | keine; Brüche Milch 1974, Benzin 1987; Tabelle eingestellt |
 
 ---
 
@@ -160,35 +161,48 @@ Eigenschaften der Quelle:
 4. **Umrechnung Schilling in Euro:** erledigt. Kurs 13,7603 laut AK-Heft (siehe Alltagspreise). Eine amtliche Primärquelle, etwa die EU-Verordnung zum Umrechnungskurs, ist nicht als Datei abgelegt.
 5. **AK-Reihe nach 2009:** Die AK hat das Heft auch für spätere Jahre herausgegeben. Ob es eine neuere Ausgabe mit derselben Tabelle gibt, ist nicht geprüft.
 
-## Alltagspreise Wien 1980–1992 (Phase 5, Pilot)
+## Alltagspreise Wien 1966–2005 (Phase 5)
 
-Bei Statistik Austria gibt es keine aktuelle Tabelle mit Durchschnittspreisen einzelner Produkte, nur Indizes. Für den Pilot verwendet: Statistisches Jahrbuch der Stadt Wien, Tabelle „Durchschnittspreise ausgewählter Waren und Dienstleistungen“. Werte sind Jahresdurchschnitte in Schilling. Laut Fußnote: „Angaben des Österreichischen Statistischen Zentralamtes aufgrund der Meldungen für die Preisstatistik (Wiener Preise)“.
+Bei Statistik Austria gibt es keine aktuelle Tabelle mit Durchschnittspreisen einzelner Produkte, nur Indizes. Verwendet wird die Tabelle „Durchschnittspreise ausgewählter Waren und Dienstleistungen“ aus dem Statistischen Jahrbuch der Stadt Wien. Laut Fußnote sind es „Angaben des Österreichischen Statistischen Zentralamtes aufgrund der Meldungen für die Preisstatistik (Wiener Preise)“. Jahrgang N enthält die Jahresdurchschnitte N−4 bis N, bis Jahrgang 2003 auch die Monatswerte von N.
 
-| Quelle (sources.py) | Datei in data/raw/ | Tabelle, gedruckte Seiten | Jahre |
-|---|---|---|---|
-| wien_preise_1980_1984 | `wienbibliothek_2266115_jahrbuch_wien_preise_1980_1984.pdf` (https://www.digital.wienbibliothek.at/download/pdf/2266115.pdf) | Tab. 19.02, S. 360–363 | 1980–1984, Monate 1984 |
-| wien_preise_1984_1988 | `wienbibliothek_2276793_jahrbuch_wien_preise_1984_1988.pdf` (https://www.digital.wienbibliothek.at/download/pdf/2276793.pdf) | Tab. 19.05, S. 370–373 | 1984–1988, Monate 1988 |
-| wien_preise_1988_1992 | `wienbibliothek_2277171_jahrbuch_wien_preise_1988_1992.pdf` (https://www.digital.wienbibliothek.at/download/pdf/2277171.pdf) | Tab. 18.03, S. 328–329 | 1988–1992, Monate 1992 |
+| Quelle (sources.py) | Datei in data/raw/ (Wienbibliothek-ID) | Tabelle, Seiten | Jahre | Einheit |
+|---|---|---|---|---|
+| wien_preise_jb1970 | `wienbibliothek_2263179_jahrbuch_wien_1970_preise.pdf` | 18.02, S. 270–273 | 1966–1970 | ATS |
+| wien_preise_jb1974 | `wienbibliothek_2263394_jahrbuch_wien_1974_preise.pdf` | 18.02, S. 298–301 | 1970–1974 | ATS |
+| wien_preise_jb1979 | `wienbibliothek_2263699_jahrbuch_wien_1979_preise.pdf` | 18.07, S. 324–327 | 1975–1979 | ATS |
+| wien_preise_jb1984 | `wienbibliothek_2266115_jahrbuch_wien_preise_1980_1984.pdf` | 19.02, S. 360–363 | 1980–1984 | ATS |
+| wien_preise_jb1988 | `wienbibliothek_2276793_jahrbuch_wien_preise_1984_1988.pdf` | 19.05, S. 370–373 | 1984–1988 | ATS |
+| wien_preise_jb1992 | `wienbibliothek_2277171_jahrbuch_wien_preise_1988_1992.pdf` | 18.03, S. 328–329 | 1988–1992 | ATS |
+| wien_preise_jb1996 | `wienbibliothek_2283729_jahrbuch_wien_1996_preise.pdf` | 18.02, S. 292–293 | 1992–1996 | ATS |
+| wien_preise_jb1999 | `wienbibliothek_2283911_jahrbuch_wien_1999_preise.pdf` | 18.02, S. 250–253 | 1995–1999 | ATS |
+| wien_preise_jb2003 | `wienbibliothek_2284088_jahrbuch_wien_2003_preise.pdf` | 18.2, S. 210–215 | 1998–2002 | EUR |
+| wien_preise_jb2006 | `wienbibliothek_2221944_jahrbuch_wien_2006_preise.pdf` (Gesamtausgabe, born-digital) | 17.3, S. 195–197 | 2001–2005 | EUR |
 
-Die Ausgabejahre der Jahrbücher stehen nicht in den Auszügen. Sie sind deshalb über die Datenjahre benannt.
+URL jeweils `https://www.digital.wienbibliothek.at/download/pdf/<ID>.pdf`. Abruf 2026-10-23 (1984, 1988, 1992) und 2026-10-24 (übrige).
 
-- **Abschrift:** `data/manual/wien_durchschnittspreise_1980_1992.csv`. Jede Zahl ist am Scanbild abgelesen, die Texterkennung diente nur als Hilfe. Enthalten sind Jahresdurchschnitte und die Monatswerte des jeweils letzten Jahres einer Ausgabe.
-- **Positionen:**
-  - Semmel (Stück, maschingeformt)
-  - Vollmilch (1 l, abgepackt)
-  - Kinokarte (Stück)
-  - Benzin (normal, Liter)
+- **Abschrift:** `data/manual/wien_durchschnittspreise.csv`, Spalten `quelle, seite, ware, jahr, monat, wert, einheit`. Die Scans 1970–2003 sind am Bild abgelesen, die Texterkennung diente nur als Hilfe. Jahrgang 2006 stammt aus der Textebene des born-digital-PDFs (keine Texterkennung).
+- **Positionen:** Semmel (Stück), Vollmilch (1 l), Kinokarte (Stück), Benzin normal (1 l).
+- **Regeln für die Reihe** (Entscheidung 2026-10-24):
+  - Die Reihe läuft durchgehend in Euro.
+  - Gibt es für ein Jahr einen Schillingwert, gilt Schilling ÷ 13,7603. Der Schillingwert steht zusätzlich in `series_ats` und erscheint im Frontend als Hinweis („damals 1,07 S“).
+  - Ohne Schillingwert gilt der Euro-Wert der Quelle. Das betrifft 2000–2005. Für 2000 und 2001 liegen keine Schillingwerte vor, weil die Jahrgänge 2001/2002 nicht erfasst sind.
+  - Bei mehreren Angaben in derselben Währung gilt der neueste Jahrgang.
 - **Prüfung (Tests):**
-  - Das Mittel der 12 Monatswerte ergibt den Jahresdurchschnitt (±0,006 S), für alle 12 Fälle.
-  - Die Überlappungsjahre 1984 und 1988 sind in beiden Ausgaben identisch.
-- **Benzin:** 1980–1986 „Benzin, normal, inländ.“. Fußnote der Ausgabe 1984–1988: „Ab 1987 bleifrei“. Ausgabe 1988–1992: „Benzin, normal, bleifrei“. Als Bruch 1987 markiert.
-- **Allgemeiner Hinweis der Quelle:** „Aufgrund von Änderungen der Warenbeschreibungen ab 1987 mit den Vorjahrespreisen nicht streng vergleichbar.“ Semmel, Vollmilch und Kinokarte haben keine eigene Fußnote zu einer Änderung.
+  - Je Jahrgang gibt es fünf aufeinanderfolgende Jahre je Ware und eine einheitliche Währung.
+  - Das Monatsmittel ergibt den Jahresdurchschnitt (±0,006), für 36 Fälle.
+  - Die Überlappungsjahre stimmen zwischen den Jahrgängen überein.
+  - Für 1998/1999 (in Schilling und in Euro gedruckt) gilt: Euro = Schilling ÷ 13,7603, innerhalb der Rundung.
+- **Quellinkonsistenzen** (am Scan geprüft, in den Tests als bekannte Ausnahmen geführt):
+  - **Vollmilch 1970:** Jahrgang 1970 nennt 4,60 S, die Jahrgänge 1971, 1973 und 1974 nennen 4,20 S. Verwendet wird der revidierte Wert 4,20 S. Die Abweichung steht im Quellen-Panel.
+  - **Vollmilch 1974 (Jahrgang 1974):** Die Monatswerte (3 × 5,15, 8 × 5,99, 1 × 5,97) ergeben im Mittel 5,78. Gedruckt ist der Jahresdurchschnitt 5,76, verwendet wird er unverändert.
+- **Methodenbrüche:**
+  - **Vollmilch 1974:** Bis 1973 offene Milch. Laut Fußnote Jahrgang 1974 gilt ab 1974 der Durchschnittspreis für Milch in Flaschen und Verpackung. Jahrgang 1979 nennt dafür 1975. Markiert ist 1974.
+  - **Benzin 1987:** bleifrei laut Fußnote, markiert.
+  - **Ohne Markierung, nur als Hinweis:** Die Bezeichnung der Semmel wechselt zwischen den Jahrgängen 1974 und 1979 von „Stück“ zu „Stück, maschingeformt“. Für 1979 kommen laut Jahrgang 1979 neue Geschäftstypen (Diskontläden) dazu, Vergleiche mit den Vorjahren sind nur eingeschränkt möglich. Ab 1987 laut Quelle wegen geänderter Warenbeschreibungen ebenso.
 - **Keine Wurstsemmel:** Die Quelle führt Semmel und Extrawurst nur einzeln. Zusammenrechnen wäre eine Konstruktion.
-- **Euro-Umrechnung:** fixer Kurs 13,7603 Schilling je Euro, belegt in `ak_wien_bruttoeinkommen_arbeiter_angestellte_2009.pdf`, S. 2 („1 EURO = ÖS 13,7603“). Das Frontend zeigt den Schillingpreis und den Wert in Euro, Preise von 2025. Das Diagramm zeigt nur die Euro-Reihe, weil Schilling und Euro nicht auf eine Achse gehören.
-- **Grenzen des Pilots:**
-  - nur Wien
-  - nur 1980–1992 erfasst (Feld `ended_note`)
-  - für die Großeltern-Spalte meist ohne Daten
+- **Euro-Kurs:** 13,7603 Schilling je Euro, belegt in `ak_wien_bruttoeinkommen_arbeiter_angestellte_2009.pdf`, S. 2 („1 EURO = ÖS 13,7603“).
+- **Kaufkraft:** Das Frontend rechnet in Preise von 2025 um (VPI), wie beim Einkommen.
+- **Grenzen:** nur Wien. Ende 2005 (Feld `ended`, Hinweis „Tabelle erscheint nach 2005 nicht mehr“). Vor 1966 keine vergleichbare Reihe (siehe unten).
 
 ### Reichweite der Tabelle (Recherche 2026-10-23)
 
@@ -210,7 +224,7 @@ Die Ausgabejahre der Jahrbücher stehen nicht in den Auszügen. Sie sind deshalb
   - Vollmilch heißt 1970 „1 l, offen“, später „1 l, abgepackt“.
   - Benzin heißt bis 1986 „normal, inländ.“, ab 1987 „bleifrei“.
   - Semmel heißt 1970 „Stück“, später „Stück, maschingeformt“.
-- **Damit erreichbar:** 1966–2005 lückenlos. Zum Pilot (1980–1992) kommen acht Ausgaben dazu: Jahrgänge 1970, 1974, 1978, 1980 und 1996, 1999, 2003, 2006.
+- **Umgesetzt:** 1966–2005 lückenlos mit zehn Jahrgängen (siehe Tabelle oben). Statt 1978/1980 wurde Jahrgang 1979 verwendet, der 1975–1979 abdeckt.
 
 **Vor 1966 (Jahrgänge 1929–1951):** Dort gibt es nur „Kleinhandelspreise und Kleinhandelsindex“. Das sind Preise je Mengeneinheit für den Index, zum Beispiel 1949–1951 Milch und „Brot, weiß (Kleingebäck), Stk.“. Kinokarte und Benzin fehlen. Es ist ein anderes Konzept und eine andere Warenbeschreibung. Dazu kommen Währungswechsel: Reichsmark 1938–1945, Schilling ab Ende 1945. Nicht mit der Reihe ab 1966 verbinden.
 

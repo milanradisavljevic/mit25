@@ -6,6 +6,7 @@ import {
   memberLabel,
   referenceYear,
   resolveBirthYears,
+  schillingNote,
   unitSuffix,
   valueFor,
   withPriceAdjusted,
@@ -53,6 +54,8 @@ function cell(indicator, refYear) {
   if (result.status === "ok") {
     td.append(valueNode(indicator, result));
     if (isEvent) td.append(el("span", { class: "note" }, `Wahl ${result.year}`));
+    const ats = schillingNote(indicator, result.year);
+    if (ats) td.append(el("span", { class: "note" }, `damals ${ats}`));
     const before = breakNote(indicator, result.year);
     if (before) td.append(el("span", { class: "note" }, before));
   } else if (result.status === "future") {

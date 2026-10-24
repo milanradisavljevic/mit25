@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-23",
+  "generated_at": "2026-10-24",
   "indicators": [
     {
       "id": "life_expectancy_birth_male",
@@ -679,39 +679,79 @@
     {
       "id": "price_semmel",
       "label": "Semmel (Wien)",
-      "unit": "Schilling",
-      "description": "Preis einer maschingeformten Semmel in Wien, Jahresdurchschnitt (je Stück)",
-      "source": "Statistisches Jahrbuch der Stadt Wien, Tab. 19.02 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1980 bis 1984, Wiener Preise, ÖSTAT); Statistisches Jahrbuch der Stadt Wien, Tab. 19.05 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1984 bis 1988, Wiener Preise, ÖSTAT); Statistisches Jahrbuch der Stadt Wien, Tab. 18.03 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1988 bis 1992, Wiener Preise, ÖSTAT); AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
-      "source_url": "https://www.digital.wienbibliothek.at/download/pdf/2266115.pdf",
+      "unit": "Euro",
+      "description": "Preis einer Semmel (Stück) in Wien, Jahresdurchschnitt",
+      "source": "Statistisches Jahrbuch der Stadt Wien 1970, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1974, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1979, Tab. 18.07, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1984, Tab. 19.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1988, Tab. 19.05, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1992, Tab. 18.03, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1996, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1999, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2003, Tab. 18.2, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2006, Tab. 17.3, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
+      "source_url": "https://www.digital.wienbibliothek.at/download/pdf/2263179.pdf",
       "sources": [
         {
-          "label": "Statistisches Jahrbuch der Stadt Wien, Tab. 19.02 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1980 bis 1984, Wiener Preise, ÖSTAT)",
+          "label": "Statistisches Jahrbuch der Stadt Wien 1970, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2263179.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1974, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2263394.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1979, Tab. 18.07, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2263699.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1984, Tab. 19.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
           "url": "https://www.digital.wienbibliothek.at/download/pdf/2266115.pdf"
         },
         {
-          "label": "Statistisches Jahrbuch der Stadt Wien, Tab. 19.05 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1984 bis 1988, Wiener Preise, ÖSTAT)",
+          "label": "Statistisches Jahrbuch der Stadt Wien 1988, Tab. 19.05, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
           "url": "https://www.digital.wienbibliothek.at/download/pdf/2276793.pdf"
         },
         {
-          "label": "Statistisches Jahrbuch der Stadt Wien, Tab. 18.03 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1988 bis 1992, Wiener Preise, ÖSTAT)",
+          "label": "Statistisches Jahrbuch der Stadt Wien 1992, Tab. 18.03, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
           "url": "https://www.digital.wienbibliothek.at/download/pdf/2277171.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1996, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2283729.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1999, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2283911.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 2003, Tab. 18.2, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2284088.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 2006, Tab. 17.3, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2221944.pdf"
         },
         {
           "label": "AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
           "url": "https://www.arbeiterkammer.at/infopool/akportal/Studie_Einkommen_2009.pdf"
         }
       ],
-      "retrieved": "2026-10-23",
+      "retrieved": "2026-10-24",
       "notes": [
+        "Bis Jahrgang 1974 als „Semmel, Stück“ geführt, ab spätestens Jahrgang 1979 als „Semmel, Stück, maschingeformt“.",
         "Durchschnittspreise in Wien (Erhebung des Österreichischen Statistischen Zentralamts), nicht für ganz Österreich.",
-        "Laut Jahrbuch sind die Preise ab 1987 wegen geänderter Warenbeschreibungen nicht streng mit den Vorjahren vergleichbar.",
-        "Umrechnung in Euro mit dem fixen Kurs 13,7603 Schilling je Euro."
+        "Bis 2001 in Schilling erhoben und mit dem fixen Kurs 13,7603 Schilling je Euro umgerechnet; ab 2002 Euro laut Quelle.",
+        "1979 laut Quelle wegen neu einbezogener Geschäftstypen (z. B. Diskontläden) mit den Vorjahren nicht streng vergleichbar.",
+        "Ab 1987 laut Quelle wegen geänderter Warenbeschreibungen mit den Vorjahren nicht streng vergleichbar."
       ],
-      "deflate": "cpi",
-      "eur_factor": 0.0726728341678597,
-      "ended": true,
-      "ended_note": "bisher nur bis 1992 erfasst",
-      "series": {
+      "series_ats": {
+        "1966": 0.62,
+        "1967": 0.65,
+        "1968": 0.65,
+        "1969": 0.65,
+        "1970": 0.65,
+        "1971": 0.65,
+        "1972": 0.7,
+        "1973": 0.7,
+        "1974": 0.8,
+        "1975": 0.89,
+        "1976": 0.94,
+        "1977": 0.94,
+        "1978": 0.94,
+        "1979": 1.0,
         "1980": 1.07,
         "1981": 1.15,
         "1982": 1.25,
@@ -724,45 +764,138 @@
         "1989": 1.9,
         "1990": 1.99,
         "1991": 2.11,
-        "1992": 2.29
+        "1992": 2.29,
+        "1993": 2.47,
+        "1994": 2.59,
+        "1995": 2.56,
+        "1996": 2.59,
+        "1997": 2.76,
+        "1998": 2.84,
+        "1999": 2.95
+      },
+      "deflate": "cpi",
+      "ended": true,
+      "ended_note": "Tabelle erscheint nach 2005 nicht mehr",
+      "series": {
+        "1966": 0.04505715718407302,
+        "1967": 0.04723734220910881,
+        "1968": 0.04723734220910881,
+        "1969": 0.04723734220910881,
+        "1970": 0.04723734220910881,
+        "1971": 0.04723734220910881,
+        "1972": 0.05087098391750179,
+        "1973": 0.05087098391750179,
+        "1974": 0.05813826733428777,
+        "1975": 0.06467882240939514,
+        "1976": 0.06831246411778812,
+        "1977": 0.06831246411778812,
+        "1978": 0.06831246411778812,
+        "1979": 0.0726728341678597,
+        "1980": 0.07775993255960989,
+        "1981": 0.08357375929303866,
+        "1982": 0.09084104270982464,
+        "1983": 0.09520141275989621,
+        "1984": 0.10392215286003938,
+        "1985": 0.10900925125178956,
+        "1986": 0.1199101763769685,
+        "1987": 0.13807838491893343,
+        "1988": 0.13735165657725484,
+        "1989": 0.13807838491893343,
+        "1990": 0.14461893999404082,
+        "1991": 0.15333968009418397,
+        "1992": 0.16642079024439874,
+        "1993": 0.1795019003946135,
+        "1994": 0.18822264049475662,
+        "1995": 0.18604245546972087,
+        "1996": 0.18822264049475662,
+        "1997": 0.20057702230329277,
+        "1998": 0.20639084903672156,
+        "1999": 0.21438486079518615,
+        "2000": 0.23,
+        "2001": 0.25,
+        "2002": 0.26,
+        "2003": 0.27,
+        "2004": 0.28,
+        "2005": 0.28
       }
     },
     {
       "id": "price_vollmilch",
       "label": "Vollmilch (Wien)",
-      "unit": "Schilling",
-      "description": "Preis für 1 Liter Vollmilch, abgepackt in Wien, Jahresdurchschnitt (je Liter)",
-      "source": "Statistisches Jahrbuch der Stadt Wien, Tab. 19.02 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1980 bis 1984, Wiener Preise, ÖSTAT); Statistisches Jahrbuch der Stadt Wien, Tab. 19.05 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1984 bis 1988, Wiener Preise, ÖSTAT); Statistisches Jahrbuch der Stadt Wien, Tab. 18.03 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1988 bis 1992, Wiener Preise, ÖSTAT); AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
-      "source_url": "https://www.digital.wienbibliothek.at/download/pdf/2266115.pdf",
+      "unit": "Euro",
+      "description": "Preis für 1 Liter Vollmilch in Wien, Jahresdurchschnitt",
+      "source": "Statistisches Jahrbuch der Stadt Wien 1970, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1974, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1979, Tab. 18.07, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1984, Tab. 19.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1988, Tab. 19.05, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1992, Tab. 18.03, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1996, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1999, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2003, Tab. 18.2, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2006, Tab. 17.3, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
+      "source_url": "https://www.digital.wienbibliothek.at/download/pdf/2263179.pdf",
       "sources": [
         {
-          "label": "Statistisches Jahrbuch der Stadt Wien, Tab. 19.02 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1980 bis 1984, Wiener Preise, ÖSTAT)",
+          "label": "Statistisches Jahrbuch der Stadt Wien 1970, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2263179.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1974, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2263394.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1979, Tab. 18.07, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2263699.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1984, Tab. 19.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
           "url": "https://www.digital.wienbibliothek.at/download/pdf/2266115.pdf"
         },
         {
-          "label": "Statistisches Jahrbuch der Stadt Wien, Tab. 19.05 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1984 bis 1988, Wiener Preise, ÖSTAT)",
+          "label": "Statistisches Jahrbuch der Stadt Wien 1988, Tab. 19.05, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
           "url": "https://www.digital.wienbibliothek.at/download/pdf/2276793.pdf"
         },
         {
-          "label": "Statistisches Jahrbuch der Stadt Wien, Tab. 18.03 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1988 bis 1992, Wiener Preise, ÖSTAT)",
+          "label": "Statistisches Jahrbuch der Stadt Wien 1992, Tab. 18.03, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
           "url": "https://www.digital.wienbibliothek.at/download/pdf/2277171.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1996, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2283729.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1999, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2283911.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 2003, Tab. 18.2, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2284088.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 2006, Tab. 17.3, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2221944.pdf"
         },
         {
           "label": "AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
           "url": "https://www.arbeiterkammer.at/infopool/akportal/Studie_Einkommen_2009.pdf"
         }
       ],
-      "retrieved": "2026-10-23",
+      "retrieved": "2026-10-24",
       "notes": [
+        "Bis 1973 offene Milch; laut Fußnote im Jahrgang 1974 ab 1974 Durchschnittspreis für Milch in Flaschen und Verpackung (der Jahrgang 1979 nennt 1975). Später „1 l, abgepackt“.",
+        "Revision 1970: Jahrgang 1970 nennt 4,60 S; die Jahrgänge 1971, 1973 und 1974 nennen 4,20 S.",
         "Durchschnittspreise in Wien (Erhebung des Österreichischen Statistischen Zentralamts), nicht für ganz Österreich.",
-        "Laut Jahrbuch sind die Preise ab 1987 wegen geänderter Warenbeschreibungen nicht streng mit den Vorjahren vergleichbar.",
-        "Umrechnung in Euro mit dem fixen Kurs 13,7603 Schilling je Euro."
+        "Bis 2001 in Schilling erhoben und mit dem fixen Kurs 13,7603 Schilling je Euro umgerechnet; ab 2002 Euro laut Quelle.",
+        "1979 laut Quelle wegen neu einbezogener Geschäftstypen (z. B. Diskontläden) mit den Vorjahren nicht streng vergleichbar.",
+        "Ab 1987 laut Quelle wegen geänderter Warenbeschreibungen mit den Vorjahren nicht streng vergleichbar."
       ],
-      "deflate": "cpi",
-      "eur_factor": 0.0726728341678597,
-      "ended": true,
-      "ended_note": "bisher nur bis 1992 erfasst",
-      "series": {
+      "series_ats": {
+        "1966": 3.0,
+        "1967": 4.0,
+        "1968": 4.12,
+        "1969": 4.2,
+        "1970": 4.2,
+        "1971": 4.38,
+        "1972": 4.53,
+        "1973": 4.88,
+        "1974": 5.76,
+        "1975": 6.27,
+        "1976": 6.66,
+        "1977": 7.72,
+        "1978": 7.89,
+        "1979": 8.64,
         "1980": 9.58,
         "1981": 10.0,
         "1982": 10.47,
@@ -775,45 +908,142 @@
         "1989": 11.23,
         "1990": 10.54,
         "1991": 10.42,
-        "1992": 11.38
+        "1992": 11.38,
+        "1993": 11.62,
+        "1994": 11.36,
+        "1995": 10.41,
+        "1996": 10.42,
+        "1997": 10.05,
+        "1998": 10.08,
+        "1999": 9.95
+      },
+      "deflate": "cpi",
+      "ended": true,
+      "ended_note": "Tabelle erscheint nach 2005 nicht mehr",
+      "breaks": [
+        {
+          "year": 1974,
+          "before": "offene Milch"
+        }
+      ],
+      "series": {
+        "1966": 0.21801850250357913,
+        "1967": 0.2906913366714388,
+        "1968": 0.299412076771582,
+        "1969": 0.3052259035050108,
+        "1970": 0.3052259035050108,
+        "1971": 0.3183070136552255,
+        "1972": 0.3292079387804045,
+        "1973": 0.3546434307391554,
+        "1974": 0.4185955248068719,
+        "1975": 0.45565867023248036,
+        "1976": 0.48400107555794564,
+        "1977": 0.5610342797758769,
+        "1978": 0.573388661584413,
+        "1979": 0.6278932872103079,
+        "1980": 0.696205751328096,
+        "1981": 0.7267283416785971,
+        "1982": 0.7608845737374912,
+        "1983": 0.804488274238207,
+        "1984": 0.8466385180555657,
+        "1985": 0.8350108645887081,
+        "1986": 0.8321039512219937,
+        "1987": 0.8502721597639585,
+        "1988": 0.8430048763471726,
+        "1989": 0.8161159277050646,
+        "1990": 0.7659716721292412,
+        "1991": 0.7572509320290981,
+        "1992": 0.8270168528302435,
+        "1993": 0.8444583330305298,
+        "1994": 0.8255633961468862,
+        "1995": 0.7565242036874196,
+        "1996": 0.7572509320290981,
+        "1997": 0.7303619833869901,
+        "1998": 0.7325421684120259,
+        "1999": 0.723094699970204,
+        "2000": 0.68,
+        "2001": 0.73,
+        "2002": 0.73,
+        "2003": 0.7,
+        "2004": 0.75,
+        "2005": 0.79
       }
     },
     {
       "id": "price_kinokarte",
       "label": "Kinokarte (Wien)",
-      "unit": "Schilling",
-      "description": "Preis einer Kinokarte in Wien, Jahresdurchschnitt (je Stück)",
-      "source": "Statistisches Jahrbuch der Stadt Wien, Tab. 19.02 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1980 bis 1984, Wiener Preise, ÖSTAT); Statistisches Jahrbuch der Stadt Wien, Tab. 19.05 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1984 bis 1988, Wiener Preise, ÖSTAT); Statistisches Jahrbuch der Stadt Wien, Tab. 18.03 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1988 bis 1992, Wiener Preise, ÖSTAT); AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
-      "source_url": "https://www.digital.wienbibliothek.at/download/pdf/2266115.pdf",
+      "unit": "Euro",
+      "description": "Preis einer Kinokarte in Wien, Jahresdurchschnitt",
+      "source": "Statistisches Jahrbuch der Stadt Wien 1970, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1974, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1979, Tab. 18.07, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1984, Tab. 19.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1988, Tab. 19.05, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1992, Tab. 18.03, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1996, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1999, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2003, Tab. 18.2, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2006, Tab. 17.3, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
+      "source_url": "https://www.digital.wienbibliothek.at/download/pdf/2263179.pdf",
       "sources": [
         {
-          "label": "Statistisches Jahrbuch der Stadt Wien, Tab. 19.02 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1980 bis 1984, Wiener Preise, ÖSTAT)",
+          "label": "Statistisches Jahrbuch der Stadt Wien 1970, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2263179.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1974, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2263394.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1979, Tab. 18.07, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2263699.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1984, Tab. 19.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
           "url": "https://www.digital.wienbibliothek.at/download/pdf/2266115.pdf"
         },
         {
-          "label": "Statistisches Jahrbuch der Stadt Wien, Tab. 19.05 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1984 bis 1988, Wiener Preise, ÖSTAT)",
+          "label": "Statistisches Jahrbuch der Stadt Wien 1988, Tab. 19.05, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
           "url": "https://www.digital.wienbibliothek.at/download/pdf/2276793.pdf"
         },
         {
-          "label": "Statistisches Jahrbuch der Stadt Wien, Tab. 18.03 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1988 bis 1992, Wiener Preise, ÖSTAT)",
+          "label": "Statistisches Jahrbuch der Stadt Wien 1992, Tab. 18.03, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
           "url": "https://www.digital.wienbibliothek.at/download/pdf/2277171.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1996, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2283729.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1999, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2283911.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 2003, Tab. 18.2, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2284088.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 2006, Tab. 17.3, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2221944.pdf"
         },
         {
           "label": "AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
           "url": "https://www.arbeiterkammer.at/infopool/akportal/Studie_Einkommen_2009.pdf"
         }
       ],
-      "retrieved": "2026-10-23",
+      "retrieved": "2026-10-24",
       "notes": [
         "Durchschnittspreise in Wien (Erhebung des Österreichischen Statistischen Zentralamts), nicht für ganz Österreich.",
-        "Laut Jahrbuch sind die Preise ab 1987 wegen geänderter Warenbeschreibungen nicht streng mit den Vorjahren vergleichbar.",
-        "Umrechnung in Euro mit dem fixen Kurs 13,7603 Schilling je Euro."
+        "Bis 2001 in Schilling erhoben und mit dem fixen Kurs 13,7603 Schilling je Euro umgerechnet; ab 2002 Euro laut Quelle.",
+        "1979 laut Quelle wegen neu einbezogener Geschäftstypen (z. B. Diskontläden) mit den Vorjahren nicht streng vergleichbar.",
+        "Ab 1987 laut Quelle wegen geänderter Warenbeschreibungen mit den Vorjahren nicht streng vergleichbar."
       ],
-      "deflate": "cpi",
-      "eur_factor": 0.0726728341678597,
-      "ended": true,
-      "ended_note": "bisher nur bis 1992 erfasst",
-      "series": {
+      "series_ats": {
+        "1966": 11.66,
+        "1967": 12.51,
+        "1968": 14.38,
+        "1969": 15.17,
+        "1970": 17.12,
+        "1971": 18.81,
+        "1972": 21.59,
+        "1973": 23.9,
+        "1974": 27.08,
+        "1975": 27.9,
+        "1976": 32.01,
+        "1977": 34.06,
+        "1978": 37.41,
+        "1979": 40.38,
         "1980": 44.11,
         "1981": 48.25,
         "1982": 51.71,
@@ -826,52 +1056,137 @@
         "1989": 70.78,
         "1990": 73.1,
         "1991": 77.55,
-        "1992": 80.86
+        "1992": 80.86,
+        "1993": 83.2,
+        "1994": 83.99,
+        "1995": 85.26,
+        "1996": 88.18,
+        "1997": 91.27,
+        "1998": 92.61,
+        "1999": 91.21
+      },
+      "deflate": "cpi",
+      "ended": true,
+      "ended_note": "Tabelle erscheint nach 2005 nicht mehr",
+      "series": {
+        "1966": 0.8473652463972442,
+        "1967": 0.9091371554399249,
+        "1968": 1.0450353553338227,
+        "1969": 1.1024468943264318,
+        "1970": 1.2441589209537582,
+        "1971": 1.366976010697441,
+        "1972": 1.5690064896840912,
+        "1973": 1.7368807366118468,
+        "1974": 1.9679803492656407,
+        "1975": 2.027572073283286,
+        "1976": 2.3262574217131893,
+        "1977": 2.4752367317573016,
+        "1978": 2.7186907262196316,
+        "1979": 2.9345290436981752,
+        "1980": 3.2055987151442915,
+        "1981": 3.506464248599231,
+        "1982": 3.7579122548200257,
+        "1983": 3.9621229188317115,
+        "1984": 4.217204566760899,
+        "1985": 4.447577451073014,
+        "1986": 4.6052775012172695,
+        "1987": 4.792773413370348,
+        "1988": 5.055122344716321,
+        "1989": 5.14378320240111,
+        "1990": 5.312384177670544,
+        "1991": 5.63577828971752,
+        "1992": 5.876325370813136,
+        "1993": 6.0463798027659275,
+        "1994": 6.103791341758536,
+        "1995": 6.196085841151719,
+        "1996": 6.40829051692187,
+        "1997": 6.632849574500555,
+        "1998": 6.730231172285487,
+        "1999": 6.628489204450483,
+        "2000": 7.42,
+        "2001": 7.48,
+        "2002": 8.18,
+        "2003": 8.66,
+        "2004": 8.81,
+        "2005": 8.49
       }
     },
     {
       "id": "price_benzin",
       "label": "Benzin Normal (Wien)",
-      "unit": "Schilling",
-      "description": "Preis für 1 Liter Normalbenzin in Wien, Jahresdurchschnitt (je Liter)",
-      "source": "Statistisches Jahrbuch der Stadt Wien, Tab. 19.02 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1980 bis 1984, Wiener Preise, ÖSTAT); Statistisches Jahrbuch der Stadt Wien, Tab. 19.05 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1984 bis 1988, Wiener Preise, ÖSTAT); Statistisches Jahrbuch der Stadt Wien, Tab. 18.03 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1988 bis 1992, Wiener Preise, ÖSTAT); AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
-      "source_url": "https://www.digital.wienbibliothek.at/download/pdf/2266115.pdf",
+      "unit": "Euro",
+      "description": "Preis für 1 Liter Normalbenzin in Wien, Jahresdurchschnitt",
+      "source": "Statistisches Jahrbuch der Stadt Wien 1970, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1974, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1979, Tab. 18.07, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1984, Tab. 19.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1988, Tab. 19.05, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1992, Tab. 18.03, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1996, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 1999, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2003, Tab. 18.2, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); Statistisches Jahrbuch der Stadt Wien 2006, Tab. 17.3, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise); AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
+      "source_url": "https://www.digital.wienbibliothek.at/download/pdf/2263179.pdf",
       "sources": [
         {
-          "label": "Statistisches Jahrbuch der Stadt Wien, Tab. 19.02 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1980 bis 1984, Wiener Preise, ÖSTAT)",
+          "label": "Statistisches Jahrbuch der Stadt Wien 1970, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2263179.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1974, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2263394.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1979, Tab. 18.07, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2263699.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1984, Tab. 19.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
           "url": "https://www.digital.wienbibliothek.at/download/pdf/2266115.pdf"
         },
         {
-          "label": "Statistisches Jahrbuch der Stadt Wien, Tab. 19.05 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1984 bis 1988, Wiener Preise, ÖSTAT)",
+          "label": "Statistisches Jahrbuch der Stadt Wien 1988, Tab. 19.05, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
           "url": "https://www.digital.wienbibliothek.at/download/pdf/2276793.pdf"
         },
         {
-          "label": "Statistisches Jahrbuch der Stadt Wien, Tab. 18.03 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1988 bis 1992, Wiener Preise, ÖSTAT)",
+          "label": "Statistisches Jahrbuch der Stadt Wien 1992, Tab. 18.03, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
           "url": "https://www.digital.wienbibliothek.at/download/pdf/2277171.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1996, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2283729.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 1999, Tab. 18.02, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2283911.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 2003, Tab. 18.2, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2284088.pdf"
+        },
+        {
+          "label": "Statistisches Jahrbuch der Stadt Wien 2006, Tab. 17.3, Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+          "url": "https://www.digital.wienbibliothek.at/download/pdf/2221944.pdf"
         },
         {
           "label": "AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
           "url": "https://www.arbeiterkammer.at/infopool/akportal/Studie_Einkommen_2009.pdf"
         }
       ],
-      "retrieved": "2026-10-23",
+      "retrieved": "2026-10-24",
       "notes": [
         "Bis 1986 Normalbenzin (inländisch), ab 1987 bleifrei laut Fußnote des Jahrbuchs.",
         "Durchschnittspreise in Wien (Erhebung des Österreichischen Statistischen Zentralamts), nicht für ganz Österreich.",
-        "Laut Jahrbuch sind die Preise ab 1987 wegen geänderter Warenbeschreibungen nicht streng mit den Vorjahren vergleichbar.",
-        "Umrechnung in Euro mit dem fixen Kurs 13,7603 Schilling je Euro."
+        "Bis 2001 in Schilling erhoben und mit dem fixen Kurs 13,7603 Schilling je Euro umgerechnet; ab 2002 Euro laut Quelle.",
+        "1979 laut Quelle wegen neu einbezogener Geschäftstypen (z. B. Diskontläden) mit den Vorjahren nicht streng vergleichbar.",
+        "Ab 1987 laut Quelle wegen geänderter Warenbeschreibungen mit den Vorjahren nicht streng vergleichbar."
       ],
-      "deflate": "cpi",
-      "eur_factor": 0.0726728341678597,
-      "ended": true,
-      "ended_note": "bisher nur bis 1992 erfasst",
-      "breaks": [
-        {
-          "year": 1987,
-          "before": "noch nicht bleifrei"
-        }
-      ],
-      "series": {
+      "series_ats": {
+        "1966": 3.32,
+        "1967": 3.4,
+        "1968": 3.4,
+        "1969": 3.4,
+        "1970": 3.4,
+        "1971": 3.4,
+        "1972": 3.4,
+        "1973": 3.94,
+        "1974": 5.65,
+        "1975": 5.8,
+        "1976": 6.4,
+        "1977": 6.5,
+        "1978": 6.47,
+        "1979": 6.84,
         "1980": 8.13,
         "1981": 9.88,
         "1982": 10.47,
@@ -884,7 +1199,65 @@
         "1989": 8.58,
         "1990": 9.14,
         "1991": 8.92,
-        "1992": 9.31
+        "1992": 9.31,
+        "1993": 9.36,
+        "1994": 9.76,
+        "1995": 10.48,
+        "1996": 11.2,
+        "1997": 11.42,
+        "1998": 10.69,
+        "1999": 10.94
+      },
+      "deflate": "cpi",
+      "ended": true,
+      "ended_note": "Tabelle erscheint nach 2005 nicht mehr",
+      "breaks": [
+        {
+          "year": 1987,
+          "before": "noch nicht bleifrei"
+        }
+      ],
+      "series": {
+        "1966": 0.2412738094372942,
+        "1967": 0.247087636170723,
+        "1968": 0.247087636170723,
+        "1969": 0.247087636170723,
+        "1970": 0.247087636170723,
+        "1971": 0.247087636170723,
+        "1972": 0.247087636170723,
+        "1973": 0.28633096662136726,
+        "1974": 0.41060151304840736,
+        "1975": 0.4215024381735863,
+        "1976": 0.46510613867430217,
+        "1977": 0.4723734220910881,
+        "1978": 0.4701932370660523,
+        "1979": 0.4970821857081604,
+        "1980": 0.5908301417846995,
+        "1981": 0.718007601578454,
+        "1982": 0.7608845737374912,
+        "1983": 0.7470767352455977,
+        "1984": 0.7885002507212778,
+        "1985": 0.8139357426800287,
+        "1986": 0.6467882240939514,
+        "1987": 0.6104518070100216,
+        "1988": 0.5799292166595205,
+        "1989": 0.6235329171602363,
+        "1990": 0.6642297042942378,
+        "1991": 0.6482416807773086,
+        "1992": 0.6765840861027739,
+        "1993": 0.6802177278111669,
+        "1994": 0.7092868614783108,
+        "1995": 0.7616113020791697,
+        "1996": 0.8139357426800287,
+        "1997": 0.8299237661969578,
+        "1998": 0.7768725972544203,
+        "1999": 0.7950408057963851,
+        "2000": 0.93,
+        "2001": 0.89,
+        "2002": 0.87,
+        "2003": 0.87,
+        "2004": 0.93,
+        "2005": 1.02
       }
     },
     {

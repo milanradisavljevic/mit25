@@ -3,8 +3,10 @@ import pytest
 import build
 from indicators.ak_monthly_income import manual_rows as ak_rows
 from indicators.common import to_series
-from indicators.prices_vienna import annual_values as price_annual
+from indicators.prices_vienna import ATS_PER_EUR, KNOWN_REVISIONS
+from indicators.prices_vienna import annual_by_unit as price_by_unit
 from indicators.prices_vienna import manual_rows as price_rows
+from indicators.prices_vienna import revisions as price_revisions
 from indicators.turnout_nrw import XLSX, manual_rows, xlsx_result
 from readers import read_ods
 from sources import SOURCES
@@ -38,10 +40,10 @@ BOUNDS = {
     "income_median_gross": (10_000, 80_000),
     "income_monthly_arbeiter": (30, 5_000),
     "income_monthly_angestellte": (30, 5_000),
-    "price_semmel": (0.5, 5),
-    "price_vollmilch": (5, 20),
-    "price_kinokarte": (20, 150),
-    "price_benzin": (5, 20),
+    "price_semmel": (0.02, 1),
+    "price_vollmilch": (0.1, 2),
+    "price_kinokarte": (0.5, 20),
+    "price_benzin": (0.1, 3),
 }
 
 # Erwartete Abdeckung (erstes, letztes Jahr) laut data/SOURCES.md
@@ -56,10 +58,10 @@ COVERAGE = {
     "income_median_gross": ("1997", "2024"),
     "income_monthly_arbeiter": ("1953", "2009"),
     "income_monthly_angestellte": ("1953", "2009"),
-    "price_semmel": ("1980", "1992"),
-    "price_vollmilch": ("1980", "1992"),
-    "price_kinokarte": ("1980", "1992"),
-    "price_benzin": ("1980", "1992"),
+    "price_semmel": ("1966", "2005"),
+    "price_vollmilch": ("1966", "2005"),
+    "price_kinokarte": ("1966", "2005"),
+    "price_benzin": ("1966", "2005"),
 }
 
 
@@ -194,51 +196,104 @@ def test_ak_transcription_matches_other_tables(indicators, group):
     assert (int(row_2009[f"q1_{group}"]), int(row_2009[f"q3_{group}"])) == AK_2009_QUARTILES[group]
 
 
+GOODS = ["semmel", "vollmilch", "kinokarte", "benzin"]
+
+
 def test_vienna_prices_monthly_mean_matches_annual_average():
-    """Je Ausgabe ist das letzte Jahr auch monatlich abgedruckt; das Mittel muss passen."""
+    """Bis Jahrgang 2003 ist das letzte Jahr auch monatlich abgedruckt; das Mittel muss passen."""
     rows = price_rows()
     groups = {}
     for r in rows:
         if r["monat"]:
-            groups.setdefault((r["quelle"], r["ware"], r["jahr"]), []).append(float(r["schilling"]))
-    assert len(groups) == 12
+            groups.setdefault((r["quelle"], r["ware"], r["jahr"]), []).append(float(r["wert"]))
+    assert len(groups) == 9 * 4  # neun Jahrgänge mit Monatswerten, vier Waren
+    mismatches = set()
     for (quelle, ware, jahr), months in groups.items():
         assert len(months) == 12, (quelle, ware, jahr)
         annual = next(
-            float(r["schilling"]) for r in rows
+            float(r["wert"]) for r in rows
             if (r["quelle"], r["ware"], r["jahr"]) == (quelle, ware, jahr) and not r["monat"]
         )
         # Quelle rundet den Durchschnitt aus ungerundeten Monatswerten
-        assert sum(months) / 12 == pytest.approx(annual, abs=0.006), (quelle, ware, jahr)
+        if abs(sum(months) / 12 - annual) > 0.006:
+            mismatches.add((quelle, ware, jahr))
+    assert mismatches == KNOWN_MONTHLY_MISMATCHES
 
 
-@pytest.mark.parametrize("good", ["semmel", "vollmilch", "kinokarte", "benzin"])
-def test_vienna_prices_overlapping_editions_agree(good):
-    rows = [r for r in price_rows() if r["ware"] == good and not r["monat"]]
-    for year in ("1984", "1988"):
-        values = {r["quelle"]: r["schilling"] for r in rows if r["jahr"] == year}
-        assert len(values) == 2 and len(set(values.values())) == 1, (good, year, values)
-    assert price_annual(good)  # wirft bei Widerspruch
+# Quellinkonsistenz, am Scan geprüft: Monatswerte 3 x 5,15, 8 x 5,99, 1 x 5,97 (Mittel 5,78),
+# Jahresdurchschnitt gedruckt 5,76. Siehe data/SOURCES.md.
+KNOWN_MONTHLY_MISMATCHES = {("wien_preise_jb1974", "vollmilch", "1974")}
+
+
+def test_vienna_prices_each_edition_complete():
+    """Jeder Jahrgang liefert fünf Jahresdurchschnitte je Ware, Einheit einheitlich je Jahrgang."""
+    rows = [r for r in price_rows() if not r["monat"]]
+    for quelle in {r["quelle"] for r in rows}:
+        edition = [r for r in rows if r["quelle"] == quelle]
+        assert len({r["einheit"] for r in edition}) == 1, quelle
+        for good in GOODS:
+            years = sorted(int(r["jahr"]) for r in edition if r["ware"] == good)
+            assert years == list(range(years[-1] - 4, years[-1] + 1)), (quelle, good)
+
+
+@pytest.mark.parametrize("good", GOODS)
+def test_vienna_prices_overlaps_agree_except_known_revisions(good):
+    found = set(price_revisions(good))
+    known = {year for g, year in KNOWN_REVISIONS if g == good}
+    assert found == known, (good, price_revisions(good))
+
+
+@pytest.mark.parametrize("good", GOODS)
+def test_vienna_prices_schilling_and_euro_editions_agree(good):
+    """Jahre, die in Schilling und in Euro abgedruckt sind (1998, 1999): Euro-Wert = Schilling / 13,7603, gerundet."""
+    per_unit = price_by_unit(good)
+    common = set(per_unit["ATS"]) & set(per_unit["EUR"])
+    assert common == {1998, 1999}
+    for year in common:
+        ats = max(per_unit["ATS"][year])[1]
+        eur = max(per_unit["EUR"][year])[1]
+        # Quelle rechnet aus ungerundeten Schillingwerten um: Toleranz halber Cent plus Rundung des Schillingwerts
+        assert abs(ats / ATS_PER_EUR - eur) <= 0.005 + 0.005 / ATS_PER_EUR + 1e-9, (good, year)
 
 
 @pytest.mark.parametrize(
-    "id, year, expected",
+    "id, year, ats",
     [
+        ("price_semmel", "1966", 0.62),
         ("price_semmel", "1980", 1.07),
         ("price_semmel", "1992", 2.29),
+        ("price_vollmilch", "1970", 4.20),  # revidierter Wert
         ("price_vollmilch", "1986", 11.45),
+        ("price_kinokarte", "1979", 40.38),
         ("price_kinokarte", "1987", 65.95),
         ("price_benzin", "1985", 11.20),
-        ("price_benzin", "1986", 8.90),
+        ("price_benzin", "1999", 10.94),
     ],
 )
-def test_vienna_prices_sample_values(indicators, id, year, expected):
-    assert indicators[id]["series"][year] == pytest.approx(expected)
+def test_vienna_prices_schilling_years(indicators, id, year, ats):
+    ind = indicators[id]
+    assert ind["series_ats"][year] == pytest.approx(ats)
+    assert ind["series"][year] == pytest.approx(ats / 13.7603)
 
 
-def test_vienna_prices_euro_factor_and_benzin_break(indicators):
-    assert indicators["price_semmel"]["eur_factor"] == pytest.approx(1 / 13.7603)
+@pytest.mark.parametrize(
+    "id, year, eur",
+    [
+        ("price_semmel", "2005", 0.28),
+        ("price_vollmilch", "2003", 0.70),
+        ("price_kinokarte", "2004", 8.81),
+        ("price_benzin", "2005", 1.02),
+        ("price_kinokarte", "2000", 7.42),
+    ],
+)
+def test_vienna_prices_euro_years(indicators, id, year, eur):
+    assert year not in indicators[id]["series_ats"]
+    assert indicators[id]["series"][year] == pytest.approx(eur)
+
+
+def test_vienna_prices_breaks(indicators):
     assert indicators["price_benzin"]["breaks"][0]["year"] == 1987
+    assert indicators["price_vollmilch"]["breaks"][0]["year"] == 1974
     assert "breaks" not in indicators["price_semmel"]
 
 

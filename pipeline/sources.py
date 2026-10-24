@@ -79,24 +79,29 @@ SOURCES = {
         "2026-10-23",
         "AK Wien, Die Bruttoeinkommen von Arbeitern und Angestellten im Jahr 2009 (2010), Daten des Hauptverbands der Sozialversicherungsträger",
     ),
-    "wien_preise_1980_1984": Source(
-        "wienbibliothek_2266115_jahrbuch_wien_preise_1980_1984.pdf",
-        "https://www.digital.wienbibliothek.at/download/pdf/2266115.pdf",
-        "2026-10-23",
-        "Statistisches Jahrbuch der Stadt Wien, Tab. 19.02 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1980 bis 1984, Wiener Preise, ÖSTAT)",
-    ),
-    "wien_preise_1984_1988": Source(
-        "wienbibliothek_2276793_jahrbuch_wien_preise_1984_1988.pdf",
-        "https://www.digital.wienbibliothek.at/download/pdf/2276793.pdf",
-        "2026-10-23",
-        "Statistisches Jahrbuch der Stadt Wien, Tab. 19.05 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1984 bis 1988, Wiener Preise, ÖSTAT)",
-    ),
-    "wien_preise_1988_1992": Source(
-        "wienbibliothek_2277171_jahrbuch_wien_preise_1988_1992.pdf",
-        "https://www.digital.wienbibliothek.at/download/pdf/2277171.pdf",
-        "2026-10-23",
-        "Statistisches Jahrbuch der Stadt Wien, Tab. 18.03 Durchschnittspreise ausgewählter Waren und Dienstleistungen (Daten 1988 bis 1992, Wiener Preise, ÖSTAT)",
-    ),
+    # Statistisches Jahrbuch der Stadt Wien, Tabelle "Durchschnittspreise ausgewählter Waren
+    # und Dienstleistungen" (Wiener Preise). Schlüssel nach Jahrgang; Reihenfolge = Jahrgang.
+    **{
+        f"wien_preise_jb{jahrgang}": Source(
+            filename or f"wienbibliothek_{pdf_id}_jahrbuch_wien_{jahrgang}_preise.pdf",
+            f"https://www.digital.wienbibliothek.at/download/pdf/{pdf_id}.pdf",
+            retrieved,
+            f"Statistisches Jahrbuch der Stadt Wien {jahrgang}, Tab. {tabelle}, "
+            "Durchschnittspreise ausgewählter Waren und Dienstleistungen (Wiener Preise)",
+        )
+        for jahrgang, pdf_id, tabelle, retrieved, filename in [
+            (1970, 2263179, "18.02", "2026-10-24", None),
+            (1974, 2263394, "18.02", "2026-10-24", None),
+            (1979, 2263699, "18.07", "2026-10-24", None),
+            (1984, 2266115, "19.02", "2026-10-23", "wienbibliothek_2266115_jahrbuch_wien_preise_1980_1984.pdf"),
+            (1988, 2276793, "19.05", "2026-10-23", "wienbibliothek_2276793_jahrbuch_wien_preise_1984_1988.pdf"),
+            (1992, 2277171, "18.03", "2026-10-23", "wienbibliothek_2277171_jahrbuch_wien_preise_1988_1992.pdf"),
+            (1996, 2283729, "18.02", "2026-10-24", None),
+            (1999, 2283911, "18.02", "2026-10-24", None),
+            (2003, 2284088, "18.2", "2026-10-24", None),
+            (2006, 2221944, "17.3", "2026-10-24", None),
+        ]
+    },
     "nrw_1919_2008": Source(
         "bmi_nrw_08_wbseit1919.pdf",
         f"{_BMI}/Nationalratswahl_2008/files/history/nrw_08_wbseit1919.pdf",

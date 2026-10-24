@@ -2,7 +2,7 @@
 // Lücken bleiben Lücken: Linien enden an fehlenden Jahren, Bereiche ohne Daten sind markiert.
 
 import { emptyRanges, knownYears, nearestYear, segments, xDomain, yScale, yearTicks } from "./chart-logic.js";
-import { NUMBER_LOCALE, formatWithUnit, memberLabel } from "./logic.js";
+import { NUMBER_LOCALE, formatWithUnit, memberLabel, schillingNote } from "./logic.js";
 
 const NS = "http://www.w3.org/2000/svg";
 const PLOT_HEIGHT = 190;
@@ -244,7 +244,11 @@ function valueTable(row) {
             "tr",
             {},
             html("th", { scope: "row" }, year),
-            ...members.map((m) => html("td", {}, m.series[year] == null ? "keine Daten" : formatValue(m, m.series[year]))),
+            ...members.map((m) => {
+              if (m.series[year] == null) return html("td", {}, "keine Daten");
+              const ats = schillingNote(m, year);
+              return html("td", {}, formatValue(m, m.series[year]), ats ? ` (${ats})` : null);
+            }),
           ),
         ),
       ),
@@ -266,12 +270,9 @@ const observers = new WeakMap();
 /** Baut für jede Anzeigezeile ein Diagramm in `container` und zeichnet bei Größenänderung neu. */
 export function renderCharts(container, rows, generations) {
   container.querySelectorAll(".chart-plot").forEach((plot) => observers.get(plot)?.disconnect());
-  const articles = rows.map((fullRow) => {
-    // Reihen mit `chart: false` (z. B. Schilling neben Euro) nur in der Tabelle zeigen
-    const row = { ...fullRow, members: fullRow.members.filter((m) => m.chart !== false) };
+  const articles = rows.map((row) => {
     const plot = html("div", { class: "chart-plot" });
-    const only = row.members.length === 1 ? row.members[0] : null;
-    const unit = only?.derived ? only.sublabel : row.members[0].unit;
+    const unit = row.members[0].unit;
     const article = html(
       "article",
       { class: "chart", id: `chart-${row.id}` },
@@ -279,7 +280,7 @@ export function renderCharts(container, rows, generations) {
       html("p", { class: "chart-unit" }, unit),
       legend(row),
       plot,
-      valueTable(fullRow),
+      valueTable(row),
     );
     const observer = new ResizeObserver(([entry]) => {
       const width = Math.floor(entry.contentRect.width);

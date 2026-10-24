@@ -11,6 +11,7 @@ import {
   memberLabel,
   referenceYear,
   resolveBirthYears,
+  schillingNote,
   valueFor,
   withPriceAdjusted,
 } from "../site/logic.js";
@@ -147,21 +148,21 @@ test("Eingestellte Reihe: nach dem Ende Lücke statt aktuellstem Wert", () => {
   assert.equal(valueFor(byId.income_monthly_arbeiter, 2010, NOW).status, "missing");
 });
 
-test("Schilling-Preise: Euro-Reihe in Preisen von 2025, nur sie im Diagramm", () => {
+test("Alltagspreise: Euro-Reihe, Schillingwert als Hinweis nur in der nominalen Reihe", () => {
   const adjusted = Object.fromEntries(withPriceAdjusted(data.indicators).map((i) => [i.id, i]));
   const nominal = adjusted.price_semmel;
   const real = adjusted.price_semmel_real;
   const cpi = byId.cpi.series;
-  assert.equal(nominal.chart, false);
-  assert.equal(real.chart, true);
-  assert.equal(real.unit, "Euro");
-  assert.equal(memberLabel(nominal), "in Schilling");
-  assert.equal(memberLabel(real), "in Euro, Preise von 2025");
+  assert.equal(nominal.unit, "Euro");
+  assert.equal(memberLabel(nominal), "nominal");
+  assert.equal(memberLabel(real), "in Preisen von 2025");
   assert.ok(Math.abs(real.series["1980"] - (1.07 / 13.7603) * (cpi["2025"] / cpi["1980"])) < 1e-12);
-  assert.equal(formatWithUnit(1.07, nominal), "1,07 S");
-  assert.ok(formatWithUnit(real.series["1980"], real).endsWith(" €"));
+  assert.equal(formatWithUnit(nominal.series["1980"], nominal), "0,08 €");
+  assert.equal(schillingNote(nominal, 1980), "1,07 S");
+  assert.equal(schillingNote(nominal, 2002), null);
+  assert.equal(schillingNote(real, 1980), null);
   assert.equal(adjusted.price_benzin_real.breaks[0].year, 1987);
-  assert.equal(adjusted.price_semmel_real.ended_note, "bisher nur bis 1992 erfasst");
+  assert.equal(adjusted.price_semmel_real.ended_note, "Tabelle erscheint nach 2005 nicht mehr");
 });
 
 test("Stichproben gegen data.json", () => {
