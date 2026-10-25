@@ -25,8 +25,8 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m venv .venv && .venv/bin/pip install -r requirements.txt
-      - name: Fehlende Rohdaten laden (nicht eingecheckte Dateien)
-        run: .venv/bin/python pipeline/fetch.py
+      # Kein fetch.py: Die nicht eingecheckten Dateien (Belege, HMD/HFD) braucht der Build nicht,
+      # und fremde Server (z. B. Wienbibliothek) blockieren GitHub-Runner zeitweise.
       - name: data.json neu bauen und mit eingecheckter Version vergleichen
         run: |
           cp site/data.json /tmp/data.committed.json
