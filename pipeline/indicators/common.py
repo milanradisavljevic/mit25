@@ -1,7 +1,9 @@
 """Gemeinsame Hilfen für Indikator-Module."""
 
+import csv
+
 from readers import ods_year_row, read_ods
-from sources import SOURCES
+from sources import EXTRACT, SOURCES
 
 
 def to_series(pairs, fill_gaps=True):
@@ -42,3 +44,25 @@ def indicator(id, label, unit, description, sources, series, notes=(), **extra):
 def zeitreihe(sheet, label, after=None):
     """Zeile aus den Demographischen Zeitreihenindikatoren 1961 bis 2025."""
     return ods_year_row(read_ods(SOURCES["zeitreihen"].path)[sheet], label, after)
+
+
+EXTRACT_CSV = EXTRACT / "hmd_hfd_oesterreich.csv"
+
+
+def extract_pairs(column):
+    """[(Jahr, Wert)] aus dem HMD/HFD-Auszug (data/extract/), nur Jahre mit Wert."""
+    with open(EXTRACT_CSV, encoding="utf-8", newline="") as f:
+        return [(int(r["jahr"]), float(r[column])) for r in csv.DictReader(f) if r[column]]
+
+
+def with_earlier(pairs, earlier, source_name):
+    """Ergänzt eine Reihe um Jahre vor ihrem Beginn aus einer zweiten Quelle.
+
+    Liefert (Paare, Bruch). Der Bruch markiert den Quellenwechsel; Werte davor tragen
+    in der Tabelle den Hinweis "Quelle: <source_name>".
+    """
+    start = min(year for year, _ in pairs)
+    before = [(year, value) for year, value in earlier if year < start]
+    if not before:
+        return pairs, []
+    return before + list(pairs), [{"year": start, "before": f"Quelle: {source_name}", "label": "Quellenwechsel"}]

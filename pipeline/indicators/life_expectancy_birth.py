@@ -1,13 +1,14 @@
-"""Lebenserwartung bei Geburt, getrennt nach Männern und Frauen, 1951 bis 2025.
+"""Lebenserwartung bei Geburt: gesamt, Männer, Frauen, 1947 bis 2025.
 
-Quelle hat für 1951 bis 1960 keinen Gesamtwert; einen selbst zu bilden wäre eine
-Schätzung. Deshalb zwei Reihen aus der langen Sterbetafel-Reihe.
+Statistik Austria: Männer/Frauen ab 1951 (lange Sterbetafel-Reihe), gesamt ab 1961
+(Zeitreihenindikatoren, Unisex). Frühere Jahre aus der Human Mortality Database,
+die auch einen Gesamtwert liefert (eigene Berechnung wäre eine Schätzung).
 """
 
 from readers import read_ods
 from sources import SOURCES
 
-from .common import indicator, to_series
+from .common import extract_pairs, indicator, to_series, with_earlier, zeitreihe
 
 NOTES = [
     "Werte bis 2001 in der Quelle auf zwei Nachkommastellen gerundet.",
@@ -36,19 +37,40 @@ def _pairs(sex):
 
 
 def build():
-    common = dict(
-        unit="Jahre",
-        sources=["lebenserwartung"],
-        notes=NOTES,
-        group="life_expectancy_birth",
-    )
+    hmd = "Human Mortality Database"
+    total, total_breaks = with_earlier(zeitreihe("I", "Männer und Frauen (Unisex-Werte)"), extract_pairs("e0_total"), hmd)
+    male, male_breaks = with_earlier(_pairs("Männer"), extract_pairs("e0_male"), hmd)
+    female, female_breaks = with_earlier(_pairs("Frauen"), extract_pairs("e0_female"), hmd)
+    common = dict(unit="Jahre", group="life_expectancy_birth")
+    sex_notes = NOTES + [
+        "1947 bis 1950 aus der Human Mortality Database; für 1951 bis 2023 weicht sie höchstens 0,11 Jahre "
+        "von Statistik Austria ab."
+    ]
     return [
+        indicator(
+            "life_expectancy_birth_total",
+            "Lebenserwartung bei Geburt, gesamt",
+            description="Durchschnittliche Lebenserwartung eines im jeweiligen Jahr Neugeborenen, "
+            "berechnet aus der Sterblichkeit dieses Jahres",
+            sources=["zeitreihen", "hmd"],
+            series=to_series(total),
+            notes=[
+                "1961 bis 2025 Unisex-Werte von Statistik Austria (Demographische Indikatoren).",
+                "1947 bis 1960 aus der Human Mortality Database; für 1961 bis 2023 weicht sie höchstens "
+                "0,07 Jahre von Statistik Austria ab.",
+            ],
+            breaks=total_breaks,
+            **common,
+        ),
         indicator(
             "life_expectancy_birth_male",
             "Lebenserwartung bei Geburt, Männer",
             description="Durchschnittliche Lebenserwartung eines im jeweiligen Jahr neugeborenen Buben, "
             "berechnet aus der Sterblichkeit dieses Jahres",
-            series=to_series(_pairs("Männer")),
+            sources=["lebenserwartung", "hmd"],
+            series=to_series(male),
+            notes=sex_notes,
+            breaks=male_breaks,
             **common,
         ),
         indicator(
@@ -56,7 +78,10 @@ def build():
             "Lebenserwartung bei Geburt, Frauen",
             description="Durchschnittliche Lebenserwartung eines im jeweiligen Jahr neugeborenen Mädchens, "
             "berechnet aus der Sterblichkeit dieses Jahres",
-            series=to_series(_pairs("Frauen")),
+            sources=["lebenserwartung", "hmd"],
+            series=to_series(female),
+            notes=sex_notes,
+            breaks=female_breaks,
             **common,
         ),
     ]

@@ -27,6 +27,9 @@ def main(force=False):
         if source.path.exists() and not force:
             print(f"vorhanden  {source.file}")
             continue
+        if not source.downloadable:
+            print(f"manuell    {source.file} (Anmeldung nötig, Auszug liegt in data/extract/)")
+            continue
         download(source)
         print(f"geladen    {source.file}")
     if force:

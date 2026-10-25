@@ -7,10 +7,10 @@ Abdeckung wurde direkt aus den heruntergeladenen Dateien ermittelt, nicht aus Se
 
 | ID | Quelle | Jahre | Lücken |
 |---|---|---|---|
-| life_expectancy_birth_male, life_expectancy_birth_female | Statistik Austria | 1951–2025 | keine innerhalb der Spanne |
-| share_65plus | Statistik Austria | 1961–2025 | keine innerhalb der Spanne |
-| median_age | Statistik Austria | 1961–2025 | keine innerhalb der Spanne |
-| fertility_rate | Statistik Austria | 1961–2025 | keine innerhalb der Spanne |
+| life_expectancy_birth_total, _male, _female | Statistik Austria, vor 1951/1961 HMD | 1947–2025 | Quellenwechsel 1951 (Geschlecht) bzw. 1961 (gesamt) |
+| share_65plus | Statistik Austria, vor 1961 HMD | 1947–2025 | Quellenwechsel 1961 |
+| median_age | Statistik Austria, vor 1961 HMD | 1947–2025 | Quellenwechsel 1961 |
+| fertility_rate | Statistik Austria, vor 1961 HFD | 1951–2025 | Quellenwechsel 1961 |
 | turnout_nrw | BMI | 1945–2024 (24 Wahlen), zusätzlich 1919–1930 | Ereignisreihe |
 | cpi | Statistik Austria (OGD) | 1946–2025 (Jahresdurchschnitt) | 1946 nur April bis Dezember |
 | income_median_gross (Phase 5) | Statistik Austria | 1997–2024 | keine innerhalb der Spanne |
@@ -165,7 +165,7 @@ Eigenschaften der Quelle:
    - VPI: ab 1946.
    - Wahlen: ab 1945. 1919–1930 ebenfalls in der Datei (siehe Punkt 4).
    - Die Annahme „Daten ab etwa 1950“ im Plan reicht also nicht für Geburtsjahre vor ~1985.
-2. **Fertilität 1951–1960** (zurückgestellt): Kandidat ist die Human Fertility Database (humanfertility.org). Download nur nach kostenloser Registrierung, also manuell. Noch nicht geprüft.
+2. **Fertilität 1951–1960:** erledigt (HFD, siehe Abschnitt HMD/HFD).
 3. **Methodenbrüche** müssen im Frontend erwähnt werden: gerundete Werte vor 2004, Erweiterung der Sterbe- und Geburtenzählung 2009/2015, Basiswechsel im VPI (verkettet, unkritisch). Wahlalter und Wahlpflicht: erledigt (2026-10-24), siehe Abschnitt BMI.
 4. **Umrechnung Schilling in Euro:** erledigt. Kurs 13,7603, belegt durch die EZB (`ezb_euro_umrechnungskurse.html`, https://www.ecb.europa.eu/euro/intro/html/index.de.html, Abruf 2026-10-24). EUR-Lex (Verordnung 2866/98) liefert für automatisierte Abrufe keinen Inhalt (HTTP 202).
 5. **AK-Reihe nach 2009:** Websuche am 2026-10-24 ohne Treffer für eine Nachfolge-Ausgabe des Hefts. Kandidat ist das „Statistische Handbuch der österreichischen Sozialversicherung“ (Dachverband) mit den Medianen der beitragspflichtigen Monatseinkommen nach Arbeitern und Angestellten. Dort ist noch zu prüfen, ob die Definition gleich ist (1/14, ohne Lehrlinge, Jahresdurchschnitt). Erst danach dürfte die Reihe ohne Bruch fortgesetzt werden.
@@ -344,3 +344,32 @@ Eine Regel „Nachbarjahr verwenden“ brächte bei ±3 Jahren nur 3–5 Prozent
 - **Human Mortality Database / Human Fertility Database:** Österreich ab 1947 bzw. 1951 (Bevölkerung nach Alter, Sterbetafeln, Fertilität). Download nur nach kostenloser Registrierung. Eigene Methodik, daher als eigene Quelle mit Bruch markieren.
 - **Benzin nach 2005:** EU Weekly Oil Bulletin (Österreich, ab 2005, wöchentlich) oder der Treibstoffpreismonitor des Ministeriums. Für einen Jahreswert müsste man selbst mitteln, das ist noch zu entscheiden.
 - **Kinokarte nach 2005:** Filmwirtschaftsbericht des Österreichischen Filminstituts. Durchschnittlicher Eintrittspreis noch nicht gefunden.
+
+
+## Human Mortality Database / Human Fertility Database (vor 1961)
+
+- **Herkunft:** Österreich-Pakete, am 2026-10-25 mit Konto des Nutzers heruntergeladen.
+  - `data/raw/hmd_AUT.zip` (entpackt `data/raw/hmd_AUT/`), Stand laut Dateien 12.12.2024, Methods Protocol v6
+  - `data/raw/hfd_AUT.zip` (entpackt `data/raw/hfd_AUT/`), Stand 03.02.2025
+- **Nur lokal:** Die Rohdateien sind per `.gitignore` ausgeschlossen. Der Download geht nur nach Registrierung, und der Nutzer hat die Dateien nur zur internen Verwendung bereitgestellt. `fetch.py` überspringt sie (`downloadable=False`).
+- **Lizenz:** HMD und HFD stellen ihre konstruierten Daten (Sterbetafeln, Exposures, Fertilitätsraten) unter CC BY 4.0. Input-Daten der Lieferanten sind davon ausgenommen und werden nicht verwendet. Zitierweise wie in `pipeline/sources.py` (Schlüssel `hmd`, `hfd`).
+- **Auszug:** `data/extract/hmd_hfd_oesterreich.csv` wird aus den Rohdateien mit `pipeline/extract_hmd_hfd.py` erzeugt und ist eingecheckt, damit Build und CI ohne die Rohdateien laufen. Spalten:
+  - Lebenserwartung gesamt/Frauen/Männer: `STATS/E0per.txt`
+  - Fertilität: `AUTtfrRR.txt`
+  - Anteil 65+ und Medianalter: berechnet aus `STATS/Exposures_1x1.txt` (Personenjahre je Altersjahr ≈ Bevölkerung im Jahresdurchschnitt). Medianalter linear innerhalb des Altersjahres.
+- **Verwendung:** Nur für Jahre vor dem Beginn der Statistik-Austria-Reihe.
+  - Lebenserwartung nach Geschlecht: 1947–1950
+  - Lebenserwartung gesamt, Anteil 65+, Medianalter: 1947–1960
+  - Fertilität: 1951–1960
+  - Der Quellenwechsel ist als Bruch markiert: Linie getrennt, „Quellenwechsel“ im Diagramm, Hinweis „Quelle: Human … Database“ in der Tabelle.
+- **Abgleich (Tests):** In den Überlappungsjahren weichen HMD/HFD höchstens so weit von Statistik Austria ab:
+
+| Kennzahl | Zeitraum | Größte Abweichung |
+|---|---|---|
+| Lebenserwartung gesamt | 1961–2023 | 0,07 Jahre |
+| Lebenserwartung nach Geschlecht | 1951–2023 | 0,11 Jahre (1956) |
+| Fertilität | 1961–2023 | 0,004 |
+| Anteil 65+ | 1961–2023 | 0,07 Prozentpunkte |
+| Medianalter (eigene Berechnung) | 1961–2023 | 0,04 Jahre |
+
+- **Wirkung:** Die Abdeckung der Großeltern-Spalte steigt (Geburtsjahre 1960–2005) von 22 % auf 30 %, die der Eltern von 69 % auf 73 %.

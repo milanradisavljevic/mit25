@@ -84,7 +84,7 @@ test("Anzeigezeilen: VPI ausgeblendet, Lebenserwartung gebündelt", () => {
   assert.ok(!rows.some((r) => r.id === "cpi"));
   const le = rows.find((r) => r.id === "life_expectancy_birth");
   assert.equal(le.label, "Lebenserwartung bei Geburt");
-  assert.equal(le.members.length, 2);
+  assert.equal(le.members.length, 3);
 });
 
 test("Geburtsjahre 1960 bis 2005: jede Zelle hat einen gültigen Zustand", () => {
@@ -188,8 +188,9 @@ test("Arbeitsminuten: Preis / (Stundenlohn / 60), nur Jahre mit beiden Werten, Z
 test("Stichproben gegen data.json", () => {
   // Geburtsjahr 1985: Du 2010, Eltern 1980, Großeltern 1950
   assert.equal(valueFor(byId.share_65plus, 2010, NOW).status, "ok");
-  assert.equal(valueFor(byId.share_65plus, 1950, NOW).status, "missing");
-  assert.equal(valueFor(byId.life_expectancy_birth_male, 1950, NOW).status, "missing");
+  assert.equal(valueFor(byId.share_65plus, 1950, NOW).status, "ok"); // seit HMD ab 1947
+  assert.equal(valueFor(byId.share_65plus, 1946, NOW).status, "missing");
+  assert.equal(valueFor(byId.life_expectancy_birth_male, 1946, NOW).status, "missing");
   assert.equal(valueFor(byId.life_expectancy_birth_male, 1951, NOW).value, 62.38);
   assert.equal(valueFor(byId.turnout_nrw, 1950, NOW).year, 1949);
   assert.equal(valueFor(byId.turnout_nrw, 2010, NOW).year, 2008);

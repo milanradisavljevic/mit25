@@ -96,14 +96,19 @@ export function drawChart(plot, row, generations, width) {
   }
 
   // Methodenbrüche: feine Linie zwischen den Jahren, Beschriftung unten im Diagramm
-  for (const year of [...new Set(members.flatMap((m) => (m.breaks ?? []).map((b) => b.year)))]) {
+  const breakLabels = new Map();
+  for (const b of members.flatMap((m) => m.breaks ?? [])) breakLabels.set(b.year, b.label ?? "Methodenwechsel");
+  let breakIndex = 0;
+  for (const [year, label] of [...breakLabels].sort((a, b) => b[0] - a[0])) {
+    if (year <= x0 || year > x1) continue;
+    const labelY = plotBottom - 6 - 13 * breakIndex++; // mehrere Brüche übereinander statt überlappend
     const bx = x(year) - halfYear;
     root.append(svg("line", { class: "break", x1: bx, x2: bx, y1: plotTop, y2: plotBottom }));
-    const text = `Methodenwechsel ${year}`;
+    const text = `${label} ${year}`;
     // Nach links umklappen, wenn die Beschriftung rechts nicht ins Diagramm passt (nie abschneiden)
     const flip = bx + 4 + text.length * 6 > MARGIN.left + plotWidth;
     root.append(
-      svg("text", { class: "break-label", x: flip ? bx - 4 : bx + 4, y: plotBottom - 6, "text-anchor": flip ? "end" : "start" }, text),
+      svg("text", { class: "break-label", x: flip ? bx - 4 : bx + 4, y: labelY, "text-anchor": flip ? "end" : "start" }, text),
     );
   }
 

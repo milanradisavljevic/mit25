@@ -158,7 +158,8 @@ Siehe CLAUDE.md.
 - Phasen 0–5 umgesetzt. Phase 5 umfasst: Einkommen (Lohnsteuer 1997–2024; AK-Monatseinkommen 1953–2009), Alltagspreise Wien 1966–2005, Arbeitsminuten 1987–2005 (Stundenlohn Industriearbeiter Wien), Mieten (Eurostat-Mietanteil 2003–2025, Mikrozensus-Miete 2005–2025).
 - **Abweichung vom Plan:** Eine Wurstsemmel ist nicht enthalten. Die Quelle führt Semmel und Extrawurst nur einzeln, und eine Zusammenrechnung wäre eine Konstruktion.
 - **Offen** (Details in data/SOURCES.md, „Offene Probleme“):
-  - Fertilität 1951–1960: Human Fertility Database, nur nach Registrierung.
   - Mieten vor 2003: noch nicht recherchiert.
   - AK-Reihe nach 2009: Definition im Handbuch des Dachverbands noch zu prüfen.
   - Veröffentlichung: Hosting ist noch nicht eingerichtet.
+
+- 2026-10-25: Bevölkerungsreihen vor 1961 mit HMD/HFD ergänzt (Lebenserwartung ab 1947 inkl. Gesamtwert, Anteil 65+ und Medianalter ab 1947, Fertilität ab 1951).

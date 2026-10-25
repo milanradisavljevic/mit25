@@ -31,6 +31,7 @@ Statische Webseite: Geburtsjahr eingeben, sehen wie Österreich aussah, als man 
 - Methodenbruch: Feld `breaks: [{year, before}]` trennt die Linie im Diagramm und kennzeichnet Werte davor in der Tabelle. Feld `ended: true`: eingestellte Reihe, nach dem letzten Jahr Lücke statt "aktuellster Wert".
 - Alltagspreise: Reihe in Euro (Schilling ÷ 13,7603), Schillingwert in `series_ats`, im Frontend als "damals … S" (`schillingNote`). Bei abweichenden Jahrgängen gilt der neueste; bekannte Abweichungen in `KNOWN_REVISIONS` (pipeline/indicators/prices_vienna.py), jede neue bricht den Build ab. `ended_note` ersetzt den Text "Reihe endet".
 - Arbeitsminuten: Preise mit `work_minutes: <Lohn-ID>` bekommen im Frontend (`withWorkMinutes`) eine eigene Zeile Preis / (Stundenlohn / 60). Breaks mit leerem `before` werden nur im Diagramm markiert.
+- Vor 1961 ergänzen HMD/HFD die Bevölkerungsreihen (`with_earlier` in indicators/common.py, Auszug in data/extract/). Rohdaten nie einchecken. Breaks können ein `label` tragen (z. B. „Quellenwechsel“).
 - Zahlenformat `de-DE` (Punkt als Tausendertrenner), weil `de-AT` in CLDR Leerzeichen nutzt.
 - Zustände je Zelle: ok, future (noch nicht erreicht), pending (Jahr erreicht, Daten noch nicht veröffentlicht), missing.
 
@@ -39,6 +40,7 @@ Statische Webseite: Geburtsjahr eingeben, sehen wie Österreich aussah, als man 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python pipeline/fetch.py     # lädt fehlende Rohdaten (--force: alle neu)
+.venv/bin/python pipeline/extract_hmd_hfd.py  # nur bei neuen HMD/HFD-Daten (Rohdateien lokal, nicht im Repo)
 .venv/bin/python pipeline/build.py     # erzeugt site/data.json
 .venv/bin/pytest                       # Tests Pipeline
 node --test tests/*.test.mjs           # Tests Frontend-Logik (site/logic.js), nur Node eingebaut

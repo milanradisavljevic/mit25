@@ -12,6 +12,7 @@ from readers import read_ods
 from sources import SOURCES
 
 MVP_IDS = {
+    "life_expectancy_birth_total",
     "life_expectancy_birth_male",
     "life_expectancy_birth_female",
     "share_65plus",
@@ -33,6 +34,7 @@ MVP_IDS = {
 
 # Plausibilitätsgrenzen je Indikator (min, max)
 BOUNDS = {
+    "life_expectancy_birth_total": (40, 95),
     "life_expectancy_birth_male": (40, 95),
     "life_expectancy_birth_female": (40, 95),
     "share_65plus": (5, 40),
@@ -54,11 +56,12 @@ BOUNDS = {
 
 # Erwartete Abdeckung (erstes, letztes Jahr) laut data/SOURCES.md
 COVERAGE = {
-    "life_expectancy_birth_male": ("1951", "2025"),
-    "life_expectancy_birth_female": ("1951", "2025"),
-    "share_65plus": ("1961", "2025"),
-    "median_age": ("1961", "2025"),
-    "fertility_rate": ("1961", "2025"),
+    "life_expectancy_birth_total": ("1947", "2025"),
+    "life_expectancy_birth_male": ("1947", "2025"),
+    "life_expectancy_birth_female": ("1947", "2025"),
+    "share_65plus": ("1947", "2025"),
+    "median_age": ("1947", "2025"),
+    "fertility_rate": ("1951", "2025"),
     "turnout_nrw": ("1919", "2024"),
     "cpi": ("1946", "2025"),
     "income_median_gross": ("1997", "2024"),
@@ -445,3 +448,58 @@ def test_ats_rate_matches_ecb_file():
     plain = re.sub(r"<[^>]+>", " ", text).replace("&nbsp;", " ")
     m = re.search(r"([\d,]+)\s+ATS", plain)
     assert m and float(m.group(1).replace(",", ".")) == ATS_PER_EUR
+
+
+
+HMD_HFD_COLUMNS = {
+    "life_expectancy_birth_total": "e0_total",
+    "life_expectancy_birth_male": "e0_male",
+    "life_expectancy_birth_female": "e0_female",
+    "share_65plus": "share_65plus",
+    "median_age": "median_age",
+    "fertility_rate": "tfr",
+}
+# Größte zulässige Abweichung HMD/HFD gegen Statistik Austria in den Überlappungsjahren
+MAX_DIFF = {"e0_total": 0.08, "e0_male": 0.12, "e0_female": 0.12, "share_65plus": 0.08, "median_age": 0.05, "tfr": 0.005}
+
+
+@pytest.mark.parametrize("id, column", sorted(HMD_HFD_COLUMNS.items()))
+def test_hmd_hfd_agree_with_statistik_austria_where_both_exist(indicators, id, column):
+    from indicators.common import extract_pairs
+
+    extract = dict(extract_pairs(column))
+    series = indicators[id]["series"]
+    start = indicators[id]["breaks"][0]["year"]
+    overlap = [y for y in extract if y >= start and str(y) in series]
+    assert len(overlap) > 50
+    for year in overlap:
+        assert abs(extract[year] - series[str(year)]) <= MAX_DIFF[column], (id, year)
+
+
+@pytest.mark.parametrize("id, column", sorted(HMD_HFD_COLUMNS.items()))
+def test_hmd_hfd_only_before_statistik_austria(indicators, id, column):
+    from indicators.common import extract_pairs
+
+    extract = dict(extract_pairs(column))
+    series = indicators[id]["series"]
+    brk = indicators[id]["breaks"][0]
+    assert brk["label"] == "Quellenwechsel" and brk["before"].startswith("Quelle: Human")
+    for year in range(int(next(iter(series))), brk["year"]):
+        assert series[str(year)] == pytest.approx(extract[year]), (id, year)
+
+
+@pytest.mark.parametrize(
+    "id, year, expected",
+    [
+        ("life_expectancy_birth_total", "1947", 61.54),
+        ("life_expectancy_birth_male", "1950", None),
+        ("fertility_rate", "1951", 2.021),
+        ("share_65plus", "1947", 9.6732),
+        ("median_age", "1947", 35.0331),
+    ],
+)
+def test_hmd_hfd_sample_values(indicators, id, year, expected):
+    if expected is None:
+        assert indicators[id]["series"][year] is not None
+    else:
+        assert indicators[id]["series"][year] == pytest.approx(expected)

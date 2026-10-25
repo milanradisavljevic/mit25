@@ -8,7 +8,7 @@ Wie sah Österreich aus, als du, deine Eltern und deine Großeltern 25 waren? Ge
 
 | Thema | Kennzahlen | Jahre |
 |---|---|---|
-| Leben und Bevölkerung | Lebenserwartung (Männer, Frauen), Anteil 65+, Medianalter, Kinder pro Frau | 1951 bzw. 1961 bis 2025 |
+| Leben und Bevölkerung | Lebenserwartung (gesamt, Männer, Frauen), Anteil 65+, Medianalter, Kinder pro Frau | 1947 bzw. 1951 bis 2025 |
 | Einkommen | Median-Bruttojahreseinkommen; Monatseinkommen Arbeiter und Angestellte; Stundenlohn Industriearbeiter Wien | 1997–2024; 1953–2009; 1987–2005 |
 | Preise in Wien | Semmel, Vollmilch, Kinokarte, Benzin; jeweils auch in Arbeitsminuten | 1966–2005; Minuten 1987–2005 |
 | Wohnen | Mietanteil am Haushaltseinkommen; Durchschnittsmiete | 2003–2025; 2005–2025 |

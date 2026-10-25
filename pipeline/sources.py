@@ -6,6 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "data" / "raw"
 MANUAL = ROOT / "data" / "manual"
+EXTRACT = ROOT / "data" / "extract"
 
 
 @dataclass(frozen=True)
@@ -14,6 +15,8 @@ class Source:
     url: str
     retrieved: str
     label: str
+    # False: nur nach Anmeldung erhältlich; fetch.py lädt sie nicht, siehe data/SOURCES.md
+    downloadable: bool = True
 
     @property
     def path(self):
@@ -132,6 +135,22 @@ SOURCES = {
         "https://www.parlament.gv.at/aktuelles/pk/jahr_2024/pk0874",
         "2026-10-24",
         "Parlamentskorrespondenz Nr. 874 vom 19.08.2024, „Das Wahlrecht und seine überholten Regelungen“",
+    ),
+    "hmd": Source(
+        "hmd_AUT.zip",
+        "https://www.mortality.org/Country/Country?cntr=AUT",
+        "2026-10-25",
+        "Human Mortality Database. Max Planck Institute for Demographic Research (Germany), University of California, "
+        "Berkeley (USA), and French Institute for Demographic Studies (France). www.mortality.org (CC BY 4.0)",
+        downloadable=False,
+    ),
+    "hfd": Source(
+        "hfd_AUT.zip",
+        "https://www.humanfertility.org/Country/Country?cntr=AUT",
+        "2026-10-25",
+        "Human Fertility Database. Max Planck Institute for Demographic Research (Germany) and Vienna Institute of "
+        "Demography (Austria). www.humanfertility.org (CC BY 4.0)",
+        downloadable=False,
     ),
     "nrw_1919_2008": Source(
         "bmi_nrw_08_wbseit1919.pdf",
